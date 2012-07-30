@@ -1,0 +1,53 @@
+#TODO
+unbound search: no buscamos palabras tokenizadas, sino ocurrencias in texto
+
+
+el objetivo de este estudio
+Introducción: 
+by A Loaiza-Bonilla - 2011 - Related articles 14 Jan 2011 –
+ ResearchGate
+TRABAJO DE INVESTIGACION
+Por ANA CATERINA HEYCK PUYANA[1]
+revista de
+Buscador de publicaciones
+Articulos relacionados
+Impacto de
+Correlación
+by S Penuela - 2007 - Cited by 64 - Related articles
+Corresponding author: 
+CONGRESO
+
+ abstracts
+Cited by 3 - Related articles 
+Proyecto de 
+Artículos relacionados
+
+Articles by
+
+Project Report
+
+ARTICLE
+Citado por 69
+
+CARACTERIZACION
+Authors:
+Revista Cientîfica
+Memórias do Instituto Oswaldo Cruz - Vol.99(8) December 2004 
+Predominance of lineage I among Trypanosoma cruzi isolates from ... 
+by N Añez - 2004 - Cited by 56 - Related articles 9 Dec 2004 – Nestor Añez1,; Gladys Crisante1,; Flavia Maia da Silva2,; Agustina Rojas1, ... Universidad de Los Andes, Facultad de Ciencias, Mérida, ... 
+
+Procedings
+Author Affiliations
+
+
+
+
+Acknowledgments
+Introduction
+vol.8 número2
+Revista
+Research Statement
+
+TODO 
+[Vv]ol\.? *[0-9]+ for http addresses?
+

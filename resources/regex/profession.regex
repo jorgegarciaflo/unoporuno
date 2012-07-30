@@ -1,0 +1,90 @@
+﻿Research Assistant	ci
+logiste?[ \.,;?!\-]     ci
+al intern[ \.,;?!\-]	ci
+[^pP].[oó]log[oa][ \.,;?!\-]	ci
+magistrad[oa]	ci
+docente	ci
+[^aAdDpP][^tTmpP][^bB]logue[ \.,;?!]	ci
+abogad[oa]	ci
+acad[ée]mic[oa]	ci
+actuari[oa]	ci
+administradora?	ci
+agricultora?	ci
+antrop[óo]log[oa]	ci
+asesora?	ci
+astr[oó]nomo	ci
+bailar[íi]na?	ci
+cal[íi]grafo	ci
+camar[óo]graf[oa]	ci
+colaboradora?	ci
+comunicadora?	ci
+c[óo]nsul[ \.,;?!\-]	ci
+dise[ñn]adora?	ci
+[ \.,:;?!\-]directora?[ \.,;]	ci
+[Dd]octor [^eph][^no]	cd
+editora?[ \.,:;?!\-]	ci
+escritora?	ci
+escultora?	ci
+fil[óo]sof[oa]	ci
+fot[óo]graf[oa]	ci
+ge[óo]grafo	ci
+ge[óo]logo	ci
+historiadora?	ci
+ingenier[oa]	ci
+investigadora?	ci
+jefe de	ci
+licenciad[oa]	ci
+l[íi]der de proyecto	ci
+lit[óo]grafo	ci
+m[ée]dico cirujano	ci
+m[ée]dico anatomista	ci
+m[ée]dico veterinario	ci
+m[ée]dico	ci
+ocean[óo]grafo	ci
+profesora?	ci
+programador	ci
+psic[oó]log[oa]	ci
+[ \.,;\-]rector(a|es)?[ \.,;\-] ci
+secretari[oa]	ci
+subdirectora?	ci
+tip[óo]grafo	ci
+ing[ée]nieur	ci
+ma[îi]tre de conf[ée]rences	ci
+technicien	ci
+professeur	ci
+s[ée]cretaire	ci
+architecte	ci
+avocat	ci
+m[ée]decin	ci
+[hH](is|er) experience in	ci
+[wW]orking experience in		ci
+[hH](is|er) career		ci
+[Dd]istinguished		ci
+[Ss]?[Hh]e (is|was) a[ ]	ci 
+who is a[ ]	ci
+who is currently	ci
+serves as	ci
+quien actualmente es	ci
+trabaj[aoó] en[ ]	ci
+[ ]work(s|ed) in[ ]	ci
+[ ]work(s|ed) with[ ]	ci
+[ ]work(s|ed) as[ ]	ci
+working in[ ]	ci
+es (el|la)? dueñ[oa]	ci
+mant.*al frente	ci
+affiliat.*with	ci
+[Cc]argo:	ci
+[Tt]itle:	ci
+Chair	cd
+joined	cd
+[ ](since|prior to|before|after) joining	ci
+teaches	cd
+taught	cd
+trabajando como	cd
+miembr[oa] de	ci
+[^b][^e] member of	ci
+[Tt][ée]cnico en[ ]	ci
+(Mi|Su|mi|su) experiencia	ci
+estoy trabajando en	ci
+is working at	ci
+I am currently	cd

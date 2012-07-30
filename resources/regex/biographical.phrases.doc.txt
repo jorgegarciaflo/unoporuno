@@ -1,0 +1,437 @@
+#TODO (9/ene/12)
+Debora de Oliveira's Charitable Life on Crowdrise 
+Debora de Oliveira's Charitable Life on Crowdrise 
+musiance. 
+http://www.crowdrise.com/musiance
+
+SHORT BIO
+
+
+#TODO
+Carolina Cruz en su apartamento - Casas de Famosos ... 
+... 
+http://contenido.metrocuadrado.com/contenidom2/publesp_m2/especi_casas/archivocasasdefamosos/ARTICULO-WEB-PL_DET_NOT_CASFAM-3900431.html
+
+
+was born in		ci
+was born on		ci
+was born at		ci
+was born 28 Dec 	cd
+was born    		cd
+
+born in Bogota		cd
+born in D.R.		cd
+born in NM		cd
+born in 1925		ci
+born ABT 1969		ci
+born on 26 February	cd
+born on 20 Feb		cd
+born on 8 March 	cd
+
+born June 6		cd
+born April 19, 1962	cd
+(born 1913)    		ci
+born 1951		ci
+born 2 August 1964	cd
+born 25 Jan.  		cd
+
+born at Cordoba		cd
+born 1889/09/14		ci		
+born Clemencia Rodriguez	cd
+
+North Carolina-born	cd
+English-born		cd
+Italian born		cd
+Hispanic born		cd
+
+BORN - DEATH		cd
+BORN: July 3
+
+
+
+Place and date of birth:
+*******************************
+colorgrepc '[^A-Za-z][Nn]ac(e|ido|i[ó]|imiento)[ \.;,]' all_snippets.monster.txt | less -R
+
+nacido en
+nació en
+nace en
+nací en
+
+Fecha de nacimiento
+Fecha Nacimiento
+
+
+nació el 12 de Enero de 1981
+Nacimiento: 20 de Julio 1929.
+nace en Nueva York en 1955
+Nace en 1975
+nació un 13 de julio de 1924 
+nacido en 1988
+Lugar de nacimiento: 
++nació muy cerca de la Gruta
+Nace en Jaén
++nacido 27/07/55
+nació en 1916
+Nace en el pueblo de Curpa
+Nnacido en Méridaacido en Salerno
+nacido en Mérida
+nace en 1981 en Texcoco
+País de Nacimiento
+nacido en    Bahia Blanca
++Nacido/a el: 29 de junio
++Nacido (30/01/56) y crecido en la ciudad de Neuquén
++Partida de Nacimiento de la ciudadana YAMELIS DEL ROSARIO OLIVARES BAPTISTA
+nació en Vigo
+Nació el 8 de Abril de 1962, en Tucumán
+nacido el 20 de febrero de 1950
+Walter Salles, nace en el tropical Brasil un 12 de abril
+nació en el pueblo de Alfianello
+Nació el 27-10-1988
++Iris Gatgens Rodriguez Law acta de nacimiento con el Tomo: Cero, Cuatro, Cuatro
+Miguel Romero-Cuevas nació hace 34 años en Mijas Pueblo
+nací en Italia
+nacía en Lisboa
+nací en la ciudad de Coronel
+nací el día 10 de Agosto de 1980
+
+Ana María Forero Angel è nata a Bogotá (Colombia), dove si è laureata in filosofia e in antropologia. Dal 2002 vive a Roma, dove sta conseguendo il 
+Francisco Alexis Rodríguez Acosta es descendiente de canarios y asturianos que llegaron a Venezuela
+****************************
+colorgrepc '[A-Z][a-z]+ \([A-Z][a-z]+, ?[12][90][0-9].\)' all_snippets.monster.txt | less -R
+(Montevideo, 1968) 
+
+### no muy fiable porque se parece a las citas. 
+
+*******************************
+colorgrepc 'creció en' all_snippets.monster.txt | less -R
+
+creció bajo la influencia de su padre
+creció en Medellín
+creció en una ciudad costera  de Inglaterra llamada Southport
+Arturo Escobar nació en Manizales en 1951, se formo inicialmente en Ingeniería química en la
+la formación como ingeniero químico de Escobar,
+
+*********************************
+Oscar Bernal grew up among the Russian speaking population of Latvia
+I grew up in a single parent home
+Olga Ruiz Kopp grew up in a small town
+who grew up in Bahau
+Dr. Posada grew up in the Detroit area
+she grew up in Pico Rivera 
+
+***************************+
+est né
+Bessa-Luís em Bielefeld est née en 1922 à Vila Mea
+
+ Nace en Jaén. Estudia dibujo y modelado 
+
+
+His childhood took place in the suburbs Tavlado Rosario
+hen our son Mario Roberto was 1 1, we took him to Buenos Aires to visit
+From El Calafate, I    took buses to El Chalten
+the journey took Guevara through Argentina,
+vive en
+Gerald Corzo vive en
+Jorge Cortes vive en Buenos Aires
+si yo vivo  en Buenos Aires y ella vive en Aragón.
+ranz Ulrich XI, vive entre Buenos Aires  y Cordoba
+y desde 1997 vivo en Gran Canaria.
+##poco frecuente
+radica en Bolivia
+Yo vivo cerca, en Segovia
+
+***********************+
+lives in
+Today I live in Homestead Florida 
+and I live in Cologne, 
+narrate their lives in Lima, Peru.
+the Colombian population lives in poverty
+I live in México DF
+Hugo Colace was born and lives in Buenos Aires
+You must live in these areas to 
+ Faria Pinto is an independent journalist who  lives in Belém
+I live in    Montevideo
+lives in Caxias do Sul e
+I am living in Málaga
+currently living in Buenos Aires, and hopefully moving to Perth, Australia
+Information about living in,
+Guatemalans living in the U.S.A. 
+but I have been living in Bolivia 
+Participants were women living in San Antonio de los Cobres (SAC)
+I was living in Williamsburg
+Ricardo Rodriguez is an artist currently living in southern california.
+Urquiola-Martinez – presently living in Mexico
+Natalia Uriarte Comunale
+ &lt;Natalia653&gt;. F.111. living in: Uruguay 
+Tim and Dawn Patterson recently moved to Northfield after living in Moscow for the past 17 years
+As Latin American living in Oklahoma, Julia's has brought 
+I'm originally from Finland and now living in Sydney, Australia
+José González, born in 1978, is a Swedish-Argentine indie folk singer-songwriter and guitarist living in Gothenburg,
+I lived in Bangkok
+I was living in Williamsburg 
+Anna came to the United States when she was six years old in 1900
+
+
+
+
+*******************
+verbos de movimiento
+PARA UNA FUTURA VERSIÓN
+
+CÁNDIDA ROSA Gómez Hernández, who arrived on March 17, 1962 and went to Florida City
+arrive, come, travel, venir
+Andando: Blick  18 Jun 2011 ... Indalecio García dijo... Thanks Helder for your kind comments... I hope, you and    your family had great holidays. Were you in Germany? ...    http://mitspieler.blogspot.com/2011/06/blick.html
+This photo was taken on March  3, 2011 in Munich
+She has visited the department of anthropology
+
+se establece en
+
+*******************+
+married with
+da María marries someone called Alfonso Ernesto Hernández López. 
+Indalecio Higareda got married July
+He married Anna Elizabeth Reichel, daughter of Lewis Arapahoe Reichel 
+Juan married Maria Francisca 
+Jose Antoņio Jaramillo married MARIA AGUEDA
+Ana Maria Montes Vigil married in Santa Fe
+married 5 APR 2002 
+She married ROBERTO ALFREDO I
+Helen Young (1843-1931) married Draper
+Mary remarried to Pasquale DiBenedetto
+Miguel Cordova Navarrete marries Maria D Palma-Palma
+Maria Sanﬁnes married in 1813
+John next married Shirley June Brazeal 1 on 28 Sep 1969
+With the exception of a married daughter, Mabel, 
+He married Linda Anne 
+married 27 DEC 1997
+who married José María Escobar
+Ada María marries someone called Alfonso Ernesto Hernández López
+
+*********************+
+casado con
+casado con Cipriana:
+ Estado civil: casada, tres hijos
+argentino, médico, casado, nacido 27/07/55, 
+Está casado y tiene dos
+Ana Gellin Perez Lopez mayor de edad, casada, ama de casa de este
+Está casado y es padre de tres hijas
+casado, natural da freguesia de Camara de Lobo, 
+Catalina Rojas se había casado con el cantor Roberto Parra
+casado con Gaby y papa de martin 
+casado con Lidia (argentina que conocí en Madrid)
+se casó con
+se casó el
+Familia Vargas Rodríguez,
+
+*********************
+award
+Due to these works she was awarded
+special recognition was awarded to various professors/investigators of the institute
+where he is awarded with the Premio María Guevara
+STRI´s Latin American fellowship awarded to Juan Armando Sánchez
+Sheila Amin Gutierrez de Pineres was awarded a grant and became a
+for the fellowship awarded to Juan Fló
+ awarded him the Peace Prize in 1936
+is PhD thesis and was awarded his ers Hybrid Models for Hydrological Forecasting by Gerald
+EDUARDO BOTERO JARAMILLO - Ganador Concurso Nal de Tesis
+will receive
+Winner of the
+ También, ganaron
+Finalistas
+**********************
+obtuvo/ fue ganador
+ obtuvo una beca
+obtuvo el premio
+Jorge obtuvo también 23 premios nacionale
+Ana María Polo” fue galardonado
+resultó galardonada en el concurso Premio Anual de la Salud
+a quien la ONU galardonó por su
+Eduardo Mitrani Acrich fue ganador del Primer
+
+
+*************************
+I / my / was
+
+ I am 18, and study at the
+I am a postdoctoral fellow
+Gabriela Agüero Personal Information I am a PhD student in anthropology
+I am currently attending SRHS
+#antiejemplo yatedo
+How I am connected to
+
+################
+TODO: detectar edad
+age
+years old 
+edad
+
+
+#############
+TODO
+movimientos
+
+Today I live in Homestead Florida
+
+
+
+In    September 2007, I decided to take a break and moved back home to Argentina
+This past weekend I participated and attended my very first Avia Wildflower
+
+Hi my name is Andrea Perez and I have been with the Power Ranch team since early 2006
+I come from a country were 
+
+
+ 
+In 1997, I moved to Purdue University and became a member of Aston Lab
+
+I played a
+
+I was 19 years old.
+
+y name is Alejandro Calderón-Urrea. I'm an associate professor of Developmental Biology at California State University,
+
+***********************
+YO / Mi / Mío / Estoy / Soy
+
+
+
+Yo David Esguerra Montiel con cedula de ciudadanía numero
+
+mi nombre es Andres
+mi nombre completo es Cristian Andres Aguirre, tengo 22 años; Voy para primer semestre de Ing Mecanica.
+
+
+
+mi nombre es andres jaramillo y esta es mi direcion 
+
+
+
+
+Mi nombre es Juan Eduardo Brennan, 
+
+
+
+
+
+
+
+****************************
+HE/SHE his hers
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+He has won two Academy Awards
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+******************+
+quien / who
+
+
+Luís I whose full name was Luís Filipe Maria Fernando
+
+
+
+
+There are 13    professionals named Abraham Mora, who use LinkedIn to exchange information,
+
+
+U.S.A. a bride named MARIA D MUNOZ who was 16
+
+
+
+
+
+
+
+
+
+She was the beautiful Elisa Jimenez who is the daughter of the sculptor Luis Jimenez
+
+<<who + past_tense_verb>>
+colorgrep 'who.*ed '
+
+
+
+
+
+<<person name + who>>
+
+
+
+
+
+antropólogas Inés y Elizabeth, quien le dio sus primeros nietos, en matrimonio
+
+
+
+
+
+Se casa con Gloria Flores con quien tuvo cinco hijos
+
+
+JorJorge Vargas, quien fuera sobrino del actor y productoge Vargas, quien fuera sobrino del actor y producto
+
+
+
+
+	 	 
+
+********************
+Son/daughter of
+Son of an architect and a translator, Luis Carlos Alvarez was born on March 7, 1980 in Bogotá, Colombia. At a  young age his parents 
+
+*********************+
+keywords
+biografía
+Biografia OLGA LUCIA BOBADILLA
+
+
+
+Yo estoy haciendo el doctorado en matemáticas en MIT
+Edwin Cadena – estudiante de posgrado de geología y paleontología en North
+
+Fuck you Stephen Joyce. EU copyright on James Joyce works ends at midnight: http://t.co/ZO9zAQxv (via @WFMU)
+
+
+Alejandro Calderon-Urrea. Age: 45, Gender: Male
+
+[Ff]amilia [A-Z][a-z]+	cd

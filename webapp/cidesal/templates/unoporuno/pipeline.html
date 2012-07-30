@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}style1.css"/>
+</head>
+<body>
+  <h1><a href="/unoporuno/busqueda/{{ busqueda_id}}/" target="_top">Buscador de diásporas</a></h1>
+<h2> {{ persona.name }} <a href="/unoporuno/busqueda/{{ busqueda_id  }}/persona/{{ persona.id }}/vinculos/" target="_blank">  
+<img src="{{ STATIC_URL }}link.png" height="30" width="30" border="0" align="top"/>
+</a></h2>
+<b><i>Geografía: </i></b> {{ persona.geo }} <br/>
+<b><i>Organizaciones: </i></b> {{ persona.orgs }} <br/>
+<b><i>Temas: </i></b> {{ persona.topics }}<br/><br/>
+<b><i>Status probable:</i></b> 
+    {% ifequal persona.prediction None %} ? {% endifequal %}
+    {% ifequal persona.prediction 1 %} móvil {% endifequal %}
+    {% ifequal persona.prediction 2 %} local {% endifequal %}
+    {% ifequal persona.prediction 3 %} no se sabe {% endifequal %}
+<br/> 
+<form action="/unoporuno/busqueda/{{ busqueda_id }}/persona/{{ persona.id }}/evalua/" method="post" target="_top">
+{% csrf_token %}
+<b><i>Status real: </i></b> 
+     <select name="mobility_status">
+       <option value='0' {% ifequal persona.mobility_status None %} selected='0' {% endifequal %}></option>
+       <option value='1' {% ifequal persona.mobility_status 1 %} selected='1' {% endifequal %}>móvil</option>
+       <option value='2' {% ifequal persona.mobility_status 2 %} selected='2' {% endifequal %}>local</option>
+       <option value='3' {% ifequal persona.mobility_status 3 %} selected='3' {% endifequal %}>no se sabe</option>
+       <option value='11' {% ifequal persona.mobility_status 11 %} selected='11' {% endifequal %}>móvil (lineal)</option>
+       <option value='12' {% ifequal persona.mobility_status 12 %} selected='12' {% endifequal %}>móvil (circular)</option>
+       <option value='31' {% ifequal persona.mobility_status 31 %} selected='31' {% endifequal %}>extranjero</option>
+     </select>
+<br /><br/>
+<div align="left">
+  <input type="submit" value="Guardar datos"/> <br/>
+</div>
+
+<hr/>
+<table border="1" width="100%">
+<tr>
+	<th align="left">Resultado de la búsqueda</th>
+{% if busqueda_id == '115' or busqueda_id == '119' or busqueda_id == '120' or busqueda_id == '113'%}
+<!-- commented for the Cidesal test 6mar2012 --> 
+	<th align="left">¿Es útil?</th>
+	<th align="left">Grado</th>
+{% endif %}
+</tr>
+
+{% for snippet in lista_snippet %}
+<tr>	
+  <td width="80%">
+  <p>
+      <a href="{{ snippet.link }}"> {{ snippet.title  }} </a><br/>
+      {{ snippet.description }} <br/>
+      <i>{{ snippet.link }}</i><br/>
+  </p>
+  </td>
+<!-- commented for the Cidesal test 6mar2012 -->
+  {% if busqueda_id == '115' or busqueda_id == '119' or busqueda_id == '120' or busqueda_id == '113'%}
+  <td width="10%">
+    <div align="center">
+      <input type="checkbox" name="{{ snippet.id }}" value="util"
+      {% if snippet.pertinente %} CHECKED {% endif %}/>
+    </div>  
+
+  <td width="10%">
+    <div align="center">
+      <select name="combo{{ snippet.id  }}">
+	<option value='0' {% if not snippet.evidence_type %} selected='0' {% endif %}></option>
+	<option value='1' {% ifequal snippet.evidence_type 1 %} selected='1' {% endifequal %}>fuerte</option>
+	<option value='2' {% ifequal snippet.evidence_type 2 %} selected='2' {% endifequal %}>débil</option>
+	<option value='3' {% ifequal snippet.evidence_type 3 %} selected='3' {% endifequal %}>par débil</option>
+      </select>
+    </div>
+  </td>
+  {% endif %}
+</tr>
+{% endfor %}
+</table>
+</form>
+</body>
+</html>

@@ -1,0 +1,692 @@
+Cátedra de Introducción a la Historia - Facultad de Humanidades
+Cátedra Compiladores e Intérpretes
+Centro de Estudiantes - ITBA
+Colegio Nacional de Buenos Aires
+Instituto de Tecnología ORT Nathan Gould
+Instituto Nacional de Educación Física "General Manuel Belgrano"
+Instituto Tecnológico de Buenos Aires
+Instituto Universitario Aeronáutico
+Instituto Universitario CEMA
+Instituto Universitario Nacional del Arte
+Instituto Universitario de Ciencias de la Salud - Buenos Aires
+Instituto Universitario de Estudios Navales y Marítimos
+Instituto Universitario de la Policia Federal
+Instituto de Enseñanza Superior del Ejército
+Organization for Rehabilitation and Training (ORT)
+Universidad "Juan Agustín Maza"
+Universidad Abierta Interamericana
+Universidad Adventista del Plata
+Universidad Argentina "John F. Kennedy"
+Universidad Argentina de la Empresa
+Universidad Atlantida Argentina
+Universidad Austral Buenos Aires
+Universidad Blas Pascal
+Universidad Centro de Altos Estudios en Ciencias (CAECE), Buenos Aires
+Universidad Católica Argentina Santa Maria de los Buenos Aires
+Universidad Católica de Cuyo
+Universidad Católica de Córdoba
+Universidad Católica de La Plata
+Universidad Católica de Salta
+Universidad Católica de Santa Fé
+Universidad Católica de Santiago del Estero
+Universidad Champagnat
+Universidad de Belgrano
+Universidad de Palermo
+Universidad de San Andrés
+Universidad de Mendoza
+Universidad de Morón
+Universidad de la Patagonia San Juan Bosco
+Universidad de Ciencias Empresariales y Sociales
+Universidad de Buenos Aires
+Universidad de Congreso
+Universidad del Salvador
+Universidad del Nordeste (U.N.NE.)
+Universidad del CEMA
+Universidad Empresarial Siglo 21
+Universidad Fasta - Mar del Plata
+Universidad Fasta - Bariloche
+Universidad John F. Kennedy
+Universidad Maimónides
+Universidad Nacional de Catamarca
+Universidad Nacional de Cuyo
+Universidad Nacional de Córdoba
+Universidad Nacional de Entre Ríos
+Universidad Nacional de Formosa
+Universidad Nacional de General San Martín
+Universidad Nacional de General Sarmiento
+Universidad Nacional de Jujuy
+Universidad Nacional de La Matanza
+Universidad Nacional de La Pampa
+Universidad Nacional de La Plata
+Universidad Nacional de La Rioja
+Universidad Nacional de Lanus
+Universidad Nacional de Lomas de Zamora
+Universidad Nacional de Luján
+Universidad Nacional de Mar del Plata
+Universidad Nacional de Misiones
+Universidad Nacional de Quilmes
+Universidad Nacional de Rosario
+Universidad Nacional de Río Cuarto
+Universidad Nacional de Salta
+Universidad Nacional de San Juan
+Universidad Nacional de San Luis
+Universidad Nacional de Villa María
+Universidad Nacional del Sur
+Universidad Nacional del Litoral
+Universidad Nacional del Comahue
+Universidad Nacional del Centro
+Universidad Virtual de Quilmes
+Universidad Nacional de Entre Ríos
+Universidad Nacional de Cuyo
+Universidad Nacional de Córdoba
+Universidad Nacional de la Patagonia Austral
+Universidad Tecnológica Nacional - UTN - F.R.B.A.
+Universidad Tecnológica Nacional
+Universidad Torcuato Di Tella
+Universidad Adventista de Bolivia
+Universidad Andina Simón Bolivar
+Universidad Autónoma Gabriel René Moreno
+Universidad Autónoma Juan Misael Saracho
+Universidad Autónoma Tomás Frías
+Universidad Católica Boliviana, Cochabamba
+Universidad Católica Boliviana, La Paz
+Universidad Católica Boliviana, Santa Cruz
+Universidad Católica Boliviana, Tarija
+Universidad Empresarial Mateo Kuljis
+Universidad Juan Misael Saracho
+Universidad Mayor de San Andrés
+Universidad Mayor de San Simón
+Universidad NUR
+Universidad Nuestra Senora de La Paz
+Universidad Privada Abierta Latinoamericana
+Universidad Privada Boliviana
+Universidad Privada de Santa Cruz de la Sierra
+Universidad Privada del Valle
+Universidad Salesiana de Bolivia
+Universidad San Francisco Xavier de Chuquisaca
+Universidad Técnica de Oruro
+Universidad de Aquino Bolivia
+Escuela de Arquitectura y Diseño
+Pontificia Universidad Catolica de Chile
+Universidad "Adolfo Ibañez"
+Universidad "Arturo Prat"
+Universidad Academia de Humanismo Cristiano
+Universidad Adolfo Ibáñez
+Universidad Adventista de Chile
+Universidad Alberto Hurtado
+Universidad Arcis
+Universidad Austral de Chile
+Universidad Autonoma del Sur
+Universidad Bernardo O'Higgins
+Universidad Bolivariana
+Universidad Catolica de La Santísima Concepción
+Universidad Catolica de Temuco
+Universidad Catolica de Valparaiso
+Universidad Catolica del Maule
+Universidad Catolica del Norte
+Universidad Católica Cardenal Raúl Silva Henríquez
+Universidad Central
+Universidad Diego Portales
+Universidad Finis Terrae
+Universidad Francisco de Aguirre
+Universidad Gabriela Mistral
+Universidad Iberoamericana de Ciencias y Tecnologia
+Universidad International SEK, Santiago
+Universidad José Santos Ossa
+Universidad La Republica
+Universidad Mariano Egaña
+Universidad Maritima de Chile
+Universidad Mayor
+Universidad Metropolitana de Ciencias de la Educación
+Universidad Miguel de Cervantes
+Universidad Nacional Andrés Bello
+Universidad San Sebastian
+Universidad Santo Tomás
+Universidad Tecnologica "Vicente Perez Rosales"
+Universidad Tecnológica Metropolitana
+Universidad Técnica "Federico Santa María"
+Universidad de Aconcagua
+Universidad de Antofagasta
+Universidad de Artes, Ciencias y Comunicación
+Universidad de Atacama
+Universidad de Chile
+Universidad de Ciencias de la Informatica
+Universidad de Concepción
+Universidad de La Frontera
+Universidad de La Serena
+Universidad de Las Américas
+Universidad de Los Andes
+Universidad de Los Lagos
+Universidad de Magallanes
+Universidad de Playa Ancha de Ciencias de la Educacion
+Universidad de San Andres
+Universidad de Santiago de Chile
+Universidad de Talca
+Universidad de Tarapacá
+Universidad de Valparaiso
+Universidad de Viña del Mar
+Universidad del Bío-Bío
+Universidad del Desarrollo
+Universidad del Mar
+Universidad del Pacífico
+INACAP
+SEK - Chile
+Universidad Arcis
+Universidad Las Condes
+Colegio de Estudios Superiores de Administración - CESA
+Conservatorio del Tolima
+Corporación Educativa Mayor del Desarrollo "Simón Bolivar"
+Corporación Universitaria Tecnológica de Bolivar
+Corporación Universitaria de Ibagué (CORUNIVERSITARIA)
+Corporación Universitaria de Santander (UDES)
+Corporación Universitaria de la Costa (UNICOSTA)
+Escuela Colombiana de Carreras Industriales
+Escuela Superiore de Administración Pública
+Escuela de Administración de Negocios
+Escuela de Policia "General Santander"
+Fundacion Escuela Colombiana de Rehabiliación
+Fundación Universitaria Manuela Beltrán
+Fundación Universitaria San Martín
+Fundación Universitaria de Boyacá
+Fundación Universitaria del Area Andina. Sede Pereira
+Institucion Universitaria de Envigado
+Instituto Universitario de La Paz
+Politécnico Columbiano "Jaime Isaza Cadavid"
+Politécnico Grancolombiano - Institución Universitaria
+Pontificia Universidad Javeriana
+Universidad Adventista de Colombia
+Universidad Antonio Nariño
+Universidad Autónoma Latinoamericana
+Universidad Autónoma de Bucaramanga
+Universidad Autónoma de Colombia
+Universidad Autónoma de Manizales
+Universidad Autónoma de Occidente
+Universidad Autónoma del Caribe
+Universidad Bellas Artes
+Universidad Católica Popular del Risaralda
+Universidad Católica de Colombia
+Universidad Católica de Manizales
+Universidad Católica del Norte
+Universidad Católica del Oriente
+Universidad Central
+Universidad Central del Valle del Cauca
+Universidad Cooperativa de Colombia
+Universidad Distral "Francisco José de Caldas"
+Universidad EAFIT
+Universidad El Bosque
+Universidad Externado de Colombia
+Universidad Francisco de Paula Santander
+Universidad ICESI
+Universidad INCCA de Colombia
+Universidad Industrial de Santander
+Universidad La Gran Colombia
+Universidad Libre de Colombia
+Universidad Mariana
+Universidad Metropolitana
+Universidad Militar Nueva Granada
+Universidad Nacional Abierta y a Distancia
+Universidad Nacional de Colombia
+Universidad Pedagogica Nacional
+Universidad Pedagógica y Tecnológica de Colombia
+Universidad Piloto de Colombia
+Universidad Pontificia Bolivariana
+Universidad Popular del Cesar
+Universidad Santiago de Cali
+Universidad Santo Tomás
+Universidad Sergio Arboleda
+Universidad Surcolombiana
+Universidad Tecnológica de Pereira
+Universidad Tecnológica del Choco "Diego Luis Cordoba"
+Universidad de América Bogotá
+Universidad de Antioquía
+Universidad de Bogotá "Jorge Tadeo Lozano"
+Universidad de Caldas
+Universidad de Cartagena
+Universidad de Córdoba
+Universidad de La Amazonia
+Universidad de La Guajira
+Universidad de La Sabana
+Universidad de La Salle
+Universidad de Los Andes
+Universidad de Los Llanos
+Universidad de Manizales
+Universidad de Medellín
+Universidad de Nariño
+Universidad de Pamplona
+Universidad de San Buenaventura
+Universidad de Sucre
+Universidad del Atlántico
+Universidad del Cauca
+Universidad del Norte
+Universidad del Quindío
+Universidad del Rosario
+Universidad del Tolima
+Universidad del Valle del Cauca
+Instituto Tecnológico de Costa Rica
+Universidad Adventista de Centro América
+Universidad Autónoma de Centro América
+Universidad Braulio Carrillo
+Universidad Católica Anselmo Llorente
+Universidad Central
+Universidad Centroamericana de Ciencias Empresariales
+Universidad Creativa
+Universidad Empresarial
+Universidad Estatal a Distancia
+Universidad Federada de Costa Rica
+Universidad Fidélitas
+Universidad Hispanoamericana
+Universidad Interamericana de Costa Rica
+Universidad Internacional de las Américas
+Universidad Latina de Costa Rica
+Universidad Latinoamericana de Ciencia y Tecnología
+Universidad Libre de Costa Rica
+Universidad Nacional
+Universidad San Marcos
+Universidad Santa Paula
+Universidad Veritas
+Universidad de Cartago Florencio del Castillo
+Universidad de Costa Rica
+Universidad de Iberoamérica
+Universidad de La Salle
+Universidad de San José
+Universidad del Diseño
+Universidad del Turismo
+Universidad para la Cooperación Internacional
+Centro Agronómico Tropical de Investigación y Enseñanza
+Escuela de Agricultura de la Región Tropical Húmeda
+Instituto Centroamericano de Administración de Empresas (INCAE)
+Instituto Superior Minero Metalúrgico "Dr. Antonio Núñez Jiménez"
+Instituto Superior Politécnico José Antonio Echeverría
+Universidad Central de Las Villas
+Universidad Pedagógica "José Martí", Camagüey
+Universidad de Ciego de Avila
+Universidad de Cienfuegos
+Universidad de Granma
+Universidad de Holguín
+Universidad de La Habana
+Universidad de Matanzas Camilo Cienfuegos
+Universidad de Oriente
+Universidad de Pinar del Río
+Universidades de la Republica de Cuba
+Brookdale Community College
+Escuela Politécnica Nacional
+Escuela Politécnica de Chimborazo
+Escuela Politécnica del Ejercito
+Escuela Superior Politécnica del Litoral
+Pontificia Universidad Católica del Ecuador
+Universidad Agraria del Ecuador
+Universidad Andina Simón Bolívar
+Universidad Católica de Santiago de Guayaquil
+Universidad Central del Ecuador
+Universidad Estatal de Bolívar
+Universidad Internacional SEK, Quito
+Universidad Internacional del Ecuador
+Universidad Laica "Eloy Alfaro" de Manabi
+Universidad Laica "Vicente Rocafuerte" de Guayaquil
+Universidad Nacional de Chimborazo
+Universidad Nacional de Loja
+Universidad Politécnica Salesiana
+Universidad San Francisco de Quito
+Universidad Santa María Campus Guayaquil
+Universidad Tecnológica América
+Universidad Tecnológica Equinoccial
+Universidad Tecnológica Indoamérica
+Universidad Técnica Estatal de Quevedo
+Universidad Técnica Particular de Loja
+Universidad Técnica de Ambato
+Universidad Técnica de Cotopaxi
+Universidad Técnica de Manabí
+Universidad Técnica del Norte
+Universidad de Cuenca
+Universidad de Especialidades del Espíritu Santo
+Universidad de Guayaquil
+Universidad del Azuay
+Universidad del Pacifico
+Universidad Albert Einstein
+Universidad Capitain General Gerardo Barrios
+Universidad Católica de Occidente
+Universidad Centroamericana "José Simeón Canas"
+Universidad Cristiana de las Asambleas de Dios
+Universidad Don Bosco
+Universidad Dr. Jose Matias Delgado
+Universidad Evangélica de El Salvador
+Universidad Francisco Gavidia
+Universidad Isaac Newton
+Universidad Luterana Salvadorena
+Universidad Nueva San Salvador
+Universidad Panamericana de San Salvador
+Universidad Pedagógica de El Salvador
+Universidad Politécnica de El Salvador
+Universidad Salvadorena "Alberto Masferrer"
+Universidad Tecnológica de El Salvador
+Universidad de El Salvador
+Universidad de Oriente
+Centro Universitario Ciudad Vieja
+Centro Universitario de Occidente
+Universidad Francisco Marroquín
+Universidad Galileo
+Universidad Mariano Gálvez
+Universidad Rafael Landívar
+Universidad Rural de Guatemala
+Universidad de San Carlos de Guatemala
+Universidad del Istmo
+Universidad del Valle de Guatemala
+Escuela Agricola Panamericana Zamorano
+Universidad José Cecilio del Valle
+Universidad Nacional Autónoma de Honduras
+Universidad Pedagógica Nacional "Francisco Morazán"
+Universidad Tecnológica Centroamericana
+Universidad Tecnológica de Honduras
+Universidad de San Pedro Sula
+Benemerita Universidad Autónoma de Puebla
+CETYS Universidad
+Centro Universitario Ixtlahuaca
+Centro de Estudios Universitarios Monterrey
+Centro de Estudios Universitarios Xochicalco
+Dirección General de Institutos Tecnológicos
+Instituto Politécnico Nacional
+Instituto Tecnologico de Durango
+Instituto Tecnologico de Minatitlan
+Instituto Tecnológico Autonómo de México
+Instituto Tecnológico de Aguascalientes
+Instituto Tecnológico de Celaya
+Instituto Tecnológico de Querétaro
+Instituto Tecnológico de San Luis Potosí
+Instituto Tecnológico de Sonora
+Instituto Tecnológico y de Estudios Superiores de Monterrey
+ITESM
+Tec de Monterrey
+Instituto Tecnológico y de Estudios Superiores de Occidente
+Tecnologico de Baja California, Universidad
+Universidad Anáhuac
+Universidad Anáhuac del Sur
+Universidad Autonoma de Durango
+Universidad Autonoma España de Durango
+Universidad Autónoma "Benito Juárez" de Oaxaca
+Universidad Autónoma Agraria "Antonio Narro"
+Universidad Autónoma Metropolitana
+Universidad Autónoma Metropolitana - Azcapotzalco
+Universidad Autónoma Metropolitana - Iztapalapa
+Universidad Autónoma Metropolitana - Xochimilco
+Universidad Autónoma de Aguascalientes
+Universidad Autónoma de Baja California
+Universidad Autónoma de Baja California Sur
+Universidad Autónoma de Campeche
+Universidad Autónoma de Chapingo
+Universidad Autónoma de Chiapas
+Universidad Autónoma de Chihuahua
+Universidad Autónoma de Ciudad Juárez
+Universidad Autónoma de Coahuila
+Universidad Autónoma de Fresnillo
+Universidad Autónoma de Guadalajara
+Universidad Autónoma de Guerrero
+Universidad Autónoma de Nayarit
+Universidad Autónoma de Nuevo León
+Universidad Autónoma de Querétaro
+Universidad Autónoma de San Luis Potosí
+Universidad Autónoma de Sinaloa
+Universidad Autónoma de Tamaulipas
+Universidad Autónoma de Tlaxcala
+Universidad Autónoma de Veracruz Villa Rica
+Universidad Autónoma de Yucatán
+Universidad Autónoma de Zacatecas
+Universidad Autónoma de la Laguna
+Universidad Autónoma del Carmen
+Universidad Autónoma del Estado de Hidalgo
+Universidad Autónoma del Estado de Morelos
+Universidad Autónoma del Estado de México
+Universidad Autónoma del Noreste
+Universidad Champagnat
+Universidad Chapultepéc
+Universidad Cristóbal Colón
+Universidad Cuauhtémoc
+Universidad Don Vasco
+Universidad España de Durango
+Universidad Franco-Mexicana
+Universidad Fray Luca Paccioli
+Universidad Hispanoamericana
+Universidad Iberoamericana
+Universidad Intercontinental
+Universidad Justo Sierra
+Universidad Juárez Autónoma de Tabasco
+Universidad Juárez del Estado de Durango
+Universidad Jóse Vasconcelos
+Universidad Kino
+Universidad La Salle
+Universidad La Salle Cuernavaca
+Universidad Lasallista Benavente
+Universidad Latina
+Universidad Latinoamericana
+Universidad Madero
+Universidad Mesoamericana de San Agustín
+Universidad Metropolitana Latin Campus
+Universidad Mexicana
+Universidad Mexicana del Noreste
+Universidad Michoacana de San Nicolás de Hidalgo
+Universidad Motolinía del Pedregal
+Universidad México Americana del Norte
+Universidad Nacional Autónoma de México
+Universidad Nuevo Mundo
+Universidad Obrera de Mexico
+Universidad Olmeca
+Universidad Panamericana
+Universidad Pedagógica Nacional
+Universidad Pedagógica Veracruzana
+Universidad Popular Autonóma del Estado de Puebla
+Universidad Regiomontana
+Universidad Regional del Sureste
+Universidad Simón Bolivar
+Universidad Tecnologica de Nezahualcoyotl
+Universidad Tecnologica de la Mixteca
+Universidad Tecnológica de México
+Universidad Valle del Grijalva
+Universidad Veracruzana
+Universidad de Celaya
+Universidad de Ciencias y Artes de Chiapas
+Universidad de Colima
+Universidad de Cuautitlan Izcalli
+Universidad de Guadalajara
+Universidad de Guanajuato
+Universidad de Hermosillo
+Universidad de Montemorelos
+Universidad de Monterrey
+Universidad de Norteamerica
+Universidad de Occidente
+Universidad de Quintana Roo
+Universidad de San Miguel
+Universidad de Sonora
+Universidad de la Sierra A.C.
+Universidad de las Américas
+Universidad de las Américas - Puebla
+Universidad del Bajío
+Universidad del Mar
+Universidad del Mayab
+Universidad del Noreste
+Universidad del Noroeste
+Universidad del Norte
+Universidad del Tepeyac
+Universidad del Valle de Atemajac
+Universidad del Valle de México
+Universidad del Valle de Puebla
+Universidad del Valle de Toluca
+Universidad del Valle del Bravo
+Westhill University
+Universidad Americana
+Universidad Catolica "Redemptoris Mater"
+Universidad Centroamericana
+Universidad Centroamericana de Ciencias Empresariales (UCEM)
+Universidad Ciencias Comerciales
+Universidad Hispanoamericana
+Universidad Iberoamericana de Ciencia y Tecnologia
+Universidad Internacional de Integración de América Latina
+Universidad Nacional Agraria
+Universidad Nacional Autonoma de Nicaragua
+Universidad Nacional de Ingenieria
+Universidad Politecnica de Nicaragua
+Universidad de las Regiones Autónomas de la Costa Caribe Nicaragüense
+Columbus University
+Instituto de Enseñanza Superior Oteima
+Universidad Abierta y a Distancia de Panama
+Universidad Autonoma de Chiriqui
+Universidad Católica Santa María La Antigua
+Universidad Especializada de Las Americas
+Universidad Interamericana de Educacion a Distancia de Panama
+Universidad Interamericana de Panama
+Universidad Latina de Panamá
+Universidad Latinoamericana de Ciencia y Tecnologia, Panamá
+Universidad Santa María La Antigua
+Universidad Tecnológica Oteima
+Universidad Tecnológica de Panamá
+Universidad de Panamá
+Universidad del Istmo
+Universidad Americana
+Universidad Autónoma de Asunción
+Universidad Autónoma del Paraguay
+Universidad Católica Nuestra Senora de la Asunción
+Universidad Columbia del Paraguay
+Universidad Nacional de Asunción
+Universidad Nacional del Este
+Universidad del Cono Sur de las Américas
+Universidad del Norte
+Pontificia Universidad Católica del Perú
+Universidad Alas Peruanas
+Universidad Andina Nestor Caceares Velasquez
+Universidad Andina del Cusco
+Universidad Católica de Santa María
+Universidad Cientifica del Sur
+Universidad César Vallejo
+Universidad Femenina del Sagrado Corazón
+Universidad Marcelino Champagnat
+Universidad Nacional Agraria La Molina
+Universidad Nacional Agraria La Selva
+Universidad Nacional Daniel Alcides Carrion
+Universidad Nacional Federico Villarreal
+Universidad Nacional Hermilio Valdizan
+Universidad Nacional Jorge Basadre Grohmann
+Universidad Nacional José Faustino Sánchez Carrión
+Universidad Nacional Mayor de San Marcos
+Universidad Nacional Pedro Ruíz Gallo
+Universidad Nacional San Luis Gonzaga
+Universidad Nacional Santiago Antúnez de Mayolo
+Universidad Nacional de Cajamarca
+Universidad Nacional de Educación Enrique Guzmán y Valle
+Universidad Nacional de Ingeniería
+Universidad Nacional de La Libertad, Trujillo
+Universidad Nacional de Piura
+Universidad Nacional de San Agustin
+Universidad Nacional de San Antonio Abad
+Universidad Nacional de San Cristóbal de Huamanga
+Universidad Nacional de San Martín
+Universidad Nacional de Santa - Chimbote
+Universidad Nacional de Tumbes
+Universidad Nacional de la Amazonía Peruana
+Universidad Nacional del Altiplano
+Universidad Nacional del Callao
+Universidad Nacional del Centro del Perú
+Universidad Norbert Wienner
+Universidad Particular Inca Garcilaso de la Vega
+Universidad Particular de Chiclayo
+Universidad Peruana Cayetano Heredia
+Universidad Peruana Union
+Universidad Peruana de Ciencias Aplicadas
+Universidad Privada Antenor Orrego
+Universidad Privada Los Andes
+Universidad Privada San Juan Bautista
+Universidad Privada San Pedro
+Universidad Privada del Norte
+Universidad Ricardo Palma
+Universidad San Ignacio de Loyola
+Universidad San Martin de Porres
+Universidad San Pablo
+Universidad Tecnologica del Peru
+Universidad de Lima
+Universidad de Piura
+Universidad de Tacna
+Universidad del Pacifico
+Caribbean Center for Advanced Studies
+Caribbean University
+Centro de Estudios Avanzados de Puerto Rico y El Caribe
+Facultad de Derecho Eugenio María de Hostos
+Huertas Junior College
+Pontificia Universidad Catolica de Puerto Rico
+Universidad Central de Bayamón
+Universidad Central del Caribe
+Universidad Interamericana de Puerto Rico
+Universidad Interamericana de Puerto Rico, Recinto de Bayamón
+Universidad Interamericana de Puerto Rico, Recinto de San Germán
+Universidad Metropolitana
+Universidad Politecnica de Puerto Rico
+Universidad de Puerto Rico
+Universidad de Puerto Rico, Arecibo
+Universidad de Puerto Rico, Cayey
+Universidad de Puerto Rico, Centro de Recursos para el Aprendizaje
+Universidad de Puerto Rico, Recinto Ciencias Medicas
+Universidad de Puerto Rico, Recinto de Mayaguez
+Universidad de Puerto Rico, Recinto de Rio Pedras
+Universidad del Sagrado Corazon
+Universidad del Turabo
+Instituto Cultural Dominico Americano, Inc.
+Caribbean Center for Advanced Studies
+Caribbean University
+Centro de Estudios Avanzados de Puerto Rico y El Caribe
+Pontificia Universidad Catolica de Puerto Rico
+Universidad Central de Bayamón
+Universidad Central del Caribe
+Universidad Interamericana de Puerto Rico
+Universidad Interamericana de Puerto Rico, Recinto de Bayamón
+Universidad Interamericana de Puerto Rico, Recinto de San Germán
+Universidad Metropolitana
+Universidad Politecnica de Puerto Rico
+Universidad de Puerto Rico
+Universidad de Puerto Rico, Arecibo
+Universidad de Puerto Rico, Cayey
+Universidad de Puerto Rico, Centro de Recursos para el Aprendizaje
+Universidad de Puerto Rico, Recinto Ciencias Medicas
+Universidad de Puerto Rico, Recinto de Mayaguez
+Universidad de Puerto Rico, Recinto de Rio Pedras
+Universidad del Sagrado Corazon
+Universidad del Turabo
+Insituto Universitario - Centro Latinoamericano de Economia Humana - IU Claeh
+Universidad Católica del Uruguay
+Universidad ORT Uruguay
+Universidad de Montevideo
+Universidad de la Empresa (UDE)
+Universidad de la República
+Universidad de la República Oriental de Uruguay
+Universitario Autonomo del Sur
+Universidad Bicentenaria de Aragua
+Universidad Católica Andres Bello
+Universidad Católica Cecilio Acosta
+Universidad Católica del Táchira
+Universidad Central de Venezuela
+Universidad Centro Occidental Lisandro Alvarado
+Universidad Dr. Rafael Belloso Chacín
+Universidad Fermin Toro
+Universidad Gran Mariscal de Ayacucho
+Universidad José Antonio Páez
+Universidad José Maria Vargas
+Universidad Metropolitana
+Universidad Monteávila
+Universidad Nacional Abierta
+Universidad Nacional Experimental "Francisco de Miranda"
+Universidad Nacional Experimental "Rafael Maria Baralt"
+Universidad Nacional Experimental "Simón Rodriguez"
+Universidad Nacional Experimental Politécnica "Antonio José de Sucre"
+Universidad Nacional Experimental Sur del Lago "Jesús Maria Semprum"
+Universidad Nacional Experimental de Guayana
+Universidad Nacional Experimental de los Llanos Occidentales "Ezequiel Zamora"
+Universidad Nacional Experimental del Táchira
+Universidad Nueva Esparta
+Universidad Pedagógica Experimental Libertador
+Universidad Rafael Urdaneta
+Universidad Rómulo Gallegos
+Universidad Santa Maria Caracas
+Universidad Simón Bolivar
+Universidad Tecnológica del Centro
+Universidad Valle del Momboy
+Universidad Yacambu
+Universidad de Carabobo
+Universidad de Los Andes
+Universidad de Oriente
+Universidad del Zulia
+

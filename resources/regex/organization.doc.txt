@@ -1,0 +1,165 @@
+**************----> case independent
+%University
+Univer[sz]i[td][yaéeäà][dt]?e? (at|of|de|del|do|for|in|für|da|der|des|degli|della|d')
+Univer[sz]i[td][yaéeäà][dt]?e? [A-Za-z]+(ana|ica|ina)(\b|[\.,;])
+[A-Za-z'\-]+(al|an|ische|ic) Univer[sz]i[td][yaéeäà][dt]?e?
+Univer[sz]i[td][yaéeäà][dt]?e? (Nacional|College|Aut[óo]noma|Federal|Estadual|System|Central|Privada|Internacional|Mayor|Pontificia|Center)
+(State|College|Gakuin|City|Prefectural|Catholic) Univer[sz]i[td][yaéeäà][dt]?e?
+
+
+
+%College
+[A-Za-z'\-]+(al|an|ische|ic) College
+(Junior|University|State|City) College
+Colegio Nacional
+Hochschule für
+[ÉE]cole (nationale|sup[ée]rieure|normale|centrale|polytechnique|des Mines|d'ing[ée]nieurs)
+[Hh]aute [ÉE]cole
+[ÉE]cole d.*(ture|ique)
+
+%Organisation
+[A-Z][a-z'\-]*organisation[A-Z][a-z'\-]*organisation
+
+%Institute
+In?stit[uü]t[a-z]* (of|for|für|de|on|in|d'|der|di|per) 
+
+%Center
+[ZC]ent[er][eour]m? (of|for|für|de|d')
+[ZC]ent[er][eour]m? [A-Z]+[a-z]+ (of|for|für|de)
+
+%Academy
+A[ck]ad[eéè]m[yi][aec]?n? (of|for|für|de|d'|di|der|des)
+(State|Medical|Military) Academy
+[A-za-z']+(al|an|ische|ic) Academy
+
+%Laboratory
+Laborat[oó][ri][iyr][eou]?[ms]? (of|for|für|de|d'|di|national|pour|des)
+
+%Research
+Research (Institute|Council|Foundation|Center|Network|Organization|Laborator[yi]|Agency|Association|Hospital|Station|Board)
+[A-Z][a-z'\-]+[fF]orschung
+
+%Hospital
+(University|Memorial|General|Centre) H[oô]spital
+Hospital(ier)? Universita(ire|rio)
+
+%Foundation
+F[ou]{1,2}nda[tczç][iaã]on?e? (of|for|für|de|para|pour)
+
+%Association
+As{1,2}ocia[tzcç][iaãe][oós]n?e? [A-Za-z'\-]+ (of|for|de|para|pour|d') 
+[A-Z\&]+[a-z]* As{1,2}ocia[tzcç][iaãe][oós]n?e? (of|for|de|para|pour|d'|di|della|per)
+
+%Council
+Cou?n[cs][ie][ljig][olhl]?[io]?o? (of|for|de|d'|di|della)
+
+%Agency
+Agen[cz][yie]a? (for|para|pour)
+
+%Faculty
+Facul[td][ya]d?e? (de|of|d')
+
+%Conservatory
+[CK]onservato[ri][riy][ueo]?m? (for|de|na[tc]ional)
+
+%Groupe
+Groupe d[e'] ?(Recherche|[EÉ]tude)
+
+
+************************ --->case dependent
+%University
+[A-Z\&]+[a-z'\-]+ Univer[sz]i[td][yaéeäà][dt]?e?
+Univer[sz]i[td][yaéeäà][dt]?e? [A-Z\&]+[a-z'\-]+
+[A-Z][a-z\-]+[Uu]niversität
+Univer[sz]i[td][yaéeäà][dt]?e? \"[A-Za-z ]+\"
+
+%College
+[A-Z\&][a-z'\-]+ College
+College [A-Z\&]+[a-z'\-]+
+Colegio (de|de la) [A-Z][a-z]+
+Hochschule [A-Z\&][a-z'\-]+
+[A-Z\&][a-z'\-]+ Hochschule
+Fachhochschule
+
+%Faculty
+[A-Z][a-z'\-]+ Facul[td][ya]d?e? 
+
+%Group 
+[A-Z\&]+[a-z'\-]+ Group
+Gro?up[oe] [A-Z\&]+[a-z'\-]+
+
+
+%Hospital
+[A-Z][a-z'\-]+ (H[oô]s?pital|Ospedale|[Kk]rankenhaus)
+(H[oô]s?pital|Ospedale|[Kk]rankenhaus) [A-Z][a-z'\-]+
+
+%Institute
+[A-Z][a-z'\-]+ In?stit[uü]t[a-z]*
+In?stit[uü]t[a-z]* [A-Z][a-z]+
+[A-Z]+ In?stit[uü]t[a-z]*
+[A-Z][a-z\-]+institut
+
+%Academy
+A[ck]ad[eéè]m[yi][aec]?n? [A-Z][a-z]+ 
+[A-Z][a-z']+ A[ck]ad[eéè]m[yi][aec]?n?
+
+%Center
+[A-Z]+[a-z'\-]+ [ZC]ent[er][eour]m?
+[ZC]ent[er][eour]m? [A-Z]+[a-z'\-]+
+[A-Z]+[a-z'\-]+ Laborat[oó][ri][iyr][eou]?[ms]? 
+
+%Laboratory
+[A-Z]+[a-z'\-]+ Laborat[oó][ri][iyr][eou]?[ms]? 
+Laborat[oó][ri][iyr][eou]?[ms]? [A-Z]+[a-z'\-]+ 
+[A-Z]+ Laborat[oó][ri][iyr][eou]?[ms]? 
+[A-Z\&]+[a-z'\-]+ Labs
+Laborat[oó][ri][iyr][eou]?[ms]? [A-Z\&]{2,}
+
+%Foundation
+[A-Z]+[a-z'\-]+ F[ou]{1,2}nda[tczç][iaã]on?e?
+F[ou]{1,2}nda[tczç][iaã]on?e? [A-Z]+[a-z'\-]+
+[A-Z][a-z\-]+[ \-][Ss]tiftung
+
+%Organization
+Organi[szt]{1,2}a[tczçs][a-z]+ (de|dos|van|do|degli|della|dels|des|of|pro|pour|per|for|für|para|d')
+Organi[szt]{1,2}a[tczçs][a-z]+ [A-Z]+[a-z'\-]*
+[A-Z]+[a-z'\-]* Organi[szt]{1,2}a[tczçs][a-z]+
+[A-Z][a-z'\-]* [A-Z][a-z'\-]*organisation
+[A-Z][a-z'\-]*organisation [A-Z][a-z'\-]* 
+
+
+%Association 
+As{1,2}ocia[tzcç][iaãe][oós]n?e? (de|dos|do|degli|della|dels|des|of|pro|pour|per|for|für|para|d')
+[A-Z\&]+[a-z]* As{1,2}ocia[tzcç][iaãe][oós]n?e?
+
+%Council
+[A-Z][a-z\-]+ Cou?n[cs][ie][ljig][olhl]?[io]?o?
+Cou?n[cs][ie][ljig][olhl]?[io]?o? [A-Z][a-z\-]+
+Cou?n[cs][ie][ljig][olhl]?[io]?o? Na[ctz]ionale?
+Bundes(amt|anstalt)
+
+%Agency
+[A-Z][a-z\-]+ Agen[cz][yie]a?
+Agen[cz][yie]a? [A-Z][a-z\-]+
+
+%Conservatorio
+[CK]onservato[ri][riy][ueo]?m? [A-Z][a-z\-]+
+[A-Z][a-z\-]+ [CK]onservato[ri][riy][ueo]?m? 
+
+
+--->France
+U[MP]R [0-9]+
+FRE [0-9]+
+
+TODO: ORDENARLAS POR FRECUENCIA
+
+
+Observatory
+Library
+Museum
+Group
+Society
+Area
+Comisión|Commissariat
+
+	 

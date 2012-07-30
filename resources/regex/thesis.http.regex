@@ -1,0 +1,7 @@
+[^a-z]th?[eè]s(is|e)	ci
+cybertesis	ci
+listatesis	ci
+finalth?esis	ci
+etheses 	ci
+phdth?esis	ci
+/[a-z][a-z]th?esis	ci

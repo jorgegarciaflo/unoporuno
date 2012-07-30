@@ -1,0 +1,31 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style1.css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+</head>
+<body>
+<form method="post" action="/busqueda/{{ busqueda_id }}/persona/{{ persona_id }}/pipeline/">
+<b>Criterios de búsqueda específica:</b>
+<br />
+<br />
+<input type='radio' name='pipeline' value='top10' 
+       {% if pipeline_id == "top" %} checked {% endif %}
+>Top 10</input><br/>
+<input type='radio' name='pipeline' value='nom' 
+       {% if pipeline_id == "nom" %} checked {% endif %}
+>Nombre</input><br/>
+<input type='radio' name='pipeline' value='geo' 
+       {% if pipeline_id == "geo" %} checked {% endif %}
+>Geografía</input><br/>
+<input type='radio' name='pipeline' value='orgs' 
+       {% if pipeline_id == "org" %} checked {% endif %}
+>Organizaciones</input><br/>
+<input type='radio' name='pipeline' value='temas' 
+       {% if pipeline_id == "tem" %} checked {% endif %}
+>Temas</input><br/>
+<br />
+<br />
+<input type="submit" value="Buscar"/> <br/>
+</form>
+</body>
+</html>

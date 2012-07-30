@@ -1,0 +1,79 @@
+was born (in|on|at)	ci
+was born [0-9]{1,2} (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)	ci
+was born cd
+born in [A-Z][a-z]+	cd
+born in [A-Z]\.?[A-Z]+	cd
+born in [0-9]{4}	ci	
+born ABT [0-9]{4}	ci	
+born on [0-9]{1,2} (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)	ci
+born (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[A-Za-z]. [0-9]{1,2}	ci
+born [0-9]{4}	cd   
+born [0-9]{1,2} (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[A-Za-z].	ci
+born at [A-Z][a-z]+	cd
+born [A-Z][a-z]+[ \-][A-Z][a-z]	cd
+[A-Z][a-z]+-born[ \.;,]	cd
+BORN:	cd
+'BORN[ \-]+DEATH'	cd
+[Nn]ac(ido|i[óo]|e|[íi]) en	ci
+'[Ff]echa.+[Nn]acimiento'	ci
+nac(i[óo]|í) (el|un) (d[íi]a )?[0-9]+	ci
+[A-Z][a-z]+ nac(ió|í|ido|io|i) hace [0-9]+	cd
+(Pa[íi]s|Lugar|Acta|Partida) (de )?[Nn]acimiento	ci
+[Nn]acimiento[ :]+[0-9]+	ci
+Nacido/a el:	ci
+[Nn]acido \(?[0-9]{1,2}/[0-9]	ci
+[èe] nata a	ci 
+creci[óo] (en|bajo)	ci
+su formaci[óo]n	ci
+[Ss]e form[óo]	ci
+grew up (in|among)	ci
+was raised in	ci
+(my|his|her) childhood	ci
+(su|mi) (infancia|niñez)	ci
+I live in	cd
+I am living in	cd
+I (am |have been |was )?liv(e|ing) in	cd
+(curr|pres)ently living in	ci
+lives in [A-Z][a-z]+	cd
+living in (the )?[A-Z][A-Za-z\.]+	cd
+living in: ?[A-Z][A-Za-z\.]+	cd
+lived in [A-Z][a-z]+
+[Vv]iv[o|e] (en |cerca de|por )	ci
+[ \.,;][Vv]ivió en [A-Z][a-z]+	cd
+marrie[ds] (with|in)	ci
+[A-Z][a-z]+ marrie[ds]	cd	
+(he|she) marrie[ds]	ci	
+marrie[ds] [A-Z][a-z]+	cd
+married [0-9]{1,2}	cd
+casad[oa] con	ci
+estado civil	ci
+, casad[oa],	cd
+[Ee]st[aá] casad[oa]	ci
+se cas[óo] (con|el)	ci
+(is|was) awarded	cd
+[ \.;,](he|she|[A-Z][a-z]+) has won	cd
+obtuvo el premio	ci
+fue galardonad[oa]	ci
+(fue|result[óo]) ganador	ci
+[0-9]{2} years old	ci
+[0-9]{2} year-old	ci
+I am [0-9]{2}	cd
+at the age	cd
+[mM]y name is	ci
+[ \.,;][Ss]?[Hh]e moved? to	ci
+[A-Z][a-z]+ moved? to	cd
+[ \.,;](he|she|I) return(ed)? to	ci
+return(ed)? to (his|hers)	ci 
+([ \.,;]his|her|my) return to	ci	      
+return(ed)? to [A-Z][a-z]+	cd
+[Mm]i nombre (completo )?es	ci
+full name	ci
+[ \.,;](hij|herman)[oa] de	ci
+[ \.,;](son|daughter|father|mother) of	ci 
+[ \.,;][pm]adre de [A-Z][a-z]+	cd
+Age:.+Gender:	ci
+Edad:.+Sexo:	ci
+contact information	ci
+of birth[:,]		ci
+birthplace		ci
+Name:			cd

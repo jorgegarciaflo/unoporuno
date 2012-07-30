@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}style1.css"/>
+</head>
+<body>
+<br/>
+<h1><a href="/unoporuno/">Buscador de diásporas</a></h1>
+<h2>Características de la búsqueda</h2>
+<p><strong>Nombre:</strong> {{ busqueda.nombre }} <br/>
+<strong>Fecha:</strong> {{ busqueda.fecha }} <br/>
+<strong>Usuario:</strong> {{ busqueda.usuario }} <br/>
+<strong>Descripción:</strong> {{ busqueda.descripcion }}  
+</p>
+<hr/>
+<!-- {% if error_message  %}<p><strong > {{ error_message  }}</strong></p> 
+{% else %}-->
+<h2>Resultados</h2>
+<table border="1" width="100%">
+<tr>
+	<th align="left">Nombre</th>
+	<th align="justify">Información geográfica</th>
+	<th align="left">Organizaciones</th>
+	<th align="center">Predicción</th>
+	<th align="center">Status</th>
+</tr>
+
+{% for persona in orden_alfabetico %}
+    <tr>
+        <td><a href="/unoporuno/busqueda/{{ busqueda.id }}/persona/{{ persona.id }}/top/0/">{{ persona.name }}</a></td>
+	<td>{{ persona.geo }}</td>
+	<td>{{ persona.orgs }}</td>
+	<td><div align="center">
+	                      {% ifequal persona.prediction 1 %} móvil {% endifequal %}
+			      {% ifequal persona.prediction 2 %} local {% endifequal %}
+			      {% ifequal persona.prediction None %} ? {% endifequal %}
+			      {% ifequal persona.prediction 3 %} N/A {% endifequal %}
+	</div></td>
+	<td><div align="center">
+	                      {% ifequal persona.mobility_status 1 %} móvil {% endifequal %}
+			      {% ifequal persona.mobility_status 2 %} local {% endifequal %}
+			      {% ifequal persona.mobility_status None %} ? {% endifequal %}
+			      {% ifequal persona.mobility_status 3 %} N/A {% endifequal %}
+			      {% ifequal persona.mobility_status 11 %} móv:lineal {% endifequal %}
+			      {% ifequal persona.mobility_status 12 %} móv:circular {% endifequal %}
+			      {% ifequal persona.mobility_status 31 %} extranjero {% endifequal %}
+	</div></td>
+    </tr>
+{% endfor %}
+</table>
+{% endif  %}
+<br />
+<hr/>
+<div align="center">
+<a href="/unoporuno/">
+ <img src="{{ STATIC_URL }}cidesal.jpg" border="0" height="100"
+ width="100"></img>
+</a>
+</div>
+</body>
+</html>

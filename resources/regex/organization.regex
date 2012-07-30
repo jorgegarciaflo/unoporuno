@@ -1,0 +1,86 @@
+[A-Z][a-z'\-]{3,} Univer[sz]i[td][yaéeäà][dt]?e? 	cd
+[A-Z\&][a-z'\-]{3,} College 	ci
+Univer[sz]i[td][yaéeäà][dt]?e? (at|of|de|del|do|for|in|für|da|der|des|degli|della|d') 	ci
+[A-Z][a-z'\-]{3,} In?stit[uü]t[a-z]* 	cd
+In?stit[uü]t[a-z]* (of|for|für|de|on|in|d'|der|di|per) 	ci
+Univer[sz]i[td][yaéeäà][dt]?e? [A-Z\&]+[a-z'\-]{3,} 	cd
+[A-Z]+[a-z'\-]+ [ZC]ent[er][eour]m? 	cd
+[A-Za-z'\-]+(al|an|ische|ic) Univer[sz]i[td][yaéeäà][dt]?e? 	ci
+(State|College|Gakuin|City|Prefectural|Catholic) Univer[sz]i[td][yaéeäà][dt]?e? 	ci
+[ZC]ent[er][eour]m? (of|for|für|de|d') 	ci
+In?stit[uü]t[a-z]* [A-Z][a-z]{3,} 	cd
+Research (Institute|Council|Foundation|Center|Network|Organization|Laborator[yi]|Agency|Association|Hospital|Station|Board) 	ci
+Univer[sz]i[td][yaéeäà][dt]?e? (Nacional|College|Aut[óo]noma|Federal|Estadual|System|Central|Privada|Internacional|Mayor|Pontificia|Center) 	ci
+(Junior|University|State|City) College 	ci
+[A-Z\&]+[a-z'\-]{3,} Group 	cd
+[A-Z][a-z'\-]{3,} (H[oô]s?pital|Ospedale|[Kk]rankenhaus) 	cd
+[A-Z][a-z']{3,} A[ck]ad[eéè]m[yi][aec]?n? 	cd
+[A-Za-z'\-]+(al|an|ische|ic) College 	ci
+[ZC]ent[er][eour]m? [A-Z]+[a-z'\-]+ 	cd
+Univer[sz]i[td][yaéeäà][dt]?e? [A-Za-z]+(ana|ica|ina)(\b|[\.,;]) 	ci
+[A-Z\&]+[a-z]* As{1,2}ocia[tzcç][iaãe][oós]n?e? 	cd
+A[ck]ad[eéè]m[yi][aec]?n? (of|for|für|de|d'|di|der|des) 	ci
+[A-Z][a-z\-]{3,} Cou?n[cs][ie][ljig][olhl]?[io]?o? 	cd
+Organi[szt]{1,2}a[tczçs][a-z]+ (de|dos|van|do|degli|della|dels|des|of|pro|pour|per|for|für|para|d') 	cd
+[A-Z]+[a-z'\-]* Organi[szt]{1,2}a[tczçs][a-z]+ 	cd
+[A-Z]+[a-z'\-]+ F[ou]{1,2}nda[tczç][iaã]on?e? 	cd
+Organi[szt]{1,2}a[tczçs][a-z]+ [A-Z]+[a-z'\-]* 	cd
+[A-Z][a-z\-]{3,} Agen[cz][yie]a? 	cd
+Cou?n[cs][ie][ljig][olhl]?[io]?o? (of|for|de|d'|di|della) 	ci
+[A-Z]+ Laborat[oó][ri][iyr][eou]?[ms]? 	cd
+Laborat[oó][ri][iyr][eou]?[ms]? (of|for|für|de|d'|di|national|pour|des) 	ci
+[A-Z]+[a-z'\-]+ Laborat[oó][ri][iyr][eou]?[ms]? 	cd
+[A-Z]+[a-z'\-]+ Laborat[oó][ri][iyr][eou]?[ms]? 	cd
+[A-za-z']+(al|an|ische|ic) Academy 	ci
+Agen[cz][yie]a? [A-Z][a-z\-]{3,} 	cd
+[A-Z][a-z\-]{3,} Society 	cd
+(University|Memorial|General|Centre) H[oô]spital 	ci
+[ZC]ent[er][eour]m? [A-Z]+[a-z]+ (of|for|für|de) 	cd
+[A-Z]+ In?stit[uü]t[a-z]* 	cd
+(H[oô]s?pital|Ospedale|[Kk]rankenhaus) [A-Z][a-z'\-]{3,}	cd
+F[ou]{1,2}nda[tczç][iaã]on?e? [A-Z]+[a-z'\-]+ 	cd
+A[ck]ad[eéè]m[yi][aec]?n? [A-Z][a-z]{3,} 	cd
+Laborat[oó][ri][iyr][eou]?[ms]? [A-Z]+[a-z'\-]+ 	cd
+[A-Z][a-z'\-]+[fF]orschung 	cd
+[A-Z][a-z'\-]{3,} Observato[ri][iyr][oue]?m? 	cd
+Gro?up[oe] [A-Z\&]+[a-z'\-]{3,} 	ci
+(State|Medical|Military) Academy 	ci
+As{1,2}ocia[tzcç][iaãe][oós]n?e? (de|dos|do|degli|della|dels|des|of|pro|pour|per|for|für|para|d') 	cd
+College [A-Z\&]+[a-z'\-]+ 	cd
+[A-Z\&][a-z'\-]+ Hochschule 	cd
+Cou?n[cs][ie][ljig][olhl]?[io]?o? [A-Z][a-z\-]+ 	cd
+[ÉE]cole (nationale|sup[ée]rieure|normale|centrale|polytechnique|des Mines|d'ing[ée]nieurs) 	ci
+Hochschule [A-Z\&][a-z'\-]+ 	ci
+F[ou]{1,2}nda[tczç][iaã]on?e? (of|for|für|de|para|pour) 	ci
+[A-Z][a-z\-]+institut 	cd
+Observato[ri][iyr][oue]?m? [A-Z][a-z'\-]{3,} 	cd
+Hospital(ier)? Universita(ire|rio) 	ci
+Fachhochschule 	ci
+Bundes(amt|anstalt) 	cd
+[A-Z][A-Z\&]+ Univer[sz]i[td][yaéeäà][dt]?e? 	cd
+[A-Z\&]+[a-z]* As{1,2}ocia[tzcç][iaãe][oós]n?e? (of|for|de|para|pour|d'|di|della|per) 	ci
+As{1,2}ocia[tzcç][iaãe][oós]n?e? [A-Za-z'\-]+ (of|for|de|para|pour|d') 	ci
+Agen[cz][yie]a? (for|para|pour) 	ci
+[A-Z][a-z\-]+ [CK]onservato[ri][riy][ueo]?m? 	cd
+Cou?n[cs][ie][ljig][olhl]?[io]?o? Na[ctz]ionale? 	cd
+Facul[td][ya]d?e? (de|of|d') 	ci
+[CK]onservato[ri][riy][ueo]?m? (for|de|na[tc]ional) 	ci
+[A-Z][a-z\-]+[ \-][Ss]tiftung 	cd
+[ÉE]cole d.*(ture|ique) 	ci
+Univer[sz]i[td][yaéeäà][dt]?e? \"[A-Za-z ]+\" 	ci
+Colegio (de|de la) [A-Z][a-z]+ 	cd
+[CK]onservato[ri][riy][ueo]?m? [A-Z][a-z\-]+ 	cd
+Groupe d[e'] ?(Recherche|[EÉ]tude) 	ci
+[A-Z][a-z'\-]* [A-Z][a-z'\-]*organisation 	cd
+[A-Z\&]+[a-z'\-]+ Labs 	cd
+Laborat[oó][ri][iyr][eou]?[ms]? [A-Z\&]{3,} 	cd
+[A-Z][a-z'\-]+sternwarte 	cd
+[A-Z][a-z'\-]{3,} Facul[td][ya]d?e? 	cd
+Colegio Nacional 	ci
+Hochschule für 	ci
+[Hh]aute [ÉE]cole 	ci
+[A-Z][a-z'\-]*organisation [A-Z][a-z'\-]	cd
+[A-Z][a-z\-]+[Uu]niversität 	ci
+[A-Z][a-z'\-]* [A-Z][a-z'\-]*organisation 	cd
+U[MP]R [0-9]+ 	cd
+FRE [0-9]+ 	cd

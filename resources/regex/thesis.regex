@@ -1,0 +1,10 @@
+T *E *S *I *S	cd
+T +H +[ÈE] +S +E	cd
+[^A-Z]T *H *E *S *I *S	cd
+Thesis	cd
+Ph\.?D\.? thesis	cd
+tesis doctoral	cd
+Tesis *:	cd
+(co)?-?[Dd]irector(a|es)? de [tT]esis	ci
+(Tema|Informe|Examinador|Plan) de tesis 	ci
+

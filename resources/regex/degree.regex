@@ -1,0 +1,59 @@
+﻿Prof\.	cd
+[Pp]\.?[Hh]\.?[dD]	ci
+Dr[^\.a-z]	cd
+Dra?\.	cd
+[ \-\.,;:]M\.?B\.?A\.?	cd
+[ \-\.,;:]M\.?D\.?[^A-Za-z] 	cd
+[^A-Za-z\.]B[\.]A[\.][^A-Za-z]	cd
+[^A-Za-z]M\.?S\.?c(\.|[^A-Za-z])	cd
+M[\.]?S[\.]?c	cd
+B[\.]?Sc[\.]?	cd
+[mM]aster en	ci
+[Dd]octorado[ ,]+(en|de)[ ]	ci
+[Ee]studiante de [Dd]octorado	ci
+doctorante?	ci
+[Dd]octora? en	ci
+[Dd]octora? [A-Z][a-z]+[ \-][A-Z][a-z]+	cd
+(tesis |beca |post[ \-]?|pos[ \-])[Dd]octoral en	ci
+[Pp]ost[ \-]?doctoral [Ff]ellow[ \.;,\-]	ci
+[Pp]ost[ \-]?doctoral researcher[ \.;,\-]	ci
+investiga(dora?|ci[oó]n) [Pp]ost[ \-]?doctoral[ \.;,\-]	ci
+[Pp]ost[ \-]?doctorado[ \.;,\-]	ci
+[dD]octorando[ \-\.:,;]	ci
+[Pp]ost[ \-]?doctoral researcher[ \.;,\-]	ci
+[ \-\.:,;][Pp]ost[ \-]?[Dd]oc[ \-\.,;]	ci
+[Bb]ecari[oa]	ci
+[ \-\.,;:][Bb]eca de	ci
+becad[oa] por	ci 
+estudiantes? de	ci
+[Tt][íi]tulo de [A-Z]	cd
+[ \.,:;][Gg]rado de [A-Z]	cd
+[^A-Za-z]BA (degree )?in[^A-Za-z]	cd
+[bB]achelor[^A-Za-z]+of [AS][rs]	cd
+[^A-Za-z\.]M[\.]S[\.][,:]	cd
+[mM]aster's degree 	ci
+[mM]aster por	ci
+tiene un master	ci
+[Aa] graduate of	ci
+[Pp]ost[ \-]?graduate ([Ff]ellow|student|training)	ci
+Educa[ct]i[oó]n *:.*Universi[dt]	ci
+[eE]duca[ct]i[oó]n *:.*[cC]oll?eg[ie]	ci
+[Mm]aestr[ií]a en		ci
+[tT]esis de [Mm]aestr[íi]a 	ci
+[tT]esis de [Dd]octorado	ci
+cursa (el|un) [Dd]octorado		ci
+de [Mm]aestr[ií]a		ci
+Graduate Student 	cd
+doctoral student	ci
+[sS]tudent at	ci
+con formaci[óo]n en	ci
+He studies	cd
+She studies	cd
+who studie[sd] in 	ci
+I studied		cd
+I graduated	cd
+attended.+([Uu]niversity|[cC]ollege]|[Ss]chool|[Ii]nstitute|[Aa]cademy)	ci
+[Ss]ince.+graduation	ci
+[cC]um [Ll]aude  	ci
+doctoral Fellowship	ci
+[ \.,;:][Mm]ag[íi]ster[ \.,;:\-]

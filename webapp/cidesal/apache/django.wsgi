@@ -1,0 +1,11 @@
+import os, sys
+CIDESAL_WEBAPP='/home/cidesal/code/unoporuno/webapp/'
+if not CIDESAL_WEBAPP in sys.path:
+    sys.path.append(CIDESAL_WEBAPP)
+    sys.path.append(CIDESAL_WEBAPP+'cidesal/')
+os.environ['DJANGO_SETTINGS_MODULE'] = 'cidesal.settings'
+os.environ['PYTHON_EGG_CACHE'] = '/home/cidesal/code/unoporuno/webapp/cidesal/apache'
+
+import django.core.handlers.wsgi
+application = django.core.handlers.wsgi.WSGIHandler()
+

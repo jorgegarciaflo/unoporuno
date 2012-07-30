@@ -1,0 +1,4 @@
+[cC] *[uU] *[rR] *[rR]? *[iíIÍ] *[cC] *[uU]*	ci
+[vV] *[iI] *[tT] *[aA] *[eE]	ci
+[^A-Za-z][Cc][Vv][ \.\-\_&%]?	ci
+[A-Za-z]{4,}[Cc][Vv][^A-Za-z]	ci
