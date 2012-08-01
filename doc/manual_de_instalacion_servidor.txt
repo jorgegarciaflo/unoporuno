@@ -5,7 +5,7 @@ diaspora.limsi.fr
 
 usuario : cidesal
 
-pwd : 6d-Salles
+pwd : ------- 
 
 Instalación de Mandriva 2010.2 x86_64
 
