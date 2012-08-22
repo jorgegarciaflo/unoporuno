@@ -1,0 +1,23 @@
+{% extends "unoporuno/base.html" %}
+{% block title %} Registro de nuevo usuario {% endblock %}
+{% block content %}
+<form method="post" action="/unoporuno/registra_usuario/">
+{% csrf_token %}
+<div align=center>
+<ul>
+<li><label for="nombre">Nombre:</label></li><li><input type="text" name="nombre" size="50" /></li>
+<li><label for="apellido">Apellido:</label></li>
+<li><input type="text" name="apellido" size="50" /></li>
+<li><label for="email">E-mail:</label></li>
+<li><input type="text" name="email" size="40" /></li>
+<li><label for="usuario">Usuario:</label></li>
+<li><input type="text" name="usuario" size="16" /></li>
+<li><label for="clave">Clave:</label></li> 
+<li><input type="password" name="clave" size="16" /></li>
+<br/>
+<p><input type="submit" value="Enviar" /></p>
+<br/>
+</div>
+{% endblock %}
+
+ 

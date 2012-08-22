@@ -30,6 +30,17 @@ from unoporuno.models import Busqueda, Persona
 def index(request):
     return render_to_response('unoporuno/index.html', None, context_instance=RequestContext(request))
 
+def registro(request):
+    return render_to_response('unoporuno/registro.html', None, context_instance=RequestContext(request))
+
+def registra_usuario(request):
+    nombre = request.POST['nombre']
+    apellido = request.POST['apellido']
+    email = request.POST['email']
+    usuario = request.POST['usuario']
+    clave = request.POST['clave']
+    return HttpResponse(nombre + apellido + email + usuario + clave)
+    
 def login_cidesal(request):
     usuario = request.POST['usuario']
     clave = request.POST['clave']
@@ -48,8 +59,6 @@ def login_cidesal(request):
     
     ##return HttpResponse("your user= %s" % username)
     
-    
-
 def lista_busquedas(request):
 
     busqueda_list = Busqueda.objects.all().order_by('-fecha')
