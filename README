@@ -1,3 +1,12 @@
 Unoporuno: web people search application specialized in professional mobility.
 
+Files 
+webapp/cidesal/apache/django.wsgi.example
+webapp/cidesal/settings.py.example
+
+need to be modified with the correct local paths and renamed as 
+
+webapp/cidesal/apache/django.wsgi
+webapp/cidesal/settings.py
+
 
