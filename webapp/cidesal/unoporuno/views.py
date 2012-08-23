@@ -21,14 +21,39 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import Context, loader, RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core.urlresolvers import reverse
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
+
 
 from unoporuno.models import Busqueda, Persona
 
-
 def index(request):
+    return render_to_response('unoporuno/index.html', None, context_instance=RequestContext(request))
+
+def login_cidesal(request):
+    usuario = request.POST['usuario']
+    clave = request.POST['clave']
+    user = authenticate(username=usuario, password=clave)
+    
+    return HttpResponse("logging in user:" + usuario + " with password:" + clave + " and result=" + str(user))
+    if user is not None:
+        if user.is_active:
+            login(request, user)
+            return HttpResponse("valid login!")
+        else:
+            #TODO: Return to a 'disabled account' error message
+            return HttpResponse("disabled account")
+    else:
+        return HttpResponse("invalid login")
+    
+    ##return HttpResponse("your user= %s" % username)
+    
+    
+
+def lista_busquedas(request):
 
     busqueda_list = Busqueda.objects.all().order_by('-fecha')
-    return render_to_response('unoporuno/index.html', {'busqueda_list': busqueda_list},
+    return render_to_response('unoporuno/lista_busquedas.html', {'busqueda_list': busqueda_list},
                               context_instance=RequestContext(request))
     
 def busqueda(request, busqueda_id):
