@@ -169,7 +169,7 @@ class DiasporaOutput(object):
         print >> self._xml_file, '\t<fecha>' +self._clean_xml(str(busqueda.fecha))+ '</fecha>'
         print >> self._xml_file, '\t<usuario>' +self._clean_xml(busqueda.usuario.encode('utf-8'))+ '</usuario>'
         print >> self._xml_file, '\t<descripcion>' +self._clean_xml(busqueda.descripcion.encode('utf-8'))+ '</descripcion>'
-        print >> self._xml_file, '\t<personas>'
+        print >> self._xml_file, '\t<personas>' 
         logging.info('Processing busqueda ' +busqueda.nombre.encode('utf-8'))
         
         for persona in busqueda.persona_set.all():
@@ -180,8 +180,10 @@ class DiasporaOutput(object):
             print >> self._xml_file, '\t\t<orgs>' +self._clean_xml(persona.orgs.encode('utf-8'))+ '</orgs>'
             print >> self._xml_file, '\t\t<topics>' +self._clean_xml(persona.topics.encode('utf-8'))+ '</topics>'
             print >> self._xml_file, '\t\t<link>' +self._clean_xml(persona.link.encode('utf-8'))+ '</link>'
-            print >> self._xml_file, '\t\t<snippets>' 
+            print >> self._xml_file, '\t\t<mobility_status>' +str(persona.mobility_status)+ '</mobility_status>'
+            print >> self._xml_file, '\t\t<prediction>' +str(persona.prediction)+ '</prediction>'
 
+            print >> self._xml_file, '\t\t<snippets>' 
             for snippet in persona.snippet_set.all():
                 print >> self._xml_file,'\t\t<snippet id="' +str(snippet.id)+ '">'
                 print >> self._xml_file,'\t\t\t<query>' +self._clean_xml(snippet.query.encode('utf-8'))+ '</query>'
@@ -201,8 +203,19 @@ class DiasporaOutput(object):
                 print >> self._xml_file, '\t\t\t<pertinente>' +str(snippet.pertinente)+ '</pertinente>'
                 print >> self._xml_file, '\t\t\t<evidence_type>' +str(snippet.evidence_type)+ '</evidence_type>'                
                 print >> self._xml_file, '\t\t</snippet>'
-
             print >> self._xml_file, '\t\t</snippets>'
+
+            print >> self._xml_file, '\t\t<vinculos>'
+            for vinculo in persona.vinculo_set.all():
+                print >> self._xml_file,'\t\t<vinculo id="' +str(vinculo.id)+ '">'
+                print >> self._xml_file,'\t\t\t<nombres>'+self._clean_xml(str(vinculo.nombres))+ '</nombres>'
+                print >> self._xml_file,'\t\t\t<lugares>'+self._clean_xml(str(vinculo.lugares))+ '</lugares>'
+                print >> self._xml_file,'\t\t\t<orgs>'+self._clean_xml(str(vinculo.organizaciones))+ '</orgs>'
+                print >> self._xml_file,'\t\t\t<desc>' +self._clean_xml(vinculo.descripcion.encode('utf-8'))+ '</desc>'
+                print >> self._xml_file,'\t\t\t<tipo>'+str(vinculo.tipo)+ '</tipo>'
+                print >> self._xml_file,'\t\t</vinculo>'
+            print >> self._xml_file, '\t\t</vinculos>'
+            
             print >> self._xml_file, '\t\t</person>'
 
         print >> self._xml_file, '\t</personas>' 

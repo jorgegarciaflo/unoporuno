@@ -41,7 +41,7 @@ CIDESAL_WEBAPP_PATH = UNOPORUNO_ROOT +'/webapp/'
 if not CIDESAL_WEBAPP_PATH in sys.path:
     sys.path.append(CIDESAL_WEBAPP_PATH)
     sys.path.append(CIDESAL_WEBAPP_PATH+'cidesal/')
-from unoporuno.models import Busqueda, Persona, Snippet
+from unoporuno.models import Busqueda, Persona, Snippet, Vinculo
 
 if not UNOPORUNO_PATH in sys.path:
         sys.path.append(UNOPORUNO_PATH)
@@ -80,6 +80,16 @@ for x_persona in x_personas_set:
     persona.orgs = limpia(x_persona.find('orgs').text)
     persona.topics = limpia(x_persona.find('topics').text)
     persona.link = limpia(x_persona.find('link').text)
+    try:
+        persona.mobility_status = x_persona.find('mobility_status').text
+        persona.save()
+    except:
+        persona.mobility_status = None
+    try:
+        persona.prediction = x_persona.find('prediction').text
+        persona.save()
+    except:
+        persona.prediction = None
     persona.save()
     logging.info('Importing person ' +persona.name)
     x_snippets = x_persona.find('snippets')
@@ -146,9 +156,21 @@ for x_persona in x_personas_set:
         except:
             snippet.evidence_type = None
         snippet.save()
-        
-        
-
+    x_vinculos = x_persona.find('vinculos')
+    x_vinculos_set = x_vinculos.findall('vinculo')    
+    for x_vinculo in x_vinculos_set:
+        vinculo = Vinculo()
+        vinculo.persona = persona
+        vinculo.nombres = limpia(x_vinculo.find('nombres').text)
+        vinculo.lugares = limpia(x_vinculo.find('lugares').text)
+        vinculo.organizaciones = limpia(x_vinculo.find('orgs').text)
+        vinculo.descripcion = limpia(x_vinculo.find('desc').text)
+        try:
+            vinculo.tipo = x_vinculo.find('tipo').text
+            vinculo.save()
+        except:
+            vinculo.tipo = None
+        vinculo.save()
 
 
     
