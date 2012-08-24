@@ -103,11 +103,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'cidesal.urls'
 
 TEMPLATE_DIRS = (
-<<<<<<< HEAD:webapp/cidesal/settings.py.example
-    '/home/jgflores/cidesal/unoporuno/webapp/cidesal/templates/'
-=======
-    '/home/cidesal/github/unoporuno/webapp/cidesal/templates/'
->>>>>>> d6f3b72483f7cad45a35c04d867f7e510ddbd605:webapp/cidesal/settings.py
+    '/home/harmodio/cidesal/unoporuno/webapp/cidesal/templates/'
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
