@@ -23,7 +23,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-
+from django.contrib.auth.decorators import login_required
 
 from unoporuno.models import Busqueda, Persona
 
@@ -45,26 +45,28 @@ def login_cidesal(request):
     usuario = request.POST['usuario']
     clave = request.POST['clave']
     user = authenticate(username=usuario, password=clave)
-    
-    return HttpResponse("logging in user:" + usuario + " with password:" + clave + " and result=" + str(user))
     if user is not None:
         if user.is_active:
-            login(request, user)
-            return HttpResponse("valid login!")
+            login(request,user)
+            busqueda_list = Busqueda.objects.all().order_by('-fecha')
+            return render_to_response('unoporuno/lista_busquedas.html', {'busqueda_list': busqueda_list},
+                              context_instance=RequestContext(request))
         else:
-            #TODO: Return to a 'disabled account' error message
-            return HttpResponse("disabled account")
+            str_error = 'El usuario existe pero no está activo: contacte al administrador.'
+            return render_to_response('unoporuno/error.html', {'error_msg':str_error}, context_instance=RequestContext(request))
     else:
-        return HttpResponse("invalid login")
+        str_error = 'Usuario o clave inválidos.'
+        return render_to_response('unoporuno/error.html',{'error_msg':str_error}, context_instance=RequestContext(request))
+    #return HttpResponse("logging in user:" + usuario + " with password:" + clave + " and result=" + str(user))
     
     ##return HttpResponse("your user= %s" % username)
-    
-def lista_busquedas(request):
 
+@login_required
+def lista_busquedas(request):
     busqueda_list = Busqueda.objects.all().order_by('-fecha')
     return render_to_response('unoporuno/lista_busquedas.html', {'busqueda_list': busqueda_list},
                               context_instance=RequestContext(request))
-    
+@login_required    
 def busqueda(request, busqueda_id):
 
     b = get_object_or_404(Busqueda, pk=busqueda_id)
@@ -75,17 +77,18 @@ def busqueda(request, busqueda_id):
 #TODO
 #def persona(request, persona_id):
 #    return HttpResponse("You're looking at persona %s " % persona_id)
-    
+@login_required
 def persona(request, busqueda_id, persona_id, pipeline_id, features):
     return render_to_response('unoporuno/persona.html', context_instance=RequestContext(request))
- 
+
+@login_required
 def options (request, busqueda_id, persona_id, pipeline_id, features):
     return render_to_response('unoporuno/options.html', {'busqueda_id':busqueda_id,
                                                          'persona_id': persona_id,
                                                          'pipeline_id': pipeline_id,
                                                          'features': features},
                               context_instance=RequestContext(request))
-    
+@login_required    
 def pipeline(request, busqueda_id, persona_id, pipeline_id, features):
     #return HttpResponse("features %s " % features)
     lista_snippet = []
@@ -124,7 +127,7 @@ def pipeline(request, busqueda_id, persona_id, pipeline_id, features):
                               {'persona': p, 'busqueda_id': busqueda_id,
                                'lista_snippet':lista_snippet}, \
                               context_instance=RequestContext(request))
-
+@login_required
 def evalua(request, busqueda_id, persona_id):
     #TODO: checar que el snippet pertenezca a la vista OJO TOP10
     p = get_object_or_404(Persona, pk=persona_id)        
@@ -154,6 +157,7 @@ def evalua(request, busqueda_id, persona_id):
     return HttpResponseRedirect(reverse('unoporuno.views.busqueda', args=(busqueda_id,)))
     #return HttpResponse("combo_value %s " % combo_value)
 
+@login_required
 def busca(request, busqueda_id, persona_id, pipeline_id, features):
     
     new_pipeline = request.POST['pipeline']
@@ -171,6 +175,7 @@ def busca(request, busqueda_id, persona_id, pipeline_id, features):
 
     return HttpResponseRedirect(reverse('unoporuno.views.pipeline', args=(busqueda_id, persona_id, new_pipeline, features_value)))
 
+@login_required
 def vincula(request, busqueda_id, persona_id):
     b = get_object_or_404(Busqueda, pk=busqueda_id)
     p = get_object_or_404(Persona, pk=persona_id)
