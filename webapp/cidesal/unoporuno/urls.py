@@ -1,8 +1,9 @@
 from django.conf.urls.defaults import patterns, include, url
 
 urlpatterns = patterns('unoporuno.views', 
-                   url(r'^$','index'),
-                   url(r'login/', 'login_cidesal'),
+                   url(r'^$','lista_busquedas'),
+                   url(r'login/', 'show_login'),
+                   url(r'login_cidesal/', 'login_cidesal'),
                    url(r'registro/', 'registro'),
                    url(r'registra_usuario/', 'registra_usuario'),
                    url(r'busquedas/','lista_busquedas'),

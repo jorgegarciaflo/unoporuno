@@ -27,8 +27,8 @@ from django.contrib.auth.decorators import login_required
 
 from unoporuno.models import Busqueda, Persona
 
-def index(request):
-    return render_to_response('unoporuno/index.html', None, context_instance=RequestContext(request))
+def show_login(request):
+    return render_to_response('unoporuno/login.html', None, context_instance=RequestContext(request))
 
 def registro(request):
     return render_to_response('unoporuno/registro.html', None, context_instance=RequestContext(request))
@@ -48,6 +48,8 @@ def login_cidesal(request):
     if user is not None:
         if user.is_active:
             login(request,user)
+            request.session.set_expiry(60)
+            request.session['SESSION_EXPIRE_AT_BROWSER_CLOSE'] = True
             busqueda_list = Busqueda.objects.all().order_by('-fecha')
             return render_to_response('unoporuno/lista_busquedas.html', {'busqueda_list': busqueda_list},
                               context_instance=RequestContext(request))
@@ -60,6 +62,7 @@ def login_cidesal(request):
     #return HttpResponse("logging in user:" + usuario + " with password:" + clave + " and result=" + str(user))
     
     ##return HttpResponse("your user= %s" % username)
+
 
 @login_required
 def lista_busquedas(request):

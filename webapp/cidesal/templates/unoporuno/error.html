@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}style1.css"/>
+</head>
+<body> 
+<div align="center">
+<a href="/unoporuno/" target="_top">
+<img src="{{ STATIC_URL }}cidesal.jpg" height="140" width="140" border="0"/>
+</a>
+<h1>UnoporunO</h1>
+<h2>{% if error_msg %}
+       ERROR: {{ error_msg }}
+    {% else %}
+       ERROR DESCONOCIDO
+    {% endif %}
+</h2>
+
+<br/><a href="/unoporuno/login/">Iniciar sesión<a/>.<br/>
+<br/><a href="/unoporuno/registro/">Registrarse<a/>.<br/>
+</div>
+</body>
+</html>
