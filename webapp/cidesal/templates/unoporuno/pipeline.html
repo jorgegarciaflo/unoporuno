@@ -1,5 +1,8 @@
 {% extends "unoporuno/header.html" %}
 {% block content %}
+<h2> {{ persona.name }} <a href="/unoporuno/busqueda/{{ busqueda_id  }}/persona/{{ persona.id }}/vinculos/" target="_blank">  
+<img src="{{ STATIC_URL }}link.png" height="30" width="30" border="0" align="top"/>
+</a></h2>
 <b><i>Geografía: </i></b> {{ persona.geo }} <br/>
 <b><i>Organizaciones: </i></b> {{ persona.orgs }} <br/>
 <b><i>Temas: </i></b> {{ persona.topics }}<br/><br/>
