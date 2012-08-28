@@ -1,22 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}style1.css"/>
-</head>
-<body> 
+{% extends "unoporuno/base.html" %}
+{% block content %}
 <form method="post" action="/unoporuno/login_cidesal/">
 {% csrf_token %}
 <div align="center">
-<img src="{{ STATIC_URL }}cidesal.jpg" height="140" width="140" border="0"/>
-<h1>UnoporunO</h1>
-<h4>Buscador de personas especializado en movilidad profesional</h4>
-<br/>
-Usuario: <input type="text" name="usuario" size="16" /><br/><br/>
-Clave : <input type="password" name="clave" size="16" /><br/>
-<p><input type="submit" value="Login" /></p>
+<ul>
+<li><label for "usuario">Usuario:</label></li>
+<li><input type="text" name="usuario" size="20" /></li>
+<li><label for "clave">Clave:</label></li>
+<li><input type="password" name="clave" size="20" /></li>
+<li><input type="submit" value="Login" /></li>
 <br/>
 <br/>Si aún no está usted registrado, <a href="/unoporuno/registro/">regístrese aquí<a/>.<br/>
 </div>
-</body>
-</html>
+{% endblock %}

@@ -1,14 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}style1.css"/>
-</head>
-<body>
-<h1>
-Buscador de diásporas</h1>
-<hr/>
-<br/>
+{% extends "unoporuno/header.html" %}
+{% block content %}
 <h2>Resultados disponibles</h2>
 
 <table border="1" width="100%">
@@ -36,12 +27,4 @@ Buscador de diásporas</h1>
     </tr>
 {% endif %}
 </table>
-<br />
-<hr/>
-<div align="center">
-<a href="/unoporuno/">
- <img src="{{ STATIC_URL }}cidesal.jpg" border="0"></img>
-</a>
-</div>
-</body>
-</html>
+{% endblock %}

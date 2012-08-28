@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}style1.css"/>
+</head>
+<body>
+<h1>UnoporunO</h1>
+<div align="right">
+<h5><i>{{ user.username }}</i> <a href="unoporuno/logout" target="_top">[logout]</a></h5>
+</div>
+<hr/>
+{% block content %}
+
+{% endblock%}
+<br/><hr/>
+<div align="center">
+<a href="/unoporuno/"> <img src="{{ STATIC_URL }}cidesal.jpg" border="0"></img></a>
+</div>
+</body>
+</html>

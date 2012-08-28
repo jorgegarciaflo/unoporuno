@@ -21,7 +21,7 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import Context, loader, RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core.urlresolvers import reverse
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
@@ -39,7 +39,19 @@ def registra_usuario(request):
     email = request.POST['email']
     usuario = request.POST['usuario']
     clave = request.POST['clave']
-    return HttpResponse(nombre + apellido + email + usuario + clave)
+    if not nombre or not apellido or not email or not usuario or not clave:
+        return render_to_response('unoporuno/error.html', {'error_msg':'Falta información:\
+        todos los datos de la forma son obligatorios.'}, context_instance=RequestContext(request))
+    else:
+        user = User.objects.create_user(usuario,email,clave)
+        user.first_name = nombre
+        user.last_name = apellido
+        user.is_active = True
+        user.is_staff = False
+        user.save()
+        #TODO: send an email with the user & the password
+        return render_to_response('unoporuno/msg.html', {'msg':'El usuario "'+usuario+'" ha sido creado.'}, \
+                                  context_instance=RequestContext(request))
     
 def login_cidesal(request):
     usuario = request.POST['usuario']
@@ -48,7 +60,7 @@ def login_cidesal(request):
     if user is not None:
         if user.is_active:
             login(request,user)
-            request.session.set_expiry(60)
+            request.session.set_expiry(1200)
             request.session['SESSION_EXPIRE_AT_BROWSER_CLOSE'] = True
             busqueda_list = Busqueda.objects.all().order_by('-fecha')
             return render_to_response('unoporuno/lista_busquedas.html', {'busqueda_list': busqueda_list},
@@ -63,6 +75,10 @@ def login_cidesal(request):
     
     ##return HttpResponse("your user= %s" % username)
 
+def logout_cidesal(request):
+    logout(request)
+    return render_to_response('unoporuno/login.html', None, context_instance=RequestContext(request))
+   
 
 @login_required
 def lista_busquedas(request):
