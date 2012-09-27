@@ -401,13 +401,19 @@ class PersonasInput:
             columnas = clean_line.split(COLUMN_SEPARATOR)
             tamano = len(columnas)
             if tamano == ROW_SIZE:
-                p = Persona(columnas[0], columnas[1], columnas[2], \
+                if columnas[0] and columnas[1]:
+                    p = Persona(columnas[0], columnas[1], columnas[2], \
                             columnas[3], columnas[4], columnas[5])
-                personas_list.append(p)
-            elif tamano == (ROW_SIZE-1): 
-                p = Persona(columnas[0], columnas[1], columnas[2], \
+                    personas_list.append(p)
+                else:
+                    logging.error('No name or id in row ' + clean_line)
+            elif tamano == (ROW_SIZE-1):
+                if columnas[0] and columnas[1]:
+                    p = Persona(columnas[0], columnas[1], columnas[2], \
                             columnas[3], columnas[4])
-                personas_list.append(p)
+                    personas_list.append(p)
+                else:
+                    logging.error('No name or id in row ' + clean_line)
             else:
                 logging.error ('Bad csv row size, '+ str(tamano)+ ' columns expected')
         return personas_list
