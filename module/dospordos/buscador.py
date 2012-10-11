@@ -512,6 +512,7 @@ class Buscador:
             for r in results:
                 titulo = r.title.encode('utf8')
                 descripcion = r.desc.encode('utf8')
+                logging.debug('Buscador::DESCRIPTION_BUG::_g_busca::descripcion='+descripcion)
                 url = r.url.encode('utf8')
                 r_snippet = Snippet(self.consulta, titulo,
                                     descripcion, url, 'google', self.query_type)
@@ -623,6 +624,7 @@ class Snippet:
         self.query_type = query_type
         self.title = title.strip()
         self.description = description.strip()
+        logging.debug('snippet::DESCRIPTION_BUG::description='+self.description)
         self.description.replace('\n','§')
         if self.title != self.description:
             self.string = self.title + ' § ' + self.description
