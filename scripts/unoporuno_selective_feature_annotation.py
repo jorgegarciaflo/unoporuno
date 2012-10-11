@@ -22,7 +22,7 @@
       #TODO: WRITE A PROPER DOCUMENTATION 
       jorge.garcia-flores@limsi.fr, january 7th 2012
       usage:
-      python unoporuno_personal_feature_annotation.py (search name|search number)
+      python unoporuno_selective_feature_annotation.py (search name|search number) feature_code
 
       Annotate unoporuno web person search snippets with the following features (per snippet)
 
@@ -129,7 +129,9 @@ for p in busqueda.persona_set.all():
             if OrganizationRegex.test(descr_test_str):
                 logging.debug('FOUND ORGANIZATION IN DESCR:\n ' +s.description)
             s.RE_features |= 1
+        # TODO: tratar el caso en el que selection=all
         snippet_countries = []
+        #snippet_countries = s.featured_countries.encode('utf-8').split(',')
         countries = CountryGazet.typed_list_test(title_test_str) if selection == 'co' else []
         if len(countries)>0:
             logging.debug ('FOUND COUNTRIES '+str(countries)+' IN TITLE:\n ' +s.title)

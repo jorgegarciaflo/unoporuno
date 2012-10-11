@@ -120,38 +120,39 @@ def classify_person_top5(busqueda_id, path, classifier, data_model_file):
             classed_snippets = get_weka_top5(output_path+'/'+file)
             logging.info('Extracting ' +str(len(classed_snippets))+ ' tuples from file:' +file ) 
             
-
-            for s in classed_snippets[0]:
-                snippet = Snippet.objects.get(pk=int(s[0]))
-                if d_personas.has_key(snippet.persona_id):
-                    d_paises = d_personas[snippet.persona_id]
-                else:
-                    d_paises = dict()
-                lista_paises = snippet.featured_countries.split(',') if snippet.featured_countries else []
-                for pais in lista_paises:
-                    u_pais = pais.encode('utf-8')
-                    if d_paises.has_key(u_pais):
-                        d_paises[u_pais] += 1
+            if len(classed_snippets):
+                for s in classed_snippets[0]:
+                    snippet = Snippet.objects.get(pk=int(s[0]))
+                    if d_personas.has_key(snippet.persona_id):
+                        d_paises = d_personas[snippet.persona_id]
                     else:
-                        d_pais = dict({u_pais:1})
-                        d_paises.update(d_pais)
-                d_persona = dict({snippet.persona_id:d_paises})
-                d_personas.update(d_persona)
+                        d_paises = dict()
+                    lista_paises = snippet.featured_countries.split(',') if snippet.featured_countries else []
+                    for pais in lista_paises:
+                        u_pais = pais.encode('utf-8')
+                        if d_paises.has_key(u_pais):
+                            d_paises[u_pais] += 1
+                        else:
+                            d_pais = dict({u_pais:1})
+                            d_paises.update(d_pais)
+                    d_persona = dict({snippet.persona_id:d_paises})
+                    d_personas.update(d_persona)
 
-            
-            for s in classed_snippets[0]:
-                snippet = Snippet.objects.get(pk=int(s[0]))
-                snippet.converging_pipelines=2
-                snippet.RE_score = str(s[1]) 
-                snippet.RE_score = get_feature_count(snippet.RE_features)
-                snippet.save()
 
-            for s in classed_snippets[1]:
-                snippet = Snippet.objects.get(pk=int(s[0]))
-                snippet.converging_pipelines=3
-                snippet.RE_score = str(s[1]) 
-                snippet.RE_score = get_feature_count(snippet.RE_features)
-                snippet.save()
+                for s in classed_snippets[0]:
+                    snippet = Snippet.objects.get(pk=int(s[0]))
+                    snippet.converging_pipelines=2
+                    snippet.RE_score = str(s[1]) 
+                    snippet.RE_score = get_feature_count(snippet.RE_features)
+                    snippet.save()
+                    
+            if len(classed_snippets)>1:
+                for s in classed_snippets[1]:
+                    snippet = Snippet.objects.get(pk=int(s[0]))
+                    snippet.converging_pipelines=3
+                    snippet.RE_score = str(s[1]) 
+                    snippet.RE_score = get_feature_count(snippet.RE_features)
+                    snippet.save()
 
     LA = ['AR','BZ','BO','CL','CO','CR','C','DO','SV','MX','GT','HT','JM','NI','PY','PE','VE','TT','PY','HN','PA','UY']
 
