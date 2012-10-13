@@ -511,8 +511,7 @@ class Buscador:
                           time.ctime(self.last_query_time))
             for r in results:
                 titulo = r.title.encode('utf8')
-                descripcion = r.desc.encode('utf8'
-                #logging.debug('Buscador::DESCRIPTION_BUG::_g_busca::descripcion='+descripcion) 12/OCT/2012
+                descripcion = r.desc.encode('utf8')
                 url = r.url.encode('utf8')
                 r_snippet = Snippet(self.consulta, titulo,
                                     descripcion, url, 'google', self.query_type)
