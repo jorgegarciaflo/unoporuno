@@ -26,6 +26,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 from unoporuno.models import Busqueda, Persona
+from unoporuno.forms import LanzaBusqueda
 
 def show_login(request):
     return render_to_response('unoporuno/login.html', None, context_instance=RequestContext(request))
@@ -202,3 +203,15 @@ def vincula(request, busqueda_id, persona_id):
     lista_vinculos = p.vinculo_set.all().order_by('tipo')
     return render_to_response('unoporuno/vinculos.html', {'busqueda':b, 'persona':p, 'lista_vinculos':lista_vinculos},
                               context_instance=RequestContext(request))
+
+@login_required 
+def lanza_busqueda(request):
+    if request.method == 'POST':
+        form = LanzaBusqueda(request.POST, request.FILES)
+        if form.is_valid():
+            return HttpResponse("posteando forma de lanzamiento de búsqueda ")
+        else:
+            return HttpResponse("error al llenar la forma ")
+    else: 
+        form = LanzaBusqueda()
+        return render_to_response('unoporuno/lanza_busqueda.html', {'form':form}, context_instance=RequestContext(request))
