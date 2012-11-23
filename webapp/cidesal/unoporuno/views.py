@@ -26,7 +26,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 from unoporuno.models import Busqueda, Persona
-from unoporuno.forms import LanzaBusqueda
+from unoporuno.forms import LanzaBusqueda, InputFile
 
 def show_login(request):
     return render_to_response('unoporuno/login.html', None, context_instance=RequestContext(request))
@@ -209,7 +209,11 @@ def lanza_busqueda(request):
     if request.method == 'POST':
         form = LanzaBusqueda(request.POST, request.FILES)
         if form.is_valid():
-            return HttpResponse("posteando forma de lanzamiento de búsqueda ")
+            inputfile = InputFile(request.FILES['file'])
+            if "text/plain" in inputfile.mime_type:
+                return HttpResponse("posteando forma de lanzamiento de búsqueda con archivo:" +inputfile.name+ " de tipo " +inputfile.mime_type)
+            else:
+                return HttpResponse("formato de archivo inválido: con archivo:" +inputfile.name+ " de tipo " +inputfile.mime_type)
         else:
             return HttpResponse("error al llenar la forma ")
     else: 

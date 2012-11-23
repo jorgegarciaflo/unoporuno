@@ -1,7 +1,7 @@
 {% extends "unoporuno/base.html" %}
 {% block title %} Lanzamiento de nueva búsqueda {% endblock %}
 {% block content %}
-<form method="post" action="/unoporuno/lanza_busqueda/" enctype="multipar/form-data">
+<form enctype="multipart/form-data" method="post" action="/unoporuno/lanza_busqueda/">
 {% csrf_token %}
 {{ form.as_p }}
 <input type="submit" value="Enviar" />
