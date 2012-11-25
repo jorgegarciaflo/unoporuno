@@ -27,7 +27,7 @@ from django.contrib.auth.decorators import login_required
 
 from unoporuno.models import Busqueda, Persona
 from unoporuno.forms import LanzaBusqueda, InputFile
-import os
+from unoporuno.tasks import add
 
 def show_login(request):
     return render_to_response('unoporuno/login.html', None, context_instance=RequestContext(request))
@@ -212,12 +212,12 @@ def lanza_busqueda(request):
         if form.is_valid():
             inputfile = InputFile(request.FILES['file'])
             if "text/plain" in inputfile.mime_type:
-                command = 'python /home/harmodio/cidesal/unoporuno/scripts/db_delete_busqueda.py 19'
-                os.system(command)
-                #command = 'ls -l'
-                return HttpResponse("posteando forma de lanzamiento de búsqueda con archivo:" +inputfile.name+ " de tipo " +inputfile.mime_type)
+                return render_to_response('unoporuno/msg.html', {'msg':'La busqueda '+request.POST['nombre']+\
+                                  ' esta en proceso de ejecucion.'}, context_instance=RequestContext(request))
             else:
-                return HttpResponse("formato de archivo inválido: con archivo:" +inputfile.name+ " de tipo " +inputfile.mime_type)
+                str_error = 'Formato de archivo invalido: ' +inputfile.mime_type
+                return render_to_response('unoporuno/error.html', {'error_msg':str_error}, context_instance=RequestContext(request))
+
         else:
             return HttpResponse("error al llenar la forma ")
     else: 
