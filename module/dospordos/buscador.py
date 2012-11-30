@@ -48,13 +48,12 @@ __date__ ="$03-abr-2011 10:05:30$"
 
 import sys, re, time, os, nltk
 import ConfigParser, logging, time
-import tempfile
+import tempfile, libmorfo_python
 
 import yql
 from lxml import etree
 from xgoogle_unoporuno.search import GoogleSearch, SearchError
 from xgoogle_unoporuno.translate import LanguageDetector, DetectionError
-from freeling.libmorfo_python import Freeling
 
 UNO_ROOT = ''
 FREELING_LIB = ''
