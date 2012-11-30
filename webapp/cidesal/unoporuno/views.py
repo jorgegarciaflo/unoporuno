@@ -27,7 +27,7 @@ from django.contrib.auth.decorators import login_required
 
 from unoporuno.models import Busqueda, Persona
 from unoporuno.forms import LanzaBusqueda, InputFile
-from unoporuno.tasks import add
+from unoporuno.tasks import task_lanza_busqueda
 
 def show_login(request):
     return render_to_response('unoporuno/login.html', None, context_instance=RequestContext(request))
@@ -62,7 +62,7 @@ def login_cidesal(request):
     if user is not None:
         if user.is_active:
             login(request,user)
-            request.session.set_expiry(1200)
+            request.session.set_expiry(43200)
             request.session['SESSION_EXPIRE_AT_BROWSER_CLOSE'] = True
             busqueda_list = Busqueda.objects.all().order_by('-fecha')
             return render_to_response('unoporuno/lista_busquedas.html', {'busqueda_list': busqueda_list},
@@ -212,6 +212,7 @@ def lanza_busqueda(request):
         if form.is_valid():
             inputfile = InputFile(request.FILES['file'])
             if "text/plain" in inputfile.mime_type:
+                task_lanza_busqueda.delay(request.POST['nombre'], inputfile.name, request.user.username, request.POST['descripcion'])
                 return render_to_response('unoporuno/msg.html', {'msg':'La busqueda '+request.POST['nombre']+\
                                   ' esta en proceso de ejecucion.'}, context_instance=RequestContext(request))
             else:
@@ -219,7 +220,8 @@ def lanza_busqueda(request):
                 return render_to_response('unoporuno/error.html', {'error_msg':str_error}, context_instance=RequestContext(request))
 
         else:
-            return HttpResponse("error al llenar la forma ")
+            str_error = 'Error al llenar al forma'
+            return render_to_response('unoporuno/error.html', {'error_msg':str_error}, context_instance=RequestContext(request))
     else: 
         form = LanzaBusqueda()
         return render_to_response('unoporuno/lanza_busqueda.html', {'form':form}, context_instance=RequestContext(request))

@@ -22,8 +22,8 @@ from django import forms
 import magic
 
 class LanzaBusqueda(forms.Form):
-    nombre = forms.CharField(max_length=100)
-    descripcion = forms.CharField(max_length=200)
+    nombre = forms.CharField(max_length=100, required=True)
+    descripcion = forms.CharField(max_length=200, required=False)
     file = forms.FileField(required=True)
 
 

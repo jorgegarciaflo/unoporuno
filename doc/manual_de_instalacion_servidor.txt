@@ -30,6 +30,8 @@ Instalación de las herramientas de compilación y desarrollo C++
 
 urpmi task-c++-devel
 
+Instalación de python-dev
+
 Instalación de lib64pcre-devel (rpmdrake)
 
 Instalación de lib64db-4.7devel (rpmdrake)
