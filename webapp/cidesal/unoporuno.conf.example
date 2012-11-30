@@ -1,5 +1,5 @@
 [unoporuno]
-root: /home/harmodio/cidesal/unoporuno
+root: /home/jgflores/cidesal/unoporuno
 google_wait: 30
 snippets_per_query: 20
 default_search_engine: google  

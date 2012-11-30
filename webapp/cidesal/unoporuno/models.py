@@ -24,7 +24,7 @@ class Busqueda(models.Model):
     fecha = models.DateTimeField('fecha de búsqueda')
     usuario = models.CharField(max_length=200, blank=True)
     descripcion = models.CharField(max_length=200, blank=True)
-    status = models.CharField(max_length=2, blank=True)
+    status = models.CharField(max_length=15, blank=True)
     # OK = búsqueda terminada
     # @ = buscando
     # x = error7

@@ -33,72 +33,65 @@
 # TODO: en búsquedas como la de los argentinos, cuanto tiene un link de evidencia detiene la búsqueda
 SNIPPET_DESCRIPTION_LENGTH = 500
 SNIPPET_LINK_LENGTH = 400
+COLUMN_SEPARATOR = '|'
+ROW_SIZE=6
+TOPIC_SEPARATOR = ';'
+
 
 import sys, datetime, os, re, logging
 import time, logging, copy, ConfigParser
 
 from lxml import etree
 
+logging.basicConfig(level=logging.INFO)
+config = ConfigParser.ConfigParser()
+config.read("unoporuno.conf")
+if len(config.sections())==0:
+    config.read(os.environ['HOME']+"/.unoporuno/unoporuno.conf")
+    if len(config.sections())==0:
+               logging.error("No configuration file on unoporuno.conf")
+               exit(-1)
+UNOPORUNO_ROOT = config.get('unoporuno', 'root')
+UNOPORUNO_PATH = UNOPORUNO_ROOT + '/module/'
+CIDESAL_WEBAPP_PATH= UNOPORUNO_ROOT + '/webapp/'
+
+if not UNOPORUNO_PATH in sys.path:
+    sys.path.append(UNOPORUNO_PATH)
+from dospordos.buscador import BuscadorDiasporas, ErrorBuscador
+from busqueda_db.busqueda_db import Busqueda_DB
+
+
+if not CIDESAL_WEBAPP_PATH in sys.path:
+    sys.path.append(CIDESAL_WEBAPP_PATH)
+    sys.path.append(CIDESAL_WEBAPP_PATH+'cidesal/')
+from unoporuno.models import Busqueda, Persona, Snippet
+
+
 class UnoporunoSearch(object):
     def __init__(self, nombre, archivo, usuario, descripcion=''):
-        logging.basicConfig(level=logging.DEBUG)
-        config = ConfigParser.ConfigParser()
-        config.read("unoporuno.conf")
-        if len(config.sections())==0:
-            config.read(os.environ['HOME']+"/.unoporuno/unoporuno.conf")
-            if len(config.sections())==0:
-                       logging.error("No configuration file on unoporuno.conf")
-                       exit(-1)
-        UNOPORUNO_ROOT = config.get('unoporuno', 'root')
-        UNOPORUNO_PATH = UNOPORUNO_ROOT + '/module/'
-        CIDESAL_WEBAPP_PATH= UNOPORUNO_ROOT + '/webapp/'
-
-        if not UNOPORUNO_PATH in sys.path:
-            sys.path.append(UNOPORUNO_PATH)
-        from dospordos.buscador import BuscadorDiasporas, ErrorBuscador
-        from busqueda_db.busqueda_db import Busqueda_DB
-
-
-        if not CIDESAL_WEBAPP_PATH in sys.path:
-            sys.path.append(CIDESAL_WEBAPP_PATH)
-            sys.path.append(CIDESAL_WEBAPP_PATH+'cidesal/')
-        from unoporuno.models import Busqueda, Persona, Snippet
-
-        
-
-        COLUMN_SEPARATOR = '|'
-        ROW_SIZE=6
-        TOPIC_SEPARATOR = ';'
+        self.arg_input_file = archivo
+        self.arg_output_folder = archivo +'.'+ usuario
+        self.arg_research_name = nombre
+        self.arg_FG_sel = 'True'
+        self.arg_users = usuario
+        self.arg_description = descripcion
 
     def busca(self):
-        personas_file = PersonasInput()
-        personas_file.open_csv(sys.argv[1])
-        output_folder = sys.argv[2]
-        personas = personas_file.read()
+
         buscador = BuscadorDiasporas()
 
-        if len(sys.argv) > 3:
-            nombre_busqueda = sys.argv[3]
-        else:
-            nombre_busqueda = sys.argv[1]
+        personas_file = PersonasInput()
+        personas_file.open_csv(self.arg_input_file)
+        output_folder = self.arg_output_folder
+        personas = personas_file.read()
+        
 
-        if len(sys.argv) > 4:
-            filter_value = sys.argv[4]
-            logging.debug(' filter_value' +filter_value)
-        else:
-            filter_value = 'All'
+        nombre_busqueda = self.arg_research_name
+        filter_value = self.arg_FG_sel
+        logging.debug(' filter_value' +filter_value)
+        user = self.arg_users
+        description = self.arg_description
 
-        if len(sys.argv) > 5:
-            user = sys.argv[5]
-            logging.debug('arguments user:'+user)
-        else:
-            user = ''
-
-        if len(sys.argv) > 6:
-            description = sys.argv[6]
-            logging.debug('arguments desc:'+description)
-        else:
-            description = ''
 
         for p in personas:
             logging.info ('batch_diaspora_search::processing '+ p.nombre)
@@ -615,6 +608,3 @@ class FilterStats:
         self.seconds = 0.0
 
 
-
-if __name__ == "__main__":
-    main()
