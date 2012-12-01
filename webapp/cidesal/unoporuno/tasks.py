@@ -16,6 +16,6 @@ def task_lanza_busqueda(nombre, archivo, usuario, descripcion=''):
     #dale import a unoporuno_search
     #lanza la búsqueda en unoporuno_search
     unoporuno_search = UnoporunoSearch(nombre,archivo,usuario,descripcion)
-    unoporuno_search.busca()
+
     return usuario
      

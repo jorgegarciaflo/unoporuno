@@ -43,29 +43,6 @@ import time, logging, copy, ConfigParser
 
 from lxml import etree
 
-logging.basicConfig(level=logging.INFO)
-config = ConfigParser.ConfigParser()
-config.read("unoporuno.conf")
-if len(config.sections())==0:
-    config.read(os.environ['HOME']+"/.unoporuno/unoporuno.conf")
-    if len(config.sections())==0:
-               logging.error("No configuration file on unoporuno.conf")
-               exit(-1)
-UNOPORUNO_ROOT = config.get('unoporuno', 'root')
-UNOPORUNO_PATH = UNOPORUNO_ROOT + '/module/'
-CIDESAL_WEBAPP_PATH= UNOPORUNO_ROOT + '/webapp/'
-
-if not UNOPORUNO_PATH in sys.path:
-    sys.path.append(UNOPORUNO_PATH)
-from dospordos.buscador import BuscadorDiasporas, ErrorBuscador
-from busqueda_db.busqueda_db import Busqueda_DB
-
-
-if not CIDESAL_WEBAPP_PATH in sys.path:
-    sys.path.append(CIDESAL_WEBAPP_PATH)
-    sys.path.append(CIDESAL_WEBAPP_PATH+'cidesal/')
-from unoporuno.models import Busqueda, Persona, Snippet
-
 
 class UnoporunoSearch(object):
     def __init__(self, nombre, archivo, usuario, descripcion=''):
@@ -76,7 +53,29 @@ class UnoporunoSearch(object):
         self.arg_users = usuario
         self.arg_description = descripcion
 
-    def busca(self):
+
+        logging.basicConfig(level=logging.INFO)
+        config = ConfigParser.ConfigParser()
+        config.read("unoporuno.conf")
+        if len(config.sections())==0:
+            config.read(os.environ['HOME']+"/.unoporuno/unoporuno.conf")
+            if len(config.sections())==0:
+                       logging.error("No configuration file on unoporuno.conf")
+                       exit(-1)
+        UNOPORUNO_ROOT = config.get('unoporuno', 'root')
+        UNOPORUNO_PATH = UNOPORUNO_ROOT + '/module/'
+        CIDESAL_WEBAPP_PATH= UNOPORUNO_ROOT + '/webapp/'
+
+        if not UNOPORUNO_PATH in sys.path:
+            sys.path.append(UNOPORUNO_PATH)
+        from dospordos.buscador import BuscadorDiasporas, ErrorBuscador
+        from busqueda_db.busqueda_db import Busqueda_DB
+
+
+        if not CIDESAL_WEBAPP_PATH in sys.path:
+            sys.path.append(CIDESAL_WEBAPP_PATH)
+            sys.path.append(CIDESAL_WEBAPP_PATH+'cidesal/')
+        from unoporuno.models import Busqueda, Persona, Snippet
 
         buscador = BuscadorDiasporas()
 
@@ -362,10 +361,11 @@ class UnoporunoSearch(object):
             ps1.type = 'converging pipelines 1'
             diaspora_output.write_converging_pipeline(ps1, list(unique_convergent_1), 1)
             diaspora_output.close_person()
+            db_busqueda = Busqueda_DB(UNOPORUNO_ROOT)
             if nombre_busqueda.isdigit():
-                diaspora_output.write_to_db('update', int(nombre_busqueda), filter_value, user, description)
+                diaspora_output.write_to_db('update', int(nombre_busqueda), db_busqueda, filter_value, user, description)
             else:
-                busqueda_id = diaspora_output.write_to_db('new', nombre_busqueda, filter_value, user, description)
+                busqueda_id = diaspora_output.write_to_db('new', nombre_busqueda, db_busqueda, filter_value, user, description)
                 nombre_busqueda = str(busqueda_id)
         
 class PersonasInput:
@@ -525,9 +525,8 @@ class DiasporaOutput:
         print >> self._xml_file, '\t</snippets>'
         print >> self._xml_file, '</converging_pipelines>' 
 
-    def write_to_db(self, write_type, nombre, filter='All', user='', description=''):
+    def write_to_db(self, write_type, nombre, db_busqueda, filter='All', user='', description=''):
         logging.debug('writing person file_name = ' +self.file_name+ ' to database')
-        db_busqueda = Busqueda_DB(UNOPORUNO_ROOT)
         busqueda_id = 0
         if write_type == 'new':    
             busqueda_id = db_busqueda.new(nombre, filter, user, description)
