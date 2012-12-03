@@ -119,10 +119,11 @@ def classify_person_top5(busqueda_id, path, classifier, data_model_file):
                 continue
             classed_snippets = get_weka_top5(output_path+'/'+file)
             logging.info('Extracting ' +str(len(classed_snippets))+ ' tuples from file:' +file ) 
-            
+            logging.info('Classed snippets=' +str(classed_snippets))
             if len(classed_snippets):
-                for s in classed_snippets[0]:
-                    snippet = Snippet.objects.get(pk=int(s[0]))
+                for tupla in classed_snippets:
+                    logging.info('looking for snippet id =' +str(tupla[0]))
+                    snippet = Snippet.objects.get(id=int(tupla[0]))
                     if d_personas.has_key(snippet.persona_id):
                         d_paises = d_personas[snippet.persona_id]
                     else:
@@ -138,21 +139,11 @@ def classify_person_top5(busqueda_id, path, classifier, data_model_file):
                     d_persona = dict({snippet.persona_id:d_paises})
                     d_personas.update(d_persona)
 
-
-                for s in classed_snippets[0]:
-                    snippet = Snippet.objects.get(pk=int(s[0]))
                     snippet.converging_pipelines=2
-                    snippet.RE_score = str(s[1]) 
                     snippet.RE_score = get_feature_count(snippet.RE_features)
                     snippet.save()
                     
-            if len(classed_snippets)>1:
-                for s in classed_snippets[1]:
-                    snippet = Snippet.objects.get(pk=int(s[0]))
-                    snippet.converging_pipelines=3
-                    snippet.RE_score = str(s[1]) 
-                    snippet.RE_score = get_feature_count(snippet.RE_features)
-                    snippet.save()
+
 
     LA = ['AR','BZ','BO','CL','CO','CR','C','DO','SV','MX','GT','HT','JM','NI','PY','PE','VE','TT','PY','HN','PA','UY']
 
@@ -164,7 +155,7 @@ def classify_person_top5(busqueda_id, path, classifier, data_model_file):
             d_personas.update(d_persona)
         
         logging.info('Persona ' +persona.name+ ' has the following country frequencies:' +str(d_personas[persona.id])+ \
-                     ' and mobility_status='+str(persona.mobility_status))
+                     ' and prediction='+str(persona.prediction))
         LA_freq = ('',0)
         mundo_freq = ('',0)
         for pais in d_personas[persona.id].keys():
@@ -182,13 +173,13 @@ def classify_person_top5(busqueda_id, path, classifier, data_model_file):
         #2 del país latinoamericano más frecuente
         #los demás con móviles
         if mundo_freq[1]>0 and LA_freq[1]>0:
-            persona.mobility_status=1
-            logging.info(persona.name+' is movil! with mobility_status=' +str(persona.mobility_status))            
+            persona.prediction=1
+            logging.info(persona.name+' is movil! with prediction=' +str(persona.prediction))            
         elif mundo_freq[1]>0 or LA_freq[1]>0:
-            persona.mobility_status = 0
+            persona.prediction = 2
             logging.info('local!')
         else:
-            persona.mobility_status = 3
+            persona.prediction = 3
             logging.info('no sé!')
         
         
@@ -268,7 +259,7 @@ def classify_person_top5(busqueda_id, path, classifier, data_model_file):
                 s.converging_pipelines=1
                 s.save()
                 converging_count +=1
-        logging.info(persona.name+' is movil! with mobility_status=' +str(persona.mobility_status))
+        logging.info(persona.name+' is movil! with prediction=' +str(persona.prediction))
         persona.save()
 
             
@@ -321,15 +312,15 @@ def get_weka_top5(file_name):
         columns = re.split(' +', line.strip())
         if len(columns)>1:
             if columns[2]=='2:1':
-                #print columns
                 if columns[3]=='+':
+                    #print columns
                     prediction = float(columns[4])
                     snippet_id = re.sub('[()]','',columns[5])
-                else:
-                    prediction = float(columns[3])
-                    snippet_id = re.sub('[()]','',columns[4])
-                tupla = (snippet_id, prediction)
-                strong_evidence.append(tupla)
+                #else:
+                #    prediction = float(columns[3])
+                #    snippet_id = re.sub('[()]','',columns[4])
+                    tupla = (snippet_id, prediction)
+                    strong_evidence.append(tupla)
     ord_tuplas = sorted(strong_evidence, key=lambda t:-t[1])[:5]
     #TODO: si son menos de 5, completar con el resto
     return ord_tuplas
@@ -343,7 +334,13 @@ def clean_busqueda(test_busqueda):
         exit(-1)
 
 
-
+def get_feature_count(str_features):
+    RE_features = str(bin(int(str_features))).replace('0b','')
+    features = str(RE_features.zfill(15))
+    feature_count=0
+    for c in features:
+        feature_count += 1 if c=='1' else 0
+    return feature_count
     
     
     

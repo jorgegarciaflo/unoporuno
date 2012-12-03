@@ -1216,14 +1216,15 @@ class Organizaciones:
         lista_queries = []
         lista_orgs = query.split(TOPIC_SEPARATOR)
         for org in lista_orgs:
-            lengua = self.detecta_lengua(org)
+            #TODO: detectar la lengua de la organización y agregarla a la lista de lenguas de manera más eficaz
+            #lengua = self.detecta_lengua(org)
             query = Query(org.strip(), 'es')
             lista_queries.append(query)
             query = Query(org.strip(), 'en')
             lista_queries.append(query)
-            if lengua not in ['en','es']:
-                query = Query(org.strip(), lengua)
-                lista_queries.append(query)
+            # if lengua not in ['en','es']:
+            #     query = Query(org.strip(), lengua)
+            #     lista_queries.append(query)
         return lista_queries
         # Detecta la lengua de la organización
         
