@@ -174,7 +174,7 @@ class Busqueda_DB(object):
                 elif filter_value == 'All':
                     w_snippet.save()
         self.busqueda.save()
-        return True                    
+        return w_persona.id                    
 
     def clean_xml(self, line):
         if line:

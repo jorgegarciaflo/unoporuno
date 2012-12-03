@@ -5,7 +5,7 @@ diaspora.limsi.fr
 
 usuario : cidesal
 
-pwd : ------- 
+pwd : --------
 
 Instalación de Mandriva 2010.2 x86_64
 
@@ -21,12 +21,16 @@ Instalación de python-yaml v3.09 (rpmdrake)
 
 Instalación de lib64python2.6-devel v2.6.5 (rpmdrake)
 
+Instalación de python-magic (urpmi python-magic)
+
 Instalación de Freeling (manual aquí
 http://nlp.lsi.upc.edu/freeling/doc/userman/html/node12.html )
 
 Instalación de las herramientas de compilación y desarrollo C++
 
 urpmi task-c++-devel
+
+Instalación de python-dev
 
 Instalación de lib64pcre-devel (rpmdrake)
 
@@ -152,7 +156,7 @@ se resuelve corriendo mysql_db_install y luego, bajo
 my_sql_safe, este SQL
 
 INSERT INTO user VALUES
-('localhost','root',password('root_pwd'), 'Y', 'Y',
+('localhost','root',password('the_password'), 'Y', 'Y',
 'Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','','','','',0,0,0,0);
 
 Mysql Connexion denied error

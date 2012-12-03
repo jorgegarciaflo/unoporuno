@@ -26,6 +26,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 from unoporuno.models import Busqueda, Persona
+from unoporuno.forms import LanzaBusqueda, InputFile
+from unoporuno.tasks import task_lanza_busqueda
 
 def show_login(request):
     return render_to_response('unoporuno/login.html', None, context_instance=RequestContext(request))
@@ -60,7 +62,7 @@ def login_cidesal(request):
     if user is not None:
         if user.is_active:
             login(request,user)
-            request.session.set_expiry(1200)
+            request.session.set_expiry(43200)
             request.session['SESSION_EXPIRE_AT_BROWSER_CLOSE'] = True
             busqueda_list = Busqueda.objects.all().order_by('-fecha')
             return render_to_response('unoporuno/lista_busquedas.html', {'busqueda_list': busqueda_list},
@@ -202,3 +204,24 @@ def vincula(request, busqueda_id, persona_id):
     lista_vinculos = p.vinculo_set.all().order_by('tipo')
     return render_to_response('unoporuno/vinculos.html', {'busqueda':b, 'persona':p, 'lista_vinculos':lista_vinculos},
                               context_instance=RequestContext(request))
+
+@login_required 
+def lanza_busqueda(request):
+    if request.method == 'POST':
+        form = LanzaBusqueda(request.POST, request.FILES)
+        if form.is_valid():
+            inputfile = InputFile(request.FILES['file'])
+            if "text/plain" in inputfile.mime_type:
+                task_lanza_busqueda.delay(request.POST['nombre'], inputfile.name, request.user.username, request.POST['descripcion'])
+                return render_to_response('unoporuno/msg.html', {'msg':'La busqueda '+request.POST['nombre']+\
+                                  ' esta en proceso de ejecucion.'}, context_instance=RequestContext(request))
+            else:
+                str_error = 'Formato de archivo invalido: ' +inputfile.mime_type
+                return render_to_response('unoporuno/error.html', {'error_msg':str_error}, context_instance=RequestContext(request))
+
+        else:
+            str_error = 'Error al llenar al forma'
+            return render_to_response('unoporuno/error.html', {'error_msg':str_error}, context_instance=RequestContext(request))
+    else: 
+        form = LanzaBusqueda()
+        return render_to_response('unoporuno/lanza_busqueda.html', {'form':form}, context_instance=RequestContext(request))

@@ -371,9 +371,12 @@ class DiasporaOutput(object):
         print >> self._xml_file, '\t</snippets>'
         print >> self._xml_file, '</converging_pipelines>'    
 
-    def write_to_db(self, write_type, nombre, filter='All', user='', description=''):
+    def write_to_db(self, write_type, nombre, arg_db_busqueda=None, filter='All', user='', description=''):
         logging.debug('writing person file_name = ' +self.file_name+ ' to database')
-        db_busqueda = Busqueda_DB(UNOPORUNO_ROOT)
+        if not arg_db_busqueda:
+            db_busqueda = Busqueda_DB(UNOPORUNO_ROOT)
+        else:
+            db_busqueda = arg_db_busqueda
         busqueda_id = 0
         if write_type == 'new':    
             busqueda_id = db_busqueda.new(nombre, filter, user, description)
@@ -382,7 +385,29 @@ class DiasporaOutput(object):
             db_busqueda.get(nombre, filter)
             db_busqueda.update_person_from_file(self.file_name)
         return busqueda_id
+
+    def write_to_db(self, write_type, nombre, filter='All', user='', description=''):
+        logging.debug('writing person file_name = ' +self.file_name+ ' to database')
+        db_busqueda = Busqueda_DB(UNOPORUNO_ROOT)
+        busqueda_id = 0
+        if write_type == 'new':
+            busqueda_id = db_busqueda.new(nombre, filter, user, description)
+            db_busqueda.update_person_from_file(self.file_name)
+        elif write_type == 'update':
+            db_busqueda.get(nombre, filter)
+            db_busqueda.update_person_from_file(self.file_name)
+        return busqueda_id
+
     
+    def write_person_to_db(self, write_type, nombre,db_busqueda, filter='All', user='', description=''):
+         logging.debug('writing person file_name = ' +self.file_name+ ' to database')
+         person_id = 0
+         if write_type == 'update':
+             db_busqueda.get(nombre, filter)
+             person_id = db_busqueda.update_person_from_file(self.file_name)
+         return person_id
+
+
 
     def print_snippet_std(self, snippets_list):
         if len(snippets_list)>0:

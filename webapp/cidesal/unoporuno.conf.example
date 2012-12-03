@@ -1,6 +1,6 @@
 [unoporuno]
 root: /home/jgflores/cidesal/unoporuno
-google_wait: 5
+google_wait: 30
 snippets_per_query: 20
 default_search_engine: google  
 yahoo_app_id : nQOdBJjV34H0AlyRwEM8D4xNb1qfwm8ZWo6XuC2fIEiXZIjI2PZAt9KpuWGA3PIvBK2UDR8cTZXTur4cpTuPe5vgjbCCX1s- 
@@ -11,5 +11,5 @@ lib: /usr/local
 data: /usr/local/share/FreeLing
 
 [research-esa]
-root: /home/jgflores/cidesal/programmes/research-esa/
+root: /home/cidesal/programmes/research-esa/
    
