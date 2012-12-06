@@ -28,7 +28,7 @@
 
 """
 
-import logging, ConfigParser, sys, re
+import logging, ConfigParser, sys, re, os
 
 logging.basicConfig(level=logging.INFO)
 config = ConfigParser.ConfigParser()
