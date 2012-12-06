@@ -117,7 +117,7 @@ def pipeline(request, busqueda_id, persona_id, pipeline_id, features):
     if features == '0' and pipeline_id=='top':
         lista_snippet = p.snippet_set.filter(FG=1).exclude(RE=1).filter(converging_pipelines=1)[:5]
         if len(lista_snippet)<5:
-            lista_snippet = p.snippet_set.filter(FG=1).exclude(RE=1).order_by('-RE_score')[:5]
+            lista_snippet = p.snippet_set.filter(FG=1).exclude(RE=1).order_by('-RE_score')[:5] 
     elif features == '0' and pipeline_id=='all': 
         lista_snippet = p.snippet_set.filter(FG=1).exclude(RE=1).order_by('-evidence_type')
     elif features != '0':
