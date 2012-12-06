@@ -56,12 +56,16 @@ class UnoporunoSearch(object):
 
         logging.basicConfig(level=logging.INFO)
         config = ConfigParser.ConfigParser()
-        config.read("unoporuno.conf")
+        try:
+            config.read("unoporuno.conf")
+        except:
+            logging.error("No configuration file on unoporuno.conf")
+            exit(-1)
         if len(config.sections())==0:
             config.read(os.environ['HOME']+"/.unoporuno/unoporuno.conf")
             if len(config.sections())==0:
-                       logging.error("No configuration file on unoporuno.conf")
-                       exit(-1)
+                logging.error("No configuration file on unoporuno.conf")
+                exit(-1)
         UNOPORUNO_ROOT = config.get('unoporuno', 'root')
         UNOPORUNO_PATH = UNOPORUNO_ROOT + '/module/'
         CIDESAL_WEBAPP_PATH= UNOPORUNO_ROOT + '/webapp/'
@@ -77,7 +81,7 @@ class UnoporunoSearch(object):
         if not CIDESAL_WEBAPP_PATH in sys.path:
             sys.path.append(CIDESAL_WEBAPP_PATH)
             sys.path.append(CIDESAL_WEBAPP_PATH+'cidesal/')
-        from unoporuno.models import Busqueda, Persona, Snippet
+        from unoporuno.models import Busqueda, Persona, Snippet, Vinculo
 
         buscador = BuscadorDiasporas()
 
@@ -85,6 +89,7 @@ class UnoporunoSearch(object):
         personas_file.open_csv(self.arg_input_file)
         output_folder = self.arg_output_folder
         personas = personas_file.read()
+        personas_procesadas = 0
         
 
         nombre_busqueda = self.arg_research_name
@@ -98,10 +103,10 @@ class UnoporunoSearch(object):
         nueva_busqueda.fecha = datetime.datetime.now()
         nueva_busqueda.usuario = user
         nueva_busqueda.description = description
-        nueva_busqueda.status = '@'
+        nueva_busqueda.status = '@' +str(personas_procesadas) +'/'+ str(len(personas))
         nueva_busqueda.save()
         nombre_busqueda = str(nueva_busqueda.id)
-        
+       
         db_busqueda = Busqueda_DB(UNOPORUNO_ROOT)
 
         OrganizationRegex = RegexFeature(UNOPORUNO_ROOT, 'organization')
@@ -127,6 +132,12 @@ class UnoporunoSearch(object):
         TesisRegex = RegexFeature(UNOPORUNO_ROOT, 'thesis')
         TesisHttpRegex = RegexFeature(UNOPORUNO_ROOT, 'thesis http')
         BlacklistHttpRegex = RegexFeature(UNOPORUNO_ROOT, 'blacklist http')
+
+#*******************************************************
+#                    BÚSQUEDA GOOGLE
+#*******************************************************
+
+
         
         for p in personas:
             if not p.nombre:
@@ -405,6 +416,12 @@ class UnoporunoSearch(object):
             diaspora_output.write_converging_pipeline(ps1, list(unique_convergent_1), 1)
             diaspora_output.close_person()
             # END COMMENT CONVERGING PIPELINES
+
+
+#*******************************************************
+#             WRITE TO DATABASE
+#*******************************************************
+
             
             if nombre_busqueda.isdigit():
                 #todo: update process status, processed/total
@@ -417,7 +434,11 @@ class UnoporunoSearch(object):
             #FETCHING PERSON FROM DATABASE
             p = Persona.objects.get(id=person_id)
 
-            #FEATURE ANNOTATION
+            
+#*******************************************************
+#             FEATURE ANNOTATION
+#*******************************************************
+
             
             logging.info("processing snippet features for person " +p.name)
             #name in http pre-snippet cycle tests
@@ -599,13 +620,19 @@ class UnoporunoSearch(object):
                 s.converging_pipelines = 0
                 s.save()
 
-            #CLASIFICAR A LA PERSONA CON EL ALGORITMO SVM
+
+            
+#*******************************************************
+#             PERSON AND SNIPPET CLASSIFICATION
+#*******************************************************
+
 
             data_model_file = UNOPORUNO_ROOT + '/resources/classifiers/smo/models/weka.classifiers.functions.SMO.data.model'
             #self.classify_person_top5(p, output_folder,'weka.classifiers.functions.SMO',data_model_file, DiasporaOutput)
             persona = p
             output_path = output_folder
 
+            
     #def classify_person_top5(self, persona, path, classifier, data_model_file, diasporaOutput):    
         #TODO: validar cuando a) no hay snippets clasificados como positivos y b) hay menos de 5 snippets clasificados como positivos
     
@@ -773,6 +800,217 @@ class UnoporunoSearch(object):
             logging.info(persona.name+' is movil! with prediction=' +str(persona.prediction))
             persona.save()
 
+            
+#*******************************************************
+#             TOP N FREQUENCY ANALYSIS
+#*******************************************************
+
+            logging.info("starting frequency analysis for person " +persona.name)
+            person_countries = []
+            person_organizations = []
+            top_snippets_count = 0
+            persona.vinculo_set.all().delete()
+            for s in persona.snippet_set.filter(FG=1).exclude(RE=1).filter(converging_pipelines=1):
+                if s.FG==0 or s.RE_features<1:
+                    continue
+                title_test_str = s.title.encode('utf-8')
+                descr_test_str = s.description.encode('utf-8')
+                #todo filtrar los snippets de acuerdo a las features que buscamos
+                snippet_countries = []
+                snippet_organizations = []
+                orgs = OrganizationRegex.list_test(title_test_str)
+                if len(orgs)>0:
+                    logging.debug ('FOUND ORGANIZATIONS ' +str(orgs)+' IN TITLE:\n ' +s.title)
+                    snippet_organizations += orgs
+                orgs = OrganizationRegex.list_test(descr_test_str)
+                if len(orgs)>0:
+                    logging.debug('FOUND ORGANIZATIONS ' +str(orgs)+ ' IN DESCR:\n ' +s.description)
+                    snippet_organizations += orgs
+                accronyms = AccronymGazet.list_test(title_test_str)
+                if len(accronyms)>0:
+                    logging.debug('FOUND ORG.ACCRONYMS ' +str(accronyms)+ ' IN TITLE:\n ' +s.title)
+                    snippet_organizations += accronyms
+                accronyms = AccronymGazet.list_test(descr_test_str)
+                if len(accronyms)>0:
+                    logging.debug('FOUND ORG.ACCRONYMS ' +str(accronyms)+ ' IN TITLE:\n ' +s.description)
+                    snippet_organizations += accronyms                
+                countries = CountryGazet.list_test(title_test_str)
+                if len(countries)>0:
+                    logging.debug ('FOUND COUNTRIES '+str(countries)+' IN TITLE:\n ' +s.title)
+                    snippet_countries += countries
+                countries = CountryGazet.list_test(descr_test_str)
+                if len(countries)>0:
+                    logging.debug('FOUND COUNTRIES '+str(countries)+' IN DESCR:\n ' +s.description)
+                    snippet_countries += countries
+                countries = CountryGazetCase.list_test(title_test_str)
+                if len(countries)>0:
+                    logging.debug ('FOUND COUNTRIES '+str(countries)+' IN TITLE:\n ' +s.title)
+                    snippet_countries += countries
+                countries = CountryGazetCase.list_test(descr_test_str)
+                if len(countries):
+                    logging.debug('FOUND COUNTRIES '+str(countries)+' IN DESCR:\n ' +s.description)
+                    snippet_countries += countries
+                countries = CityGazet.list_test(title_test_str)
+                if len(countries)>0:
+                    logging.debug('FOUND CITIES FROM COUNTRIES '+str(countries)+' IN CI TITLE\n' +s.title)
+                    snippet_countries += countries
+                countries = CityGazet.list_test(descr_test_str)
+                if len(countries)>0:
+                    logging.debug('FOUND CITIES FROM COUNTRIES '+str(countries)+' IN CI DESCRIPTION\n' +s.description)
+                    snippet_countries += countries
+                countries = CityGazetCase.list_test(title_test_str)
+                if len(countries)>0:
+                    logging.debug('FOUND CITIES FROM COUNTRIES '+str(countries)+' IN CD TITLE\n' +s.title)
+                    snippet_countries += countries        
+                countries = CityGazetCase.list_test(descr_test_str)
+                if len(countries)>0:
+                    logging.debug('FOUND CITIES FROM COUNTRIES '+str(countries)+' IN CD DESCRIPTION\n' +s.description)
+                    snippet_countries += countries
+                person_countries += snippet_countries
+                person_organizations += snippet_organizations
+                top_snippets_count += 1
+                if top_snippets_count in (5,10,15,20):
+                    dict_org = self.construye_dict_freq(person_organizations)
+                    dict_loc = self.construye_dict_freq(person_countries)
+                    list_org = dict_org.items()
+                    list_loc = dict_loc.items()
+                    sorted_list_org = sorted(list_org, key=lambda t:-t[1])
+                    sorted_list_loc = sorted(list_loc, key=lambda t:-t[1])
+                    organizations_str = ''
+                    locations_str = ''
+                    for e in sorted_list_org:
+                        #logging.debug('type e='+str(type(e))+ ',type e[0]'+str(type(e[0]))+',e='+str(e))
+                        organizations_str += e[0] + ' (' + str(e[1]) + ')\n' if len(e)>1 else ''
+                    for e in sorted_list_loc:
+                        locations_str += e[0] + ' (' + str(e[1]) + ')\n' if len(e)>1 else ''
+
+                    logging.info('VÍNCULOS ORGANIZACIONES:: '+str(sorted_list_org))
+                    vinculo = Vinculo()
+                    vinculo.persona = p
+                    vinculo.organizaciones = organizations_str
+                    logging.info('VÍNCULOS LUGARES:: '+str(sorted_list_loc))
+                    vinculo.lugares = locations_str
+                    vinculo.descripcion = 'Top ' + str(top_snippets_count)
+                    vinculo.tipo = top_snippets_count
+                    vinculo.save()
+
+            if top_snippets_count >= 20:
+                continue
+
+            for s in persona.snippet_set.filter(FG=1).exclude(RE=1).exclude(converging_pipelines=1).order_by('-RE_score'):
+                if s.FG==0 or s.RE_features<1:
+                    continue
+                title_test_str = s.title.encode('utf-8')
+                descr_test_str = s.description.encode('utf-8')
+                #todo filtrar los snippets de acuerdo a las features que buscamos
+                snippet_countries = []
+                snippet_organizations = []
+                orgs = OrganizationRegex.list_test(title_test_str)
+                if len(orgs)>0:
+                    logging.debug ('FOUND ORGANIZATIONS ' +str(orgs)+' IN TITLE:\n ' +s.title)
+                    snippet_organizations += orgs
+                orgs = OrganizationRegex.list_test(descr_test_str)
+                if len(orgs)>0:
+                    logging.debug('FOUND ORGANIZATIONS ' +str(orgs)+ ' IN DESCR:\n ' +s.description)
+                    snippet_organizations += orgs
+                accronyms = AccronymGazet.list_test(title_test_str)
+                if len(accronyms)>0:
+                    logging.debug('FOUND ORG.ACCRONYMS ' +str(accronyms)+ ' IN TITLE:\n ' +s.title)
+                    snippet_organizations += accronyms
+                accronyms = AccronymGazet.list_test(descr_test_str)
+                if len(accronyms)>0:
+                    logging.debug('FOUND ORG.ACCRONYMS ' +str(accronyms)+ ' IN TITLE:\n ' +s.description)
+                    snippet_organizations += accronyms                
+                countries = CountryGazet.list_test(title_test_str)
+                if len(countries)>0:
+                    logging.debug ('FOUND COUNTRIES '+str(countries)+' IN TITLE:\n ' +s.title)
+                    snippet_countries += countries
+                countries = CountryGazet.list_test(descr_test_str)
+                if len(countries)>0:
+                    logging.debug('FOUND COUNTRIES '+str(countries)+' IN DESCR:\n ' +s.description)
+                    snippet_countries += countries
+                countries = CountryGazetCase.list_test(title_test_str)
+                if len(countries)>0:
+                    logging.debug ('FOUND COUNTRIES '+str(countries)+' IN TITLE:\n ' +s.title)
+                    snippet_countries += countries
+                countries = CountryGazetCase.list_test(descr_test_str)
+                if len(countries):
+                    logging.debug('FOUND COUNTRIES '+str(countries)+' IN DESCR:\n ' +s.description)
+                    snippet_countries += countries
+                countries = CityGazet.list_test(title_test_str)
+                if len(countries)>0:
+                    logging.debug('FOUND CITIES FROM COUNTRIES '+str(countries)+' IN CI TITLE\n' +s.title)
+                    snippet_countries += countries
+                countries = CityGazet.list_test(descr_test_str)
+                if len(countries)>0:
+                    logging.debug('FOUND CITIES FROM COUNTRIES '+str(countries)+' IN CI DESCRIPTION\n' +s.description)
+                    snippet_countries += countries
+                countries = CityGazetCase.list_test(title_test_str)
+                if len(countries)>0:
+                    logging.debug('FOUND CITIES FROM COUNTRIES '+str(countries)+' IN CD TITLE\n' +s.title)
+                    snippet_countries += countries        
+                countries = CityGazetCase.list_test(descr_test_str)
+                if len(countries)>0:
+                    logging.debug('FOUND CITIES FROM COUNTRIES '+str(countries)+' IN CD DESCRIPTION\n' +s.description)
+                    snippet_countries += countries
+                person_countries += snippet_countries
+                person_organizations += snippet_organizations
+                top_snippets_count += 1
+                if top_snippets_count in (5,10,15,20):
+                    dict_org = self.construye_dict_freq(person_organizations)
+                    dict_loc = self.construye_dict_freq(person_countries)
+                    list_org = dict_org.items()
+                    list_loc = dict_loc.items()
+                    sorted_list_org = sorted(list_org, key=lambda t:-t[1])
+                    sorted_list_loc = sorted(list_loc, key=lambda t:-t[1])
+                    organizations_str = ''
+                    locations_str = ''
+                    for e in sorted_list_org:
+                        #logging.debug('type e='+str(type(e))+ ',type e[0]'+str(type(e[0]))+',e='+str(e))
+                        organizations_str += e[0] + ' (' + str(e[1]) + ')\n' if len(e)>1 else ''
+                    for e in sorted_list_loc:
+                        locations_str += e[0] + ' (' + str(e[1]) + ')\n' if len(e)>1 else ''
+
+                    logging.info('VÍNCULOS ORGANIZACIONES:: '+str(sorted_list_org))
+                    vinculo = Vinculo()
+                    vinculo.persona = p
+                    vinculo.organizaciones = organizations_str
+                    logging.info('VÍNCULOS LUGARES:: '+str(sorted_list_loc))
+                    vinculo.lugares = locations_str
+                    vinculo.descripcion = 'Top ' + str(top_snippets_count)
+                    vinculo.tipo = top_snippets_count
+                    vinculo.save()
+
+                if top_snippets_count >= 20:
+                    break
+
+#*******************************************************
+#             UPDATE PROGRESS RECORD
+#*******************************************************
+            personas_procesadas += 1
+            nueva_busqueda.status = '@' +str(personas_procesadas) +'/'+ str(len(personas))
+            nueva_busqueda.save()
+        nueva_busqueda.status = 'OK'
+        nueva_busqueda.save()
+        
+            
+
+    def construye_dict_freq(self,lista):
+        d = dict()
+        logging.debug('len lista=' +str(len(lista)))
+        for e in lista:
+            if d.has_key(e):
+                d[e] += 1
+            else:
+                d_tmp = dict({e:1})
+                d.update(d_tmp)
+                logging.debug('len dictionary='+str(len(d)))
+        return d
+
+
+
+
+
     def get_weka_top5(self, file_name):
         logging.info('extracting top 5 from ' +file_name)
         strong_evidence = []
@@ -841,6 +1079,7 @@ class PersonasInput:
         global COLUMN_SEPARATOR
         personas_list = []
         for line in self._input_csv:
+            #detecta encodage y si es isoX lo convierte a utf-8
             clean_line = self._limpia_acentos(line)            
             columnas = clean_line.split(COLUMN_SEPARATOR)
             tamano = len(columnas)
@@ -864,7 +1103,15 @@ class PersonasInput:
 
     #TODO: support propper UTF-8 with NLTK!!!
     def _limpia_acentos(self, linea):
-        linea_u = unicode(linea, 'utf-8')
+        try:
+            linea_u = unicode(linea, 'utf-8')
+        except:
+            pass
+        try:
+            linea_u = unicode(linea, 'latin-1')
+        except:
+            linea_u = unicode(linea, errors='ignore')
+        
         linea_u = self._re_a.subn('a',linea_u)[0]
         linea_u = self._re_e.subn('e',linea_u)[0]
         linea_u = self._re_i.subn('i',linea_u)[0]
@@ -892,138 +1139,6 @@ class Person:
         self.vinculo = vin.strip()
 
 
-# class DiasporaOutput:
-#     def __init__(self, output_path):
-#         self._output_path = output_path + '/'
-#         self._xml_buffer = ''
-#         if not os.path.exists(output_path):
-#             os.makedirs(output_path)
-#         self.file_name = ''
-
-#     def open_person(self, persona):
-#         self._xml_file = self._create_person_file(persona.id, persona.nombre)
-#         print >> self._xml_file, '\t<person id="' +self._clean_xml(persona.id) + '">'
-#         print >> self._xml_file, '\t<name>' +self._clean_xml(persona.nombre)+ '</name>'
-#         print >> self._xml_file, '\t<topics>' +self._clean_xml(persona.temas)+ '</topics>'
-#         print >> self._xml_file, '\t<orgs>' +self._clean_xml(persona.orgs)+ '</orgs>'
-#         print >> self._xml_file, '\t<places>' +self._clean_xml(persona.lugares)+ '</places>'
-#         print >> self._xml_file, '\t<link>' +self._clean_xml(persona.vinculo)+ '</link>'
-
-
-#     def close_person(self):
-#         print >> self._xml_file, '</person>' 
-#         self._xml_file.close()
-
-    
-#     def write_pipeline(self, pipeline, snippets_list):
-#         print >> self._xml_file, '<pipeline type="' +pipeline.type+ '">'
-#         print >> self._xml_file, '\t<stats>'
-#         print >> self._xml_file, '\t\t<total_queries>' +str(pipeline.total_queries)+ '</total_queries>'
-#         print >> self._xml_file, '\t\t<total_snippets>' +str(pipeline.total_snippets)+ '</total_snippets>'
-#         print >> self._xml_file, '\t\t<processing_time>' +str(pipeline.tiempo_proceso)+ '</processing_time>'
-#         print >> self._xml_file, '\t\t<link_found>' +str(pipeline.encontro_vinculo)+ '</link_found>'
-#         print >> self._xml_file, '\t</stats>'
-#         print >> self._xml_file, '\t<snippets>'
-#         logging.debug('PipelineStatus:: ps.snippets.type='+str(type(snippets_list)))
-#         logging.debug('PipelineStatus:: ps.snippets.len='+str(len(snippets_list)))
-#         for s in snippets_list:
-#             logging.debug('PipelineStatus:: adding to xml:' +s.title)
-#             print >> self._xml_file, '\t\t<snippet>'
-#             print >> self._xml_file, '\t\t<query>' +self._clean_xml(s.query)+ '</query>'
-#             print >> self._xml_file, '\t\t\t<title>' +self._clean_xml(s.title)+ '</title>'
-#             status = s.filter_status.vinculo_encontrado
-#             print >> self._xml_file, '\t\t\t<description>' +self._clean_xml(s.description)+ '</description>'
-#             print >> self._xml_file, '\t\t\t<link status="' +str(status)+ '">' +self._clean_xml(s.link)+ '</link>'
-#             print >> self._xml_file, '\t\t\t<engine>' +self._clean_xml(s.engine)+ '</engine>'
-
-            
-#             FG = s.filter_status.nominal
-#             ESA = s.filter_status.semantic
-#             RE = s.filter_status.biographic
-#             print >> self._xml_file, '\t\t<filters FG="' +str(FG)+ '" ESA="' +str(ESA)+ '" RE="' +str(RE)+ '"/>'
-#             print >> self._xml_file, '\t\t</snippet>'
-#         print >> self._xml_file, '\t</snippets>'
-#         print >> self._xml_file, '\t</pipeline>' 
-
-#     def write_converging_pipeline(self, pipeline, snippets_list, converging_number):
-#         print >> self._xml_file, '<converging_pipelines number="' +str(converging_number)+ '">'
-#         print >> self._xml_file, '\t<stats>'
-#         print >> self._xml_file, '\t\t<total_snippets>' +str(pipeline.total_snippets)+ '</total_snippets>'
-#         print >> self._xml_file, '\t\t<link_found>' +str(pipeline.encontro_vinculo)+ '</link_found>'
-#         print >> self._xml_file, '\t</stats>'
-#         print >> self._xml_file, '\t<snippets>'
-#         logging.debug('PipelineStatus:: ps.snippets.type='+str(type(snippets_list)))
-#         logging.debug('PipelineStatus:: ps.snippets.len='+str(len(snippets_list)))
-#         for s in snippets_list:
-#             logging.debug('PipelineStatus:: adding to xml:' +s.title)
-#             print >> self._xml_file, '\t\t<snippet>'
-#             print >> self._xml_file, '\t\t<query>' +self._clean_xml(s.query)+ '</query>'
-#             print >> self._xml_file, '\t\t\t<title>' +self._clean_xml(s.title)+ '</title>'
-#             status = s.filter_status.vinculo_encontrado
-#             print >> self._xml_file, '\t\t\t<description>' +self._clean_xml(s.description)+ '</description>'
-#             print >> self._xml_file, '\t\t\t<link status="' +str(status)+ '">' +self._clean_xml(s.link)+ '</link>'
-#             print >> self._xml_file, '\t\t\t<query_type>' +s.query_type+ '</query_type>'
-
-            
-#             FG = s.filter_status.nominal
-#             ESA = s.filter_status.semantic
-#             RE = s.filter_status.biographic
-#             print >> self._xml_file, '\t\t<filters FG="' +str(FG)+ '" ESA="' +str(ESA)+ '" RE="' +str(RE)+ '"/>'
-#             print >> self._xml_file, '\t\t</snippet>'
-#         print >> self._xml_file, '\t</snippets>'
-#         print >> self._xml_file, '</converging_pipelines>' 
-
-#     def write_to_db(self, write_type, nombre, db_busqueda, filter='All', user='', description=''):
-#         logging.debug('writing person file_name = ' +self.file_name+ ' to database')
-#         busqueda_id = 0
-#         if write_type == 'new':    
-#             busqueda_id = db_busqueda.new(nombre, filter, user, description)
-#             db_busqueda.update_person_from_file(self.file_name)
-#         elif write_type == 'update':
-#             db_busqueda.get(nombre, filter)
-#             db_busqueda.update_person_from_file(self.file_name)
-#         return busqueda_id
-
-#     def write_person_to_db(self, write_type, nombre,db_busqueda, filter='All', user='', description=''):
-#         logging.debug('writing person file_name = ' +self.file_name+ ' to database')
-#         busqueda_id = 0
-#         if write_type == 'new':    
-#             busqueda_id = db_busqueda.new(nombre, filter, user, description)
-#             db_busqueda.update_person_from_file(self.file_name)
-#         elif write_type == 'update':
-#             db_busqueda.get(nombre, filter)
-#             person_id = db_busqueda.update_person_from_file(self.file_name)
-#         return person_id
-    
-
-#     def print_snippet_std(self, snippets_list):
-#         if len(snippets_list)>0:
-#             for s in snippets_list:
-#                 print '--------------------------------'
-#                 print '|SNIPPET_QUERY::', s.query
-#                 print '|SNIPPET_TITLE::', s.title
-#                 print '|SNIPPET_DESCRIPTION::', s.description
-#                 print '|SNIPPET_LINK::', s.link
-#                 print '|SNIPPET:ESA SCORE::', str(s.filter_status.semantic)
-#                 print '---------------------------------'
-#             print '>>>>>>>>>>>> ' + str(len(snippets_list)) + ' snippets <<<<<<<<<<'
-
-
-#     def _clean_xml(self, line):
-#         line2 = re.subn('"', '&quot;', line)
-#         line3 = re.subn('&', '&amp;', line2[0])
-#         line4 = re.subn("'", '&apos;', line3[0])
-#         line5 = re.subn('<', '&lt;', line4[0])
-#         line6 = re.subn('>', '&gt;', line5[0])
-#         return line6[0]            
-
-#     def _create_person_file(self, id, name):
-#         file_name = self._output_path + '/' + name + '.' + id + '.xml'
-#         file_name=re.subn(' ','_',file_name)
-#         xml_file = open(file_name[0], 'w')
-#         print >>xml_file, '<?xml version="1.0"?>'
-#         self.file_name = file_name[0]
-#         return xml_file
         
 class reloj:
     def __init__(self):

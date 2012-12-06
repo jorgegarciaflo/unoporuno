@@ -3,8 +3,10 @@
 {% block content %}
 <form enctype="multipart/form-data" method="post" action="/unoporuno/lanza_busqueda/">
 {% csrf_token %}
-{{ form.as_p }}
+<div align="center">
+{{ form.as_ul }}
 <input type="submit" value="Enviar" />
+</div>
 </form>
 {% endblock %}
 
