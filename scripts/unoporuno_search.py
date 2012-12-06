@@ -420,7 +420,15 @@ class PersonasInput:
 
     #TODO: support propper UTF-8 with NLTK!!!
     def _limpia_acentos(self, linea):
-        linea_u = unicode(linea, 'utf-8')
+        try:
+            linea_u = unicode(linea, 'utf-8')
+        except:
+            pass
+        try:
+            linea_u = unicode(linea, 'latin-1')
+        except:
+            linea_u = unicode(linea, errors='ignore')
+        
         linea_u = self._re_a.subn('a',linea_u)[0]
         linea_u = self._re_e.subn('e',linea_u)[0]
         linea_u = self._re_i.subn('i',linea_u)[0]

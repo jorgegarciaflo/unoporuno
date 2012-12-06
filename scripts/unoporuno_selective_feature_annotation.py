@@ -30,7 +30,7 @@
 
 import logging, ConfigParser, sys, re
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 config = ConfigParser.ConfigParser()
 config.read("unoporuno.conf")
 if len(config.sections())==0:
