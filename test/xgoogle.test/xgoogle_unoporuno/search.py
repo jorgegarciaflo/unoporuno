@@ -69,7 +69,7 @@ class GoogleSearch(object):
         self._last_from = 0
         self._lang = lang
         self._tld = tld
-        
+         
         if re_search_strings:
             self._re_search_strings = re_search_strings
         elif lang == "de":
@@ -249,10 +249,12 @@ class GoogleSearch(object):
             return None, None
         title = ''.join(title_a.findAll(text=True))
         title = self._html_unescape(title)
-        url = title_a['href']
-        match = re.match(r'/url\?q=(http[^&]+)&', url)
+        url = title_a['href'] 
+        match = re.search(r'http[^&]+', url)
         if match:
-            url = urllib.unquote(match.group(1))
+            url = urllib.unquote(match.group(0))
+        else:
+            return title, 'NO_MATCH::'+url
         return title, url
 
     def _extract_description(self, result):
