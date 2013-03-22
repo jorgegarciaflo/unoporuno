@@ -105,6 +105,8 @@ http://code.google.com/p/modwsgi/wiki/QuickInstallationGuide
 
       16) Configuar celery en daemon
 	--crear usuario celery
+		sudo useradd celery 
+		sudo passwd celery 
 	--crear fichero de configuracion /etc/default/celeryd
 	– bajar fichero model desde 
 		http://github.com/celery/celery/tree/master/contrib/generic-init.d/
