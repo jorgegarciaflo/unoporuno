@@ -4,7 +4,7 @@ CELERYD_NODES="w1"
 #CELERYD_NODES="w1 w2 w3"
 
 # Where to chdir at start.
-CELERYD_CHDIR="/home/harmodio/cidesal/unoporuno/webapp/cidesal"
+CELERYD_CHDIR="/home/celery/unoporuno/webapp/cidesal"
 
 # How to call "manage.py celeryd_multi"
 CELERYD_MULTI="$CELERYD_CHDIR/manage.py celeryd_multi"
