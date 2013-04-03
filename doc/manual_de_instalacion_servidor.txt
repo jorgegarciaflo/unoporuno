@@ -1,202 +1,238 @@
 
-DIARIO DE INSTALACIÓN DEL SERVIDOR DE PRODUCCIÓN DE CIDESAL
+  DIARIO DE INSTALACIÓN DEL SERVIDOR DE PRODUCCIÓN DE CIDESAL
 
-diaspora.limsi.fr
+  diaspora.limsi.fr
 
-usuario : cidesal
+  usuario : cidesal
 
-pwd : --------
+  pwd : --------
 
-Instalación de Mandriva 2010.2 x86_64
+  Instalación de Mandriva 2010.2 x86_64
 
-Instalación de subversion 1.6.17 con rpmdrake
+  Instalación de subversion 1.6.17 con rpmdrake
 
-Descarga de tami/cidesal/code
+  Descarga de tami/cidesal/code
 
-sudo svn co svn+ssh://jgflores@tami/home/svn/cidesal/code/
+  sudo svn co svn+ssh://jgflores@tami/home/svn/cidesal/code/
 
-Instalación de NLTK
+  Instalación de NLTK
 
-Instalación de python-yaml v3.09 (rpmdrake)
+  Instalación de python-yaml v3.09 (rpmdrake)
 
-Instalación de lib64python2.6-devel v2.6.5 (rpmdrake)
+  Instalación de lib64python2.6-devel v2.6.5 (rpmdrake)
 
-Instalación de python-magic (urpmi python-magic)
+  Instalación de python-magic (urpmi python-magic)
 
-Instalación de Freeling (manual aquí
-http://nlp.lsi.upc.edu/freeling/doc/userman/html/node12.html )
+  Instalación de Freeling (manual aquí
+  http://nlp.lsi.upc.edu/freeling/doc/userman/html/node12.html )
 
-Instalación de las herramientas de compilación y desarrollo C++
+  Instalación de las herramientas de compilación y desarrollo C++
 
-urpmi task-c++-devel
+  urpmi task-c++-devel
 
-Instalación de python-dev
+  Instalación de python-dev
 
-Instalación de lib64pcre-devel (rpmdrake)
+  Instalación de lib64pcre-devel (rpmdrake)
 
-Instalación de lib64db-4.7devel (rpmdrake)
+  Instalación de lib64db-4.7devel (rpmdrake)
 
-Instalación de lib64boost-devel (rpmdrake)
+  Instalación de lib64boost-devel (rpmdrake)
 
-Instalación libfries (compilación a partir de código fuente)
+  Instalación libfries (compilación a partir de código fuente)
 
-Instalación libomlet (compilación a partir de código fuente)
+  Instalación libomlet (compilación a partir de código fuente)
 
-Instalación Freeling (compilación a partir de código fuente)
+  Instalación Freeling (compilación a partir de código fuente)
 
-Error
+  Error
 
-boost/property_map.hpp : Aucun fichier ou dossier de ce type
+  boost/property_map.hpp : Aucun fichier ou dossier de ce type
 
-sustituir boost/property_map.hpp por
-boost/property_map/property_map.hpp
+  sustituir boost/property_map.hpp por
+  boost/property_map/property_map.hpp
 
-en los siguientes archivos :
+  en los siguientes archivos :
 
-./src/libmorfo/disambiguator/ukb/common.h
+  ./src/libmorfo/disambiguator/ukb/common.h
 
-disambiguator/ukb/kbGraph.h
+  disambiguator/ukb/kbGraph.h
 
-Configuración de la interfaz Freeling/python
+  Configuración de la interfaz Freeling/python
 
-Instalar swig (rpmdrake)
+  Instalar swig (rpmdrake)
 
-Editar el archivo
+  Editar el archivo
 
-cidesal/code/unoporuno/module/unoporuno/Freeling-python-API/Makefile
+  cidesal/code/unoporuno/module/unoporuno/Freeling-python-API/Makefile
 
-con las siguientes variables :
+  con las siguientes variables :
 
-FREELINGDIR = /usr/share
+  FREELINGDIR = /usr/share
 
-LIBSDIR = /usr/lib
+  LIBSDIR = /usr/lib
 
-PYTHONDIR = /usr/include/python2.6
+  PYTHONDIR = /usr/include/python2.6
 
-Compilar con make (desde el directorio
-cidesal/code/unoporuno/module/unoporuno/Freeling-python-API/Makefile
-)
+  Compilar con make (desde el directorio
+  cidesal/code/unoporuno/module/unoporuno/Freeling-python-API/Makefile
+  )
 
-Agregar la siguiente línea al archivo ~/.bashrc
+  Agregar la siguiente línea al archivo ~/.bashrc
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:'/usr/local/lib'
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:'/usr/local/lib'
 
-Copiar los siguientes archivos desde
+  Copiar los siguientes archivos desde
 
-cidesal/code/unoporuno/module/unoporuno/Freeling-python-API/libmorfo_python.py
+  cidesal/code/unoporuno/module/unoporuno/Freeling-python-API/libmorfo_python.py
 
-cidesal/code/unoporuno/module/unoporuno/Freeling-python-API/_libmorfo_python.so
+  cidesal/code/unoporuno/module/unoporuno/Freeling-python-API/_libmorfo_python.so
 
-a
+  a
 
-cidesal/code/unoporuno/module/unoporuno/
+  cidesal/code/unoporuno/module/unoporuno/
 
-Instalación de bibliotecas necesarias a buscador.py
+  Instalación de bibliotecas necesarias a buscador.py
 
-Instalar python-setuptools (rpmdrake)
+  Instalar python-setuptools (rpmdrake)
 
-Instalar yql
+  Instalar yql
 
-sudo easy_install yql
+  sudo easy_install yql
 
-En caso de error en los permisos, verificar que los archivos de
+  En caso de error en los permisos, verificar que los archivos de
 
-/usr/lib/python2.6/site-packages/
+  /usr/lib/python2.6/site-packages/
 
-tienen permiso de lectura para todo el mundo. Si no,
+  tienen permiso de lectura para todo el mundo. Si no,
 
-sudo chmod a+r /usr/lib/python2.6/site-packages/easy-install.pth
+  sudo chmod a+r /usr/lib/python2.6/site-packages/easy-install.pth
 
-Instalar lxml (rpmdrake... de otro modo es muy difícil,
-especialmente con easy_install)
+  Instalar lxml (rpmdrake... de otro modo es muy difícil,
+  especialmente con easy_install)
 
-Probar búsqueda en google
+  Probar búsqueda en google
 
-Ir al directorio /home/cidesal/code/unoporuno/test
+  Ir al directorio /home/cidesal/code/unoporuno/test
 
-mkdir results
+  mkdir results
 
-python ../module/search_geo.py corpus.1.argentinos.csv results/
+  python ../module/search_geo.py corpus.1.argentinos.csv results/
 
-En el directorio results debe haber un archivo xml válido
-llamado Mabel_Cruz.1.xml con los resultados de la búsqueda
-google (vínculos internet válidos)
+  En el directorio results debe haber un archivo xml válido
+  llamado Mabel_Cruz.1.xml con los resultados de la búsqueda
+  google (vínculos internet válidos)
 
-Probar converging_results
+  Probar converging_results
 
-python ../module/converging_pipelines.py corpus.3.argentinos.csv
-results
+  python ../module/converging_pipelines.py corpus.3.argentinos.csv
+  results
 
-En el directorio results debe haber cuatro subdirectorios
-llamados
+  En el directorio results debe haber cuatro subdirectorios
+  llamados
 
-results_converging/
+  results_converging/
 
-results_name
+  results_name
 
-results_geo
+  results_geo
 
-results_orgs
+  results_orgs
 
-results_topics
+  results_topics
 
-En cada uno de ellos debe haber 3 archivos xml válidos con
-resultados de la búsqueda google.
+  En cada uno de ellos debe haber 3 archivos xml válidos con
+  resultados de la búsqueda google.
 
-Instalación de Apache (rpmdrake)
+  Instalación de Apache (rpmdrake)
 
-Instalación de Django v1.3
+  Instalación de Django v1.3
 
-Problemas con mysql
+  Problemas con mysql
 
-ERROR 1045 (28000): Access denied for user ‘root’@'localhost’
-(using password: NO)
+  ERROR 1045 (28000): Access denied for user ‘root’@'localhost’
+  (using password: NO)
 
-se resuelve corriendo mysql_db_install y luego, bajo
-my_sql_safe, este SQL
+  se resuelve corriendo mysql_db_install y luego, bajo
+  my_sql_safe, este SQL
 
-INSERT INTO user VALUES
-('localhost','root',password('the_password'), 'Y', 'Y',
-'Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','','','','',0,0,0,0);
+  INSERT INTO user VALUES
+  ('localhost','root',password('the_password'), 'Y', 'Y',
+  'Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','','','','',0,0,0,0);
 
-Mysql Connexion denied error
+  Mysql Connexion denied error
 
-Problema de permisos en /var/lib/mysql
+  Problema de permisos en /var/lib/mysql
 
-Se resuelve con
+  Se resuelve con
 
-sudo chown mysql.mysql /var/lib/mysql
+  sudo chown mysql.mysql /var/lib/mysql
 
-y agregar al usuario cidesal al grupo mysql en /etc/groups
+  y agregar al usuario cidesal al grupo mysql en /etc/groups
 
-Instalación ahora sí de Django
+  Instalación ahora sí de Django
 
-https://www.djangoproject.com/download/
+  https://www.djangoproject.com/download/
 
-https://docs.djangoproject.com/en/1.3/intro/install/
+  https://docs.djangoproject.com/en/1.3/intro/install/
 
-Instalación de la aplicación unoporuno.web
+  Instalación del servidor de tareas Celery
 
-svn TODO : comando svn para importar una aplicacion open source
+  instalar django-celery
 
-Crear la base de datos en el directorio $UNOPORUNO_ROOT
-(normalmente /home/mydirectory/unoporuno/webapps )
+  cambiar la configuración de settings.py y django.wsgi
 
-cd $UNOPORUNO_ROOT/cidesal
+  crear las tablas con un python manage.py syncdb
 
-python manage syncdb
+  copiar unoporuno.conf a ~/ROOT/webapp/cidesal
 
-Establecer la variable DJANGO_SETTINGS_MODULE en ~/.bashrc
-agregando la línea
+  Instalación de la aplicación unoporuno.web
 
-export DJANGO_SETTINGS_MODULE='cidesal.settings'
+  svn TODO : comando svn para importar una aplicacion open source
 
-Poblar la base de datos (todo db_populate o como?... TODO :
-poner una búsqueda de test)
+  Crear la base de datos en el directorio $UNOPORUNO_ROOT
+  (normalmente /home/mydirectory/unoporuno/webapps )
 
-Instalación de apache-mod_wsgi (rpmdrake)
+  cd $UNOPORUNO_ROOT/cidesal
 
-http://code.google.com/p/modwsgi/wiki/QuickInstallationGuide
+  python manage syncdb
 
-Configuración de Apache + wsgi
+  Establecer la variable DJANGO_SETTINGS_MODULE en ~/.bashrc
+  agregando la línea
+
+  export DJANGO_SETTINGS_MODULE='cidesal.settings'
+
+  Poblar la base de datos (todo db_populate o como?... TODO :
+  poner una búsqueda de test)
+
+  Instalación de apache-mod_wsgi (rpmdrake)
+
+  http://code.google.com/p/modwsgi/wiki/QuickInstallationGuide
+
+  Configuración de Apache + wsgi
+
+  16) Configuar celery en daemon
+
+  --crear usuario celery
+
+  sudo useradd celery
+
+  sudo passwd celery
+
+  --crear fichero de configuracion /etc/default/celeryd
+
+  – bajar fichero model desde
+
+  http://github.com/celery/celery/tree/master/contrib/generic-init.d/
+
+  y ponerlo en /etc/initd/celeryd
+
+  --crear el directorio /var/log/celery y atribuirle los permisos
+  con
+
+  sudo chown celery.root /var/log/celery
+
+  --crear el directorio /var/run/celery y atribuirle los permisos
+  con
+
+  sudo chown celery.root /var/run/celery
 

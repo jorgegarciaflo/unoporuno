@@ -8,7 +8,7 @@ from search_task import UnoporunoSearch
 def add(x,y):
     return x+y
 
-@task()
+@task(time_limit=5184000)
 def task_lanza_busqueda(nombre, archivo, usuario, descripcion=''):
     #valida archivo, si no es válido escribe la búqueda en estatus x
     #cuenta el número de registros en el archivo
