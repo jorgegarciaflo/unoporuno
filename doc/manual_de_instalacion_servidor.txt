@@ -210,15 +210,22 @@
 
   Configuración de Apache + wsgi
 
-  16) Configuar celery en daemon
+  Nota : el usuario de apache (WSGIDaemonProcess) y el de celery
+  deben coincidir. Se recomienda el usuario cidesal.
 
-  --crear usuario celery
+  16) Configuar cidesal en daemon
 
-  sudo useradd celery
+  --crear usuario cidesal (en caso de no existir)
 
-  sudo passwd celery
+  sudo useradd cidesal
 
-  --crear fichero de configuracion /etc/default/celeryd
+  sudo passwd cidesal
+
+  --copiar el archivo $UNOPORUNO_ROOT/config/etc.init.d.celeryd a
+  /etc/default/ bajo el nombre de celeryd
+
+  sudo cp $UNOPORUNO_ROOT/config/etc.init.d.celeryd
+  /etc/default/celeryd
 
   – bajar fichero model desde
 
@@ -229,10 +236,10 @@
   --crear el directorio /var/log/celery y atribuirle los permisos
   con
 
-  sudo chown celery.root /var/log/celery
+  sudo chown cidesal.root /var/log/celery
 
   --crear el directorio /var/run/celery y atribuirle los permisos
   con
 
-  sudo chown celery.root /var/run/celery
+  sudo chown cidesal.root /var/run/celery
 
