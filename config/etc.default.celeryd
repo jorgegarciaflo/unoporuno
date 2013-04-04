@@ -1,10 +1,11 @@
 # Name of nodes to start, here we have a single node
-CELERYD_NODES="w1"
+#CELERYD_NODES="w1"
 # or we could have three nodes:
+CELERYD_NODES="w1 w2"
 #CELERYD_NODES="w1 w2 w3"
 
 # Where to chdir at start.
-CELERYD_CHDIR="/home/cidesal/github/unoporuno/webapp/cidesal"
+CELERYD_CHDIR="/home/cidesal/github/unoporuno/webapp/cidesal/"
 
 # How to call "manage.py celeryd_multi"
 CELERYD_MULTI="$CELERYD_CHDIR/manage.py celeryd_multi"
@@ -13,7 +14,8 @@ CELERYD_MULTI="$CELERYD_CHDIR/manage.py celeryd_multi"
 CELERYCTL="$CELERYD_CHDIR/manage.py celeryctl"
 
 # Extra arguments to celeryd
-CELERYD_OPTS="--time-limit=300 --concurrency=8"
+#CELERYD_OPTS="--time-limit=300 --concurrency=8"
+CELERYD_OPTS="--concurrency=8 --settings=settings" 
 
 # %n will be replaced with the nodename.
 CELERYD_LOG_FILE="/var/log/celery/%n.log"
@@ -24,4 +26,4 @@ CELERYD_USER="cidesal"
 CELERYD_GROUP="cidesal"
 
 # Name of the projects settings module.
-export DJANGO_SETTINGS_MODULE=".cidesal.settings"
+export DJANGO_SETTINGS_MODULE="settings"
