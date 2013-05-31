@@ -102,7 +102,7 @@ class UnoporunoSearch(object):
         nueva_busqueda.nombre = nombre_busqueda
         nueva_busqueda.fecha = datetime.datetime.now()
         nueva_busqueda.usuario = user
-        nueva_busqueda.description = description
+        nueva_busqueda.descripcion = description
         nueva_busqueda.status = '@' +str(personas_procesadas) +'/'+ str(len(personas))
         nueva_busqueda.save()
         nombre_busqueda = str(nueva_busqueda.id)
