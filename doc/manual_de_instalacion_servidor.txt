@@ -213,7 +213,7 @@
   Nota : el usuario de apache (WSGIDaemonProcess) y el de celery
   deben coincidir. Se recomienda el usuario cidesal.
 
-  16) Configuar cidesal en daemon
+  16) Configuar celery en daemon
 
   --crear usuario cidesal (en caso de no existir)
 
@@ -221,17 +221,11 @@
 
   sudo passwd cidesal
 
-  --copiar el archivo $UNOPORUNO_ROOT/config/etc.init.d.celeryd a
+  --copiar el archivo $UNOPORUNO_ROOT/config/etc.default.celeryd a
   /etc/default/ bajo el nombre de celeryd
 
   sudo cp $UNOPORUNO_ROOT/config/etc.init.d.celeryd
-  /etc/default/celeryd
-
-  – bajar fichero model desde
-
-  http://github.com/celery/celery/tree/master/contrib/generic-init.d/
-
-  y ponerlo en /etc/initd/celeryd
+  /etc/init.d/celeryd
 
   --crear el directorio /var/log/celery y atribuirle los permisos
   con
@@ -242,4 +236,8 @@
   con
 
   sudo chown cidesal.root /var/run/celery
+
+  --agregarle permisos de ejecución a manage.py
+
+  sudo chown o+x $UNOPORUNO_ROOT/webapp/cidesal/manage.py
 
