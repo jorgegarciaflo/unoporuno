@@ -1,5 +1,5 @@
 
-  * DIARIO DE INSTALACIÓN DEL SERVIDOR DE PRODUCCIÓN DE CIDESAL *
+  DIARIO DE INSTALACIÓN DEL SERVIDOR DE PRODUCCIÓN DE CIDESAL
 
   diaspora.limsi.fr
 
@@ -213,7 +213,7 @@
   Nota : el usuario de apache (WSGIDaemonProcess) y el de celery
   deben coincidir. Se recomienda el usuario cidesal.
 
-  16) Configuar cidesal en daemon
+  16) Configuar celery en daemon
 
   --crear usuario cidesal (en caso de no existir)
 
