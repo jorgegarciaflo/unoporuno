@@ -29,6 +29,8 @@ from unoporuno.models import Busqueda, Persona
 from unoporuno.forms import LanzaBusqueda, InputFile
 from unoporuno.tasks import task_lanza_busqueda
 
+from xlrd import open_workbook
+
 def show_login(request):
     return render_to_response('unoporuno/login.html', None, context_instance=RequestContext(request))
 
@@ -214,9 +216,24 @@ def lanza_busqueda(request):
         if form.is_valid():
             inputfile = InputFile(request.FILES['file'])
             if "text/plain" in inputfile.mime_type:
-                task_lanza_busqueda.delay(request.POST['nombre'], inputfile.name, request.user.username, request.POST['descripcion'])
+                #TODO: validar el archivo aquí
+                task_lanza_busqueda.delay(request.POST['nombre'], inputfile.name, request.user.username, request.POST['descripcion'],'csv')
                 return render_to_response('unoporuno/msg.html', {'msg':'La busqueda '+request.POST['nombre']+\
                                   ' esta en proceso de ejecucion.'}, context_instance=RequestContext(request))
+            elif "application/" in inputfile.mime_type:
+                #TODO: validar el archivo aquí
+                try:
+                    excel = open_workbook(inputfile.name)
+                    excel_sheet = excel.sheet_by_index(0)
+                    if excel_sheet.nrows > 1 and excel_sheet.ncols > 1:
+                        task_lanza_busqueda.delay(request.POST['nombre'], inputfile.name, request.user.username, \
+                                                  request.POST['descripcion'],'xls')
+                        return render_to_response('unoporuno/msg.html', {'msg':'La busqueda '+request.POST['nombre']+\
+                                  ' esta en proceso de ejecucion.'}, context_instance=RequestContext(request))
+                        
+                except:
+                    return render_to_response('unoporuno/error.html', {'error_msg':str_error}, context_instance=RequestContext(request))
+
             else:
                 str_error = 'Formato de archivo invalido: ' +inputfile.mime_type
                 return render_to_response('unoporuno/error.html', {'error_msg':str_error}, context_instance=RequestContext(request))

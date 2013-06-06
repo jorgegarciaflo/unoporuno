@@ -18,7 +18,9 @@
 ##     You should have received a copy of the GNU General Public License
 ##     along with Unoporuno.  If not, see <http://www.gnu.org/licenses/>.
 ##
-# usage: python db_converging_pipelines.py input_file.csv output_folder [research_name] [True|False|All] ['users'] ['description']
+# usage: python unoporuno_search.py input_file.csv output_folder [research_name] [True|False|All] ['users'] ['description']
+#        or
+#        python unoporuno_search.py input_file.xls output_folder [research_name] [True|False|All] ['users'] ['description']
 #
 # [1] input_file.csv = input csv file with people|topics|organizations|geography
 # [2] output_folder = ./outputfolder
@@ -55,6 +57,7 @@ if not UNOPORUNO_PATH in sys.path:
     sys.path.append(UNOPORUNO_PATH)
 from dospordos.buscador import BuscadorDiasporas, ErrorBuscador
 from busqueda_db.busqueda_db import Busqueda_DB
+from dospordos.tools import PersonasInput, FileFormatError
 
 
 if not CIDESAL_WEBAPP_PATH in sys.path:
@@ -69,7 +72,14 @@ TOPIC_SEPARATOR = ';'
 def main():
     
     personas_file = PersonasInput()
-    personas_file.open_csv(sys.argv[1])
+    
+    if re.search(".xlsx?$",sys.argv[1]):
+        personas_file.open_xls(sys.argv[1])
+    elif re.search(".csv$",sys.argv[1]):
+        personas_file.open_csv(sys.argv[1])
+    else:
+        raise FileFormatError ("unrecognized file format on %s, only excel or csv accepted" % str(sys.argv[1]))
+    
     output_folder = sys.argv[2]
     personas = personas_file.read()
     buscador = BuscadorDiasporas()
@@ -371,79 +381,6 @@ def main():
         else:
             busqueda_id = diaspora_output.write_to_db('new', nombre_busqueda, filter_value, user, description)
             nombre_busqueda = str(busqueda_id)
-        
-class PersonasInput:
-    def __init__(self):
-        self._re_a=re.compile(u'[áâä]')
-        self._re_e=re.compile(u'[éèêë]')
-        self._re_i=re.compile(u'[íïîì]')
-        self._re_o=re.compile(u'[óòôö]')
-        self._re_u=re.compile(u'[úùüû]')
-        self._re_n=re.compile(u'[ñ]')
-        self._re_A=re.compile(u'[ÁÀÄÂ]')
-        self._re_E=re.compile(u'[ÉÈÊË]')
-        self._re_I=re.compile(u'[ÍÌÏÎ]')
-        self._re_O=re.compile(u'[ÓÒÔÖ]')
-        self._re_U=re.compile(u'[ÚÙÛÜ]')
-        self._re_N=re.compile(u'[Ñ]')
-        
-
-
-    def open_csv(self, input_file):
-        self.read = self._read_csv
-        self._input_csv = open(input_file)
-
-    def _read_csv(self):
-        global COLUMN_SEPARATOR
-        personas_list = []
-        for line in self._input_csv:
-            clean_line = self._limpia_acentos(line)            
-            columnas = clean_line.split(COLUMN_SEPARATOR)
-            tamano = len(columnas)
-            if tamano == ROW_SIZE:
-                if columnas[0] and columnas[1]:
-                    p = Persona(columnas[0], columnas[1], columnas[2], \
-                            columnas[3], columnas[4], columnas[5])
-                    personas_list.append(p)
-                else:
-                    logging.error('No name or id in row ' + clean_line)
-            elif tamano == (ROW_SIZE-1):
-                if columnas[0] and columnas[1]:
-                    p = Persona(columnas[0], columnas[1], columnas[2], \
-                            columnas[3], columnas[4])
-                    personas_list.append(p)
-                else:
-                    logging.error('No name or id in row ' + clean_line)
-            else:
-                logging.error ('Bad csv row size, '+ str(tamano)+ ' columns expected')
-        return personas_list
-
-    #TODO: support propper UTF-8 with NLTK!!!
-    def _limpia_acentos(self, linea):
-        try:
-            linea_u = unicode(linea, 'utf-8')
-        except:
-            pass
-        try:
-            linea_u = unicode(linea, 'latin-1')
-        except:
-            linea_u = unicode(linea, errors='ignore')
-        
-        linea_u = self._re_a.subn('a',linea_u)[0]
-        linea_u = self._re_e.subn('e',linea_u)[0]
-        linea_u = self._re_i.subn('i',linea_u)[0]
-        linea_u = self._re_o.subn('o',linea_u)[0]
-        linea_u = self._re_u.subn('u',linea_u)[0]
-        linea_u = self._re_n.subn('n',linea_u)[0]
-        linea_u = self._re_A.subn('A',linea_u)[0]
-        linea_u = self._re_E.subn('E',linea_u)[0]
-        linea_u = self._re_I.subn('I',linea_u)[0]
-        linea_u = self._re_O.subn('O',linea_u)[0]
-        linea_u = self._re_U.subn('U',linea_u)[0]
-        linea_u = self._re_N.subn('N',linea_u)[0]
-        linea_a = linea_u.encode('ascii', 'ignore')
-        return linea_a
-        
         
         
 class Persona:

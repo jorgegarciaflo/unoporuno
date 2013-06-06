@@ -25,6 +25,12 @@ __author__="Jorge García Flores"
 __date__ ="$08-oct-2011 10:05:30$"
 
 import sys, re, os, logging, nltk
+from xlrd import open_workbook
+
+COLUMN_SEPARATOR = '|'
+ROW_SIZE=6
+TOPIC_SEPARATOR = ';'
+
 
 class Limpieza(object):
     def __init__(self):
@@ -777,3 +783,140 @@ class DetectaLengua(object):
 
         
         
+class PersonasInput:
+    def __init__(self):
+        
+        self._re_a=re.compile(u'[áâä]')
+        self._re_e=re.compile(u'[éèêë]')
+        self._re_i=re.compile(u'[íïîì]')
+        self._re_o=re.compile(u'[óòôö]')
+        self._re_u=re.compile(u'[úùüû]')
+        self._re_n=re.compile(u'[ñ]')
+        self._re_A=re.compile(u'[ÁÀÄÂ]')
+        self._re_E=re.compile(u'[ÉÈÊË]')
+        self._re_I=re.compile(u'[ÍÌÏÎ]')
+        self._re_O=re.compile(u'[ÓÒÔÖ]')
+        self._re_U=re.compile(u'[ÚÙÛÜ]')
+        self._re_N=re.compile(u'[Ñ]')
+        
+
+    def open_xls(self, input_file):
+        self.read = self._read_xls
+        try:
+            excel = open_workbook(input_file)
+            excel_sheet = excel.sheet_by_index(0)
+            if excel_sheet.nrows >1 and excel_sheet.ncols > 1:
+                self._input_xls = excel_sheet
+            else:
+                self._input_xls = None
+        except:
+            raise InputError("Bad or missing excel file: %s" % input_file)
+
+    def _read_xls(self):
+        # row exemple:
+        # name, topic, organization, places, link
+        # only the name is mandatory, the rest is optional
+        
+        personas_list = []
+        if not self._input_xls:
+            raise InputError("Empty excel file")
+        
+        for rx in range(self._input_xls.nrows):
+            persona_row = []
+            for cx in range(self._input_xls.ncols):
+                
+                clean_cell = self._limpia_acentos(self._input_xls.cell_value(rowx=rx, colx=cx))
+                if clean_cell.strip():
+                    persona_row.append(clean_cell.strip())
+            
+            if len(persona_row) > 0:
+                p = Person(str(rx),persona_row[0])
+                p.temas   = persona_row[1] if len(persona_row) > 1 else ''
+                p.orgs    = persona_row[2] if len(persona_row) > 2 else ''
+                p.lugares = persona_row[3] if len(persona_row) > 3 else ''
+                p.vinculo = persona_row[4] if len(persona_row) > 4 else ''
+                personas_list.append(p)
+                
+        return personas_list
+        
+    
+    def open_csv(self, input_file):
+        self.read = self._read_csv
+        self._input_csv = open(input_file)
+
+    def _read_csv(self):
+        global COLUMN_SEPARATOR
+        personas_list = []
+        for line in self._input_csv:
+            #detecta encodage y si es isoX lo convierte a utf-8
+            clean_line = self._limpia_acentos(line)            
+            columnas = clean_line.split(COLUMN_SEPARATOR)
+            tamano = len(columnas)
+            if tamano == ROW_SIZE:
+                if columnas[0] and columnas[1]:
+                    p = Person(columnas[0], columnas[1], columnas[2], \
+                            columnas[3], columnas[4], columnas[5])
+                    personas_list.append(p)
+                else:
+                    logging.error('No name or id in row ' + clean_line)
+            elif tamano == (ROW_SIZE-1):
+                if columnas[0] and columnas[1]:
+                    p = Person(columnas[0], columnas[1], columnas[2], \
+                            columnas[3], columnas[4])
+                    personas_list.append(p)
+                else:
+                    logging.error('No name or id in row ' + clean_line)
+            else:
+                logging.error ('Bad csv row size, '+ str(tamano)+ ' columns expected')
+        return personas_list
+
+    #TODO: support propper UTF-8 with NLTK!!!
+    def _limpia_acentos(self, linea):
+        try:
+            linea_u = unicode(linea, 'utf-8')
+        except:
+            pass
+        try:
+            linea_u = unicode(linea, 'latin-1')
+        except:
+            pass
+        try:
+            linea_u = unicode(linea)
+        except:
+            linea_u = unicode(linea, errors='ignore')
+        
+        linea_u = self._re_a.subn('a',linea_u)[0]
+        linea_u = self._re_e.subn('e',linea_u)[0]
+        linea_u = self._re_i.subn('i',linea_u)[0]
+        linea_u = self._re_o.subn('o',linea_u)[0]
+        linea_u = self._re_u.subn('u',linea_u)[0]
+        linea_u = self._re_n.subn('n',linea_u)[0]
+        linea_u = self._re_A.subn('A',linea_u)[0]
+        linea_u = self._re_E.subn('E',linea_u)[0]
+        linea_u = self._re_I.subn('I',linea_u)[0]
+        linea_u = self._re_O.subn('O',linea_u)[0]
+        linea_u = self._re_U.subn('U',linea_u)[0]
+        linea_u = self._re_N.subn('N',linea_u)[0]
+        linea_a = linea_u.encode('ascii', 'ignore')
+        return linea_a
+        
+        
+        
+class Person:
+    def __init__(self, id, nom, tem='', org='', lug='', vin=''):
+        self.id = id.strip()
+        self.nombre = nom.strip()
+        self.temas = tem.strip()
+        self.orgs = org.strip()
+        self.lugares = lug.strip()
+        self.vinculo = vin.strip()
+
+
+class InputError(Exception):
+    pass
+
+class OutputError(Exception):
+    pass
+
+class FileFormatError(Exception):
+    pass
