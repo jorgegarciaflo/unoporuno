@@ -225,7 +225,7 @@ def lanza_busqueda(request):
                 try:
                     excel = open_workbook(inputfile.name)
                     excel_sheet = excel.sheet_by_index(0)
-                    if excel_sheet.nrows > 1 and excel_sheet.ncols > 1:
+                    if excel_sheet.nrows > 0 and excel_sheet.ncols > 0:
                         task_lanza_busqueda.delay(request.POST['nombre'], inputfile.name, request.user.username, \
                                                   request.POST['descripcion'],'xls')
                         return render_to_response('unoporuno/msg.html', {'msg':'La busqueda '+request.POST['nombre']+\

@@ -805,7 +805,7 @@ class PersonasInput:
         try:
             excel = open_workbook(input_file)
             excel_sheet = excel.sheet_by_index(0)
-            if excel_sheet.nrows >1 and excel_sheet.ncols > 1:
+            if excel_sheet.nrows > 0 and excel_sheet.ncols > 0:
                 self._input_xls = excel_sheet
             else:
                 self._input_xls = None
@@ -823,19 +823,17 @@ class PersonasInput:
         
         for rx in range(self._input_xls.nrows):
             persona_row = []
-            for cx in range(self._input_xls.ncols):
-                
+            for cx in range(self._input_xls.ncols):                
                 clean_cell = self._limpia_acentos(self._input_xls.cell_value(rowx=rx, colx=cx))
-                if clean_cell.strip():
-                    persona_row.append(clean_cell.strip())
-            
-            if len(persona_row) > 0:
-                p = Person(str(rx),persona_row[0])
-                p.temas   = persona_row[1] if len(persona_row) > 1 else ''
-                p.orgs    = persona_row[2] if len(persona_row) > 2 else ''
-                p.lugares = persona_row[3] if len(persona_row) > 3 else ''
-                p.vinculo = persona_row[4] if len(persona_row) > 4 else ''
-                personas_list.append(p)
+                persona_row.append(clean_cell.strip())            
+            if len(persona_row) > 0 :
+                if len(persona_row[0]) > 0:
+                    p = Person(str(rx),persona_row[0])
+                    p.temas   = persona_row[1] if len(persona_row) > 1 else ''
+                    p.orgs    = persona_row[2] if len(persona_row) > 2 else ''
+                    p.lugares = persona_row[3] if len(persona_row) > 3 else ''
+                    p.vinculo = persona_row[4] if len(persona_row) > 4 else ''
+                    personas_list.append(p)
                 
         return personas_list
         
