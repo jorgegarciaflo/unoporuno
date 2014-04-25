@@ -1,0 +1,46 @@
+<div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="../" class="navbar-brand">Unoporuno</a>
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar-main">
+                    <ul class="nav navbar-nav">
+                        <% 
+                            if(username == "") 
+                            {
+                            %>
+                                <li>
+                                    <a href="/register">Inscription</a>
+                                </li>
+
+                                <li>
+                                    <a href="/login"> Connexion</a>
+                                </li>
+                            <%
+                            }
+                        %>
+                        <li>
+                            <a href="/">Récentes liste de recherches</a>
+                        </li>
+
+                        <li>
+                            <a href="/search">Rechercher un expert</a>
+                        </li>
+
+                        <li>
+                            <a href="/details">Détails d'un résultat</a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="https://github.com/rcln/unoporuno/wiki" target="_blank">Le Wiki</a></li>
+                    </ul>
+
+                </div>
+            </div>
+</div>
