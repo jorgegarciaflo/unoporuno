@@ -31,7 +31,11 @@
                         {
                         %>
                             <tr <% if(i%2 == 0){%> class="success" <%}%> >
-                                <td><%= data[i].name %></td>
+                                <td>
+                                    <a href="/details/<%= data[i].id %>">
+                                        <%= data[i].name %>
+                                    </a>
+                                </td>
                                 <td><%= data[i].geo %></td>
                                 <td><%= data[i].orgs %></td>
                                 <td><%= data[i].topics %></td>

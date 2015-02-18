@@ -1,40 +1,34 @@
-<form class="form-horizontal">
-                    <fieldset>
-                        <legend>Recherche</legend>
-                        <div class="form-group">
-                            <label for="name" class="col-lg-2 control-label">Nom</label>
-                            <div class="col-lg-10">
-                                <input type="text" class="form-control" id="name" placeholder="Nom">
-                            </div>
-                        </div>
+<form class="form-horizontal" method="post">
+    <fieldset>
+        <legend>Recherche</legend>
 
-                        <div class="form-group">
-                            <label for="description" class="col-lg-2 control-label">Description</label>
-                            <div class="col-lg-10">
-                                <input type="text" class="form-control" id="description" placeholder="Description">
-                            </div>
-                        </div>
+        <div class="form-group">
+            <label for="name" class="col-lg-2 control-label">Nom</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="name"  name="search[name]" placeholder="Nom">
+            </div>
+        </div>
 
-						<div class="form-group">
-                            <label for="localite" class="col-lg-2 control-label">Localité</label>
-                            <div class="col-lg-10">
-                                <input type="text" class="form-control" id="localite" placeholder="Localite">
-                            </div>
-                        </div>
-						
-                        <div class="form-group">
-                            <label for="file" class="col-lg-2 control-label">Fichier</label>
-                            <div class="col-lg-10">
-                                <input type="file" class="form-control" id="file" placeholder="Choisissez un fichier...">
-                            </div>
-                        </div>
+        <div class="form-group">
+            <label for="description" class="col-lg-2 control-label">Description</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="description" name="search[description]" placeholder="Description">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="localite" class="col-lg-2 control-label">Localité</label>
+
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="geo" name="search[geo]" placeholder="Localite">
+            </div>
+        </div>
 
 
-                        <div class="form-group">
-                            <div class="col-lg-10 col-lg-offset-2">
-                                <button class="btn btn-default">Annuler</button>
-                                <button type="submit" class="btn btn-primary">Valider</button>
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
+        <div class="form-group">
+             <div class="col-lg-10 col-lg-offset-2">
+                <button type="submit" class="btn btn-primary">Valider</button>
+            </div>
+        </div>
+    </fieldset>
+</form>

@@ -9,37 +9,46 @@
                     </button>
                 </div>
                 <div class="navbar-collapse collapse" id="navbar-main">
-                    <ul class="nav navbar-nav">
                         <% 
                             if(username == "") 
                             {
-                            %>
-                                <li>
-                                    <a href="/register">Inscription</a>
-                                </li>
+                        %>
+                                <ul class="nav navbar-nav">
+                                    <li>
+                                        <a href="/register">Inscription</a>
+                                    </li>
 
-                                <li>
-                                    <a href="/login"> Connexion</a>
-                                </li>
-                            <%
+                                    <li>
+                                        <a href="/login"> Connexion</a>
+                                    </li>
+                                </ul>
+
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="https://github.com/rcln/unoporuno/wiki" target="_blank">Le Wiki</a></li>
+                                </ul>
+                        <%
+                            }
+                            else
+                            {
+                        %>
+                                <ul class="nav navbar-nav">
+                                    <li>
+                                        <a href="/">Liste de recherches récentes</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="/search">Rechercher un expert</a>
+                                    </li>
+                                </ul>
+
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li>
+                                        <a href="/logout">Déconnexion</a>
+                                    </li>
+                                </ul>
+                        <%
                             }
                         %>
-                        <li>
-                            <a href="/">Récentes liste de recherches</a>
-                        </li>
-
-                        <li>
-                            <a href="/search">Rechercher un expert</a>
-                        </li>
-
-                        <li>
-                            <a href="/details">Détails d'un résultat</a>
-                        </li>
-                    </ul>
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="https://github.com/rcln/unoporuno/wiki" target="_blank">Le Wiki</a></li>
-                    </ul>
 
                 </div>
             </div>

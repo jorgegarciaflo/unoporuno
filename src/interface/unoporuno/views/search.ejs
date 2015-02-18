@@ -3,7 +3,7 @@
 <% block('description',description) %>
 
 <div class="bs-docs-section">
-    <div class="row">
+    <div class="row">            
         <div class="col-lg-12">
             <div class="page-header">
                 <h1 id="forms">Recherche d'un expert</h1>
@@ -13,6 +13,14 @@
 
     <div class="row">
         <div class="col-lg-6">
+            <% 
+                if(err != '')
+                {
+            %>
+                <div class="alert alert-danger">
+                    <%=err%>
+                </div>
+            <%}%>
             <div class="well bs-component">
                 <p> Bienvenue <a href="#"><%=username%></a></p>
                 <% include includes/search.ejs %>
