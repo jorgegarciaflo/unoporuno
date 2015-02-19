@@ -252,8 +252,8 @@ exports.login = function(req, res){
   //S'il est déjà connecté on le redirige vers la page d'accueil
   isAlwaysConnected(req,res);
   //Quelques données
-  var data = {title: 'Connectez vous afin de pouvoir accéder à toute la plateforme.', 
-              description: 'Pas encore connecté, allez y et vous pourrez avoir acccès à tout.', 
+  var data = {title: 'Système de localisation d\'experts sur le web.',
+              description: 'Connectez vous afin de pouvoir accéder à la plateforme.', 
               layoutFile: 'layout',
               username: "",
               id: "",
@@ -282,8 +282,8 @@ exports.register = function(req, res){
   var errors = new Array();
 
   //Quelques données
-  var data = {title: 'N\'hesitez pas à vous inscrire pour pouvoir accéder à toute la plateforme.', 
-              description: 'Inscrivez vous en moins de 60 secondes.', 
+  var data = {title: 'Système de localisation d\'experts sur le web.', 
+              description: 'Formulaire d\'inscription', 
               layoutFile: 'layout',
               username: "",
               id: "",
@@ -385,8 +385,8 @@ exports.details = function(req, res){
                   {
 
                       //Différentes données à passer en url à la page
-                      var data = {title: 'Résultat(s) sur la recherche: "'+nameOf+'"', 
-                                  description: 'Différents résultats sur la recherche "'+nameOf+'"',
+                      var data = {title: nameOf,
+                                  description: 'Résultats de la recherche', 
                                   persona_id:id, 
                                   layoutFile: 'layout',
                                   username: req.session.username,
