@@ -1,0 +1,57 @@
+<% layout(layoutFile) %>
+<% block('title',title) %>
+<% block('description',description) %>
+<!-- Formulaire de connexion
+================================================== -->
+<div class="bs-docs-section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+                <h1 id="forms">Connectez vous</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <% 
+                if(err)
+                {
+            %>
+                <div class="alert alert-danger">
+                    <%=err%>
+                </div>
+            <%}%>
+
+            <div class="well bs-component">
+                <form class="form-horizontal" id = "register" method="post">
+                    <fieldset>
+                        <legend>Login</legend>
+                        <div class="form-group">
+                            <label for="email" class="col-lg-2 control-label">Email</label>
+                            <div class="col-lg-10">
+                                <input type="email" class="form-control" id="email" name="user[email]" placeholder="Votre email" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword" class="col-lg-2 control-label">Mot de passe</label>
+                            <div class="col-lg-10">
+                                <input type="password" class="form-control" id="password" name="user[password]" placeholder="Mot de passe" required="required">
+
+                                <p>
+                                    Si vous n'etes pas encore inscrit, <a href="/register">inscrivez-vous ici</a>.<br>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <button type="submit" class="btn btn-primary">Valider</button>
+                            </div>
+                        </div>
+                    </fieldset>  
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

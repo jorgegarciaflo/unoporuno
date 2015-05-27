@@ -1,0 +1,119 @@
+<% layout(layoutFile) %>
+<% block('title',title) %>
+<% block('description',description) %>
+
+<!-- ======================== Formulaire de connexion ========================== -->
+<div class="bs-docs-section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+                <h1 id="forms">Inscrivez vous</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+            <div class="col-lg-6">
+            <% 
+                if(err)
+                {
+            %>
+                <div class="alert alert-danger">
+                    <%=err%>
+                </div>
+            <%}%>
+
+            <div class="well bs-component">
+                <form class="form-horizontal" id = "register" method="post">
+                    <fieldset>
+                        <legend>Inscription</legend>
+                        <div class="form-group <% if(errors.firstname){%> has-error <%}%>">
+                            <label for="firstName" class="col-lg-2 control-label">Prenom</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="firstName" name="firstname" placeholder="Prenom" required="required">
+                                <% 
+                                    if(errors.firstname)
+                                    {
+                                    %>
+                                       <span><%=errors.firstname%></span>
+                                    <%
+                                    }
+                                %>
+                            </div>
+                        </div>
+
+                        <div class="form-group <% if(errors.lastname){%> has-error <%}%>">
+                            <label for="lastName" class="col-lg-2 control-label">Nom</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="lastName" name="lastname" placeholder="Nom">
+                                <% 
+                                    if(errors.lastname)
+                                    {
+                                    %>
+                                        <span><%=errors.lastname%></span>
+                                    <%
+                                    }
+                                %>
+                            </div>
+                        </div>
+
+                        <div class="form-group <% if(errors.username){%> has-error <%}%>">
+                            <label for="username" class="col-lg-2 control-label">Pseudo</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Pseudo" required="required">
+                                <% 
+                                    if(errors.username)
+                                    {
+                                    %>
+                                        <span><%=errors.username%></span>
+                                    <%
+                                    }
+                                %>
+                            </div>
+                        </div>
+
+                        <div class="form-group <% if(errors.email){%> has-error <%}%>">
+                            <label for="email" class="col-lg-2 control-label">Email</label>
+                            <div class="col-lg-10">
+                                <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" required="required">
+                                <% 
+                                    if(errors.email)
+                                    {
+                                    %>
+                                        <span><%=errors.email%></span>
+                                    <%
+                                    }
+                                %>
+                            </div>
+                        </div>
+                        <div class="form-group <% if(errors.password){%> has-error <%}%>">
+                            <label for="password" class="col-lg-2 control-label">Mot de passe</label>
+                            <div class="col-lg-10">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required="required">
+                                <% 
+                                    if(errors.password)
+                                    {
+                                    %>
+                                     <span><%=errors.password%></span>
+                                     <br>
+                                    <%
+                                    }
+                                %>
+                                <br>
+                                <p>
+                                    Si vous etes deja inscrit, <a href="/login">connectez-vous ici</a>.<br> 
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <button type="submit" class="btn btn-primary">Valider</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
