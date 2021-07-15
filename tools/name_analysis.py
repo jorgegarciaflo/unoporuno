@@ -23,8 +23,7 @@
 import sys
 import nltk
 
-def main():
-    print("Name Analysis starting!")
+    
 
 
 class NameParser:
@@ -73,10 +72,37 @@ class NameParser:
         for ts in tag_tokens:
             terminals += ts[1] + " -> " + "'" + ts[0] + "'" + "\n    "
         grammar_rules = self.grammar_head + terminals
-        grammar = nltk.parse_cfg(grammar_rules)
+        #grammar = nltk.parse_cfg(grammar_rules)
+        grammar = nltk.CFG.fromstring(grammar_rules)
         parser = nltk.ChartParser(grammar)
         return parser.nbest_parse(tokens)        
 
+
+
+    def _separa_iniciales(self, nombre):
+    ## Función para reconocer y separar como iniciales cadenas tipo JL Espejel ==> J L Espejel
+    ## (para que la gramática reconozca las iniciales
+        exit_nombre = nombre
+        if not exit_nombre.isupper():
+            logging.debug('exit_nombre.isupper():')
+            secuencia_inicial_r = re.match(u'^[A-Z]{2,}',exit_nombre)
+            if secuencia_inicial_r:
+                logging.debug('if secuencia_inicial_r:')
+                secuencia_inicial = secuencia_inicial_r.group(0)
+                exit_nombre = ''
+                for c in secuencia_inicial:
+                    exit_nombre = exit_nombre + ' ' + c 
+                exit_nombre += nombre.replace(secuencia_inicial,'')
+        return exit_nombre
+
+def main():
+    print("Name Analysis starting!")
+    person_name = "Miguel Angel de la Madrid"
+    name_parser = NameParser()
+    analysis_trees = name_parser.parse(person_name)
+    print(analysis_trees)
+    
+    
     
 if __name__=="__main__":
     main()
